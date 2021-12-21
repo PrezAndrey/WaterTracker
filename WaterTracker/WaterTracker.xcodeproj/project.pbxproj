@@ -58,13 +58,53 @@
 			children = (
 				1B99E522277123FE00291801 /* AppDelegate.swift */,
 				1B99E524277123FE00291801 /* SceneDelegate.swift */,
-				1B99E526277123FE00291801 /* ViewController.swift */,
-				1B99E528277123FE00291801 /* Main.storyboard */,
-				1B99E52B2771240000291801 /* Assets.xcassets */,
-				1B99E52D2771240000291801 /* LaunchScreen.storyboard */,
-				1B99E5302771240000291801 /* Info.plist */,
+				1B99E538277263EE00291801 /* Model */,
+				1B99E5392772640300291801 /* View */,
+				1B99E53A2772641400291801 /* Controller */,
+				1B99E53B2772642300291801 /* Resources */,
+				1B99E53C277264AD00291801 /* Supporting Files */,
 			);
 			path = WaterTracker;
+			sourceTree = "<group>";
+		};
+		1B99E538277263EE00291801 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1B99E5392772640300291801 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1B99E53A2772641400291801 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1B99E526277123FE00291801 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1B99E53B2772642300291801 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1B99E52B2771240000291801 /* Assets.xcassets */,
+				1B99E528277123FE00291801 /* Main.storyboard */,
+				1B99E52D2771240000291801 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1B99E53C277264AD00291801 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1B99E5302771240000291801 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
