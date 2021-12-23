@@ -15,6 +15,8 @@
 		1B99E52F2771240000291801 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B99E52D2771240000291801 /* LaunchScreen.storyboard */; };
 		1B99E53E277267CB00291801 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99E53D277267CB00291801 /* Model.swift */; };
 		1B99E541277267DC00291801 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99E540277267DC00291801 /* View.swift */; };
+		1B99E5492773AFE000291801 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99E5482773AFE000291801 /* StatsViewController.swift */; };
+		1B99E54D2773B0F400291801 /* GreetingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99E54C2773B0F400291801 /* GreetingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		1B99E5302771240000291801 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B99E53D277267CB00291801 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		1B99E540277267DC00291801 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		1B99E5482773AFE000291801 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		1B99E54C2773B0F400291801 /* GreetingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,8 @@
 			isa = PBXGroup;
 			children = (
 				1B99E526277123FE00291801 /* ViewController.swift */,
+				1B99E5482773AFE000291801 /* StatsViewController.swift */,
+				1B99E54C2773B0F400291801 /* GreetingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -186,7 +192,9 @@
 				1B99E527277123FE00291801 /* ViewController.swift in Sources */,
 				1B99E523277123FE00291801 /* AppDelegate.swift in Sources */,
 				1B99E541277267DC00291801 /* View.swift in Sources */,
+				1B99E54D2773B0F400291801 /* GreetingsViewController.swift in Sources */,
 				1B99E525277123FE00291801 /* SceneDelegate.swift in Sources */,
+				1B99E5492773AFE000291801 /* StatsViewController.swift in Sources */,
 				1B99E53E277267CB00291801 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,7 +344,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T5LT7XRVG2;
-				INFOPLIST_FILE = WaterTracker/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/WaterTracker/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -355,7 +363,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T5LT7XRVG2;
-				INFOPLIST_FILE = WaterTracker/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/WaterTracker/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
