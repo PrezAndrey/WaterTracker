@@ -15,6 +15,9 @@ class HealthKitSetup {
         
     }
     
+    // HealthKit Status
+    static var notWorking: Bool = true
+    
     
     // ask for permission for every data type that we want to read and ask permissions for writing the samples.
     class func getAuthorization(completion: @escaping (Bool, Error?) -> Void) {
@@ -39,10 +42,11 @@ class HealthKitSetup {
         let reading: Set<HKObjectType> = [water, dob, sex, bloodType]
         
         HKHealthStore().requestAuthorization(toShare: writing, read: reading, completion: completion)
+        self.notWorking = false
         
         
     }
-    
+    // writing water to HealthKit
     class func writeWater(amount: Double) {
         guard let waterType = HKSampleType.quantityType(forIdentifier: .dietaryWater) else {
                 print("Sample type not available")
@@ -57,6 +61,22 @@ class HealthKitSetup {
                 print("HK write finished - success: \(success); error: \(error)")
                 
             }
+    }
+    
+    // Checking authorization status
+    class func checkAuthorization() {
+        if self.notWorking  {
+            HealthKitSetup.getAuthorization { (authorized, error) in
+                guard authorized else {
+                    let message = "authorized failed"
+                    if let error = error {
+                        print("\(message) reason \(error)")
+                    }
+                    return
+                }
+                print("HealthKit authorized successfuly")
+            }
+        }
     }
     
 //    class func readCharacteristicsData() {

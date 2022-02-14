@@ -24,31 +24,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        authButton.addTarget(self, action: #selector(didAuth), for: .touchUpInside)
-        authButton.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
-        authButton.center = self.view.center
-        authButton.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        authButton.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-        authButton.layer.cornerRadius = 20
-        
+        //Checking authorization status
+        HealthKitSetup.checkAuthorization()
+
        
         
     }
 
     // MARK: Functions
-    
-    @objc func didAuth() {
-        HealthKitSetup.getAuthorization { (authorized, error) in
-            guard authorized else {
-                let message = "authorized failed"
-                if let error = error {
-                    print("\(message) reason \(error)")
-                }
-                return
-            }
-            print("HealthKit authorized successfuly")
-        }
-    }
    
    
     // Add 100 ml button
@@ -84,12 +67,14 @@ class ViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    
     // Add ml function
     private func addMl(_ number: Int) {
         WaterModel.amountOfWater += number
         updateWaterAmount()
         print(WaterModel.amountOfWater)
     }
+    
     // Update water amount
     private func updateWaterAmount() {
         waterLable.text = "Сегодня я выпил: \(WaterModel.amountOfWater) мл"
