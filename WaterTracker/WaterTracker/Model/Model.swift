@@ -7,9 +7,13 @@
 
 import Foundation
 
+// WaterModel - отвечает за данные, производит вычисления
+
 class WaterModel {
     
     static var model = WaterModel()
+    
+    
     
     // MARK: Constants
     struct Constants {
@@ -24,7 +28,7 @@ class WaterModel {
     }
     
     
-    static var amountOfWater: Int {
+    var amountOfWater: Int {
         get {
             return WaterModel.model.get(key: Constants.Keys.waterAmountKey.rawValue) as? Int ?? Constants.defaultAmountOfWater
         }

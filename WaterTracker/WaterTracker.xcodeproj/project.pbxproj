@@ -17,6 +17,7 @@
 		1B99E541277267DC00291801 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99E540277267DC00291801 /* View.swift */; };
 		1B99E5492773AFE000291801 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99E5482773AFE000291801 /* StatsViewController.swift */; };
 		1B99E54D2773B0F400291801 /* GreetingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99E54C2773B0F400291801 /* GreetingsViewController.swift */; };
+		1B9A5C0227BC3F8F008753D0 /* WaterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A5C0127BC3F8F008753D0 /* WaterStore.swift */; };
 		1BD6DA5227B1BB4B00917AFB /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD6DA5127B1BB4B00917AFB /* HealthKit.framework */; };
 		1BD6DA6B27B272A600917AFB /* HealthKitSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD6DA6A27B272A600917AFB /* HealthKitSetup.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +35,7 @@
 		1B99E540277267DC00291801 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		1B99E5482773AFE000291801 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		1B99E54C2773B0F400291801 /* GreetingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsViewController.swift; sourceTree = "<group>"; };
+		1B9A5C0127BC3F8F008753D0 /* WaterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterStore.swift; sourceTree = "<group>"; };
 		1BD6DA5127B1BB4B00917AFB /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		1BD6DA6A27B272A600917AFB /* HealthKitSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitSetup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				1B99E53D277267CB00291801 /* Model.swift */,
+				1B9A5C0127BC3F8F008753D0 /* WaterStore.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -93,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				1B99E540277267DC00291801 /* View.swift */,
+				1B99E526277123FE00291801 /* ViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -100,7 +104,6 @@
 		1B99E53A2772641400291801 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1B99E526277123FE00291801 /* ViewController.swift */,
 				1B99E5482773AFE000291801 /* StatsViewController.swift */,
 				1B99E54C2773B0F400291801 /* GreetingsViewController.swift */,
 				1BD6DA6A27B272A600917AFB /* HealthKitSetup.swift */,
@@ -208,6 +211,7 @@
 				1B99E523277123FE00291801 /* AppDelegate.swift in Sources */,
 				1B99E541277267DC00291801 /* View.swift in Sources */,
 				1B99E54D2773B0F400291801 /* GreetingsViewController.swift in Sources */,
+				1B9A5C0227BC3F8F008753D0 /* WaterStore.swift in Sources */,
 				1B99E525277123FE00291801 /* SceneDelegate.swift in Sources */,
 				1B99E5492773AFE000291801 /* StatsViewController.swift in Sources */,
 				1BD6DA6B27B272A600917AFB /* HealthKitSetup.swift in Sources */,
