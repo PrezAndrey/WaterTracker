@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-
+// Взаимодействие с HK
 class HealthKitAdapter {
     
     enum HealthKitSetupError: Error {
@@ -93,6 +93,8 @@ class HealthKitAdapter {
             let water = HKObjectType.quantityType(forIdentifier: .dietaryWater),
             let dob = HKObjectType.characteristicType(forIdentifier: .dateOfBirth),
             let sex = HKObjectType.characteristicType(forIdentifier: .biologicalSex),
+            let height = HKObjectType.characteristicType(forIdentifier: .height),
+            let weight = HKObjectType.characteristicType(forIdentifier: .weight), 
             let bloodType = HKObjectType.characteristicType(forIdentifier: .bloodType)
         else {
             completion(false, HealthKitSetupError.dataIsNotAvailable)

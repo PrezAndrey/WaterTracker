@@ -13,13 +13,15 @@
 		1B99E52A277123FE00291801 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B99E528277123FE00291801 /* Main.storyboard */; };
 		1B99E52C2771240000291801 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B99E52B2771240000291801 /* Assets.xcassets */; };
 		1B99E52F2771240000291801 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B99E52D2771240000291801 /* LaunchScreen.storyboard */; };
-		1B99E53E277267CB00291801 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99E53D277267CB00291801 /* Model.swift */; };
+		1B99E53E277267CB00291801 /* WaterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99E53D277267CB00291801 /* WaterStore.swift */; };
 		1B99E541277267DC00291801 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99E540277267DC00291801 /* View.swift */; };
 		1B99E5492773AFE000291801 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99E5482773AFE000291801 /* StatsViewController.swift */; };
 		1B99E54D2773B0F400291801 /* GreetingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99E54C2773B0F400291801 /* GreetingsViewController.swift */; };
-		1B9A5C0227BC3F8F008753D0 /* WaterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A5C0127BC3F8F008753D0 /* WaterStore.swift */; };
+		1B9A5C0227BC3F8F008753D0 /* WaterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A5C0127BC3F8F008753D0 /* WaterModel.swift */; };
+		1BBF3B6A27D921DC00D0BC2C /* WaterRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBF3B6927D921DC00D0BC2C /* WaterRecord.swift */; };
+		1BBF3B6D27D922F200D0BC2C /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBF3B6C27D922F200D0BC2C /* UserSettings.swift */; };
 		1BD6DA5227B1BB4B00917AFB /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD6DA5127B1BB4B00917AFB /* HealthKit.framework */; };
-		1BD6DA6B27B272A600917AFB /* HealthKitSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD6DA6A27B272A600917AFB /* HealthKitSetup.swift */; };
+		1BD6DA6B27B272A600917AFB /* HealthKitAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD6DA6A27B272A600917AFB /* HealthKitAdapter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,13 +33,15 @@
 		1B99E52B2771240000291801 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B99E52E2771240000291801 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B99E5302771240000291801 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1B99E53D277267CB00291801 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		1B99E53D277267CB00291801 /* WaterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterStore.swift; sourceTree = "<group>"; };
 		1B99E540277267DC00291801 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		1B99E5482773AFE000291801 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		1B99E54C2773B0F400291801 /* GreetingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsViewController.swift; sourceTree = "<group>"; };
-		1B9A5C0127BC3F8F008753D0 /* WaterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterStore.swift; sourceTree = "<group>"; };
+		1B9A5C0127BC3F8F008753D0 /* WaterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterModel.swift; sourceTree = "<group>"; };
+		1BBF3B6927D921DC00D0BC2C /* WaterRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterRecord.swift; sourceTree = "<group>"; };
+		1BBF3B6C27D922F200D0BC2C /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		1BD6DA5127B1BB4B00917AFB /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		1BD6DA6A27B272A600917AFB /* HealthKitSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitSetup.swift; sourceTree = "<group>"; };
+		1BD6DA6A27B272A600917AFB /* HealthKitAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +90,11 @@
 		1B99E538277263EE00291801 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1B99E53D277267CB00291801 /* Model.swift */,
-				1B9A5C0127BC3F8F008753D0 /* WaterStore.swift */,
+				1BD6DA6A27B272A600917AFB /* HealthKitAdapter.swift */,
+				1BBF3B6927D921DC00D0BC2C /* WaterRecord.swift */,
+				1BBF3B6C27D922F200D0BC2C /* UserSettings.swift */,
+				1B99E53D277267CB00291801 /* WaterStore.swift */,
+				1B9A5C0127BC3F8F008753D0 /* WaterModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -106,7 +113,6 @@
 			children = (
 				1B99E5482773AFE000291801 /* StatsViewController.swift */,
 				1B99E54C2773B0F400291801 /* GreetingsViewController.swift */,
-				1BD6DA6A27B272A600917AFB /* HealthKitSetup.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -207,15 +213,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BBF3B6A27D921DC00D0BC2C /* WaterRecord.swift in Sources */,
 				1B99E527277123FE00291801 /* ViewController.swift in Sources */,
 				1B99E523277123FE00291801 /* AppDelegate.swift in Sources */,
 				1B99E541277267DC00291801 /* View.swift in Sources */,
 				1B99E54D2773B0F400291801 /* GreetingsViewController.swift in Sources */,
-				1B9A5C0227BC3F8F008753D0 /* WaterStore.swift in Sources */,
+				1B9A5C0227BC3F8F008753D0 /* WaterModel.swift in Sources */,
+				1BBF3B6D27D922F200D0BC2C /* UserSettings.swift in Sources */,
 				1B99E525277123FE00291801 /* SceneDelegate.swift in Sources */,
 				1B99E5492773AFE000291801 /* StatsViewController.swift in Sources */,
-				1BD6DA6B27B272A600917AFB /* HealthKitSetup.swift in Sources */,
-				1B99E53E277267CB00291801 /* Model.swift in Sources */,
+				1BD6DA6B27B272A600917AFB /* HealthKitAdapter.swift in Sources */,
+				1B99E53E277267CB00291801 /* WaterStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
