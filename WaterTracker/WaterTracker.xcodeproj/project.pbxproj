@@ -21,7 +21,7 @@
 		1BBF3B6A27D921DC00D0BC2C /* WaterRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBF3B6927D921DC00D0BC2C /* WaterRecord.swift */; };
 		1BBF3B6D27D922F200D0BC2C /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBF3B6C27D922F200D0BC2C /* UserSettings.swift */; };
 		1BD6DA5227B1BB4B00917AFB /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD6DA5127B1BB4B00917AFB /* HealthKit.framework */; };
-		1BD6DA6B27B272A600917AFB /* HealthKitAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD6DA6A27B272A600917AFB /* HealthKitAdapter.swift */; };
+		55A56C1027DB321400296FD0 /* HealthKitAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A56C0F27DB321400296FD0 /* HealthKitAdapter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +41,7 @@
 		1BBF3B6927D921DC00D0BC2C /* WaterRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterRecord.swift; sourceTree = "<group>"; };
 		1BBF3B6C27D922F200D0BC2C /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		1BD6DA5127B1BB4B00917AFB /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		1BD6DA6A27B272A600917AFB /* HealthKitAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAdapter.swift; sourceTree = "<group>"; };
+		55A56C0F27DB321400296FD0 /* HealthKitAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +90,7 @@
 		1B99E538277263EE00291801 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1BD6DA6A27B272A600917AFB /* HealthKitAdapter.swift */,
+				55A56C0F27DB321400296FD0 /* HealthKitAdapter.swift */,
 				1BBF3B6927D921DC00D0BC2C /* WaterRecord.swift */,
 				1BBF3B6C27D922F200D0BC2C /* UserSettings.swift */,
 				1B99E53D277267CB00291801 /* WaterStore.swift */,
@@ -222,7 +222,7 @@
 				1BBF3B6D27D922F200D0BC2C /* UserSettings.swift in Sources */,
 				1B99E525277123FE00291801 /* SceneDelegate.swift in Sources */,
 				1B99E5492773AFE000291801 /* StatsViewController.swift in Sources */,
-				1BD6DA6B27B272A600917AFB /* HealthKitAdapter.swift in Sources */,
+				55A56C1027DB321400296FD0 /* HealthKitAdapter.swift in Sources */,
 				1B99E53E277267CB00291801 /* WaterStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
