@@ -94,7 +94,7 @@ class HealthKitAdapter {
             let dob = HKObjectType.characteristicType(forIdentifier: .dateOfBirth),
             let sex = HKObjectType.characteristicType(forIdentifier: .biologicalSex),
             let height = HKObjectType.characteristicType(forIdentifier: .height),
-            let weight = HKObjectType.characteristicType(forIdentifier: .weight), 
+            let weight = HKObjectType.characteristicType(forIdentifier: .weight),
             let bloodType = HKObjectType.characteristicType(forIdentifier: .bloodType)
         else {
             completion(false, HealthKitSetupError.dataIsNotAvailable)
