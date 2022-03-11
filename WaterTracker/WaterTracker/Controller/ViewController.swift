@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let waterStore = WaterStore()
+    
+    
     // MARK: Outlets
     
     @IBOutlet weak var authButton: UIButton!
@@ -26,8 +29,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         //Checking authorization status
 //        HealthKitSetup.checkAuthorization()
-        waterStore.initialize()
-        waterStore.delegate = self
+//        waterStore.initialize()
+//        waterStore.delegate = self
 //        healthKitAdapter.authorizeIfNeeded()
        
         
