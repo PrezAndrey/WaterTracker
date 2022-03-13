@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let waterStore = WaterStore()
+    let waterModel = WaterModel()
     
     
     // MARK: Outlets
@@ -41,14 +41,14 @@ class ViewController: UIViewController {
    
     // Add 100 ml button
     @IBAction func didAdd100(_ sender: UIButton) {
-        waterStore.writeWater(amount: 100.0)
+        waterModel.waterAmount += 100.0
 //        addMl(100)
 //        healthKitAdapter.writeWater(amount: Double(100))
     }
     
     // Add 250ml button
     @IBAction func didAdd250(_ sender: UIButton) {
-        waterStore.writeWater(amount: 250.0)
+        waterModel.waterAmount += 250.0
 //        addMl(250)
 //        healthKitAdapter.writeWater(amount: Double(250))
     }
@@ -60,9 +60,9 @@ class ViewController: UIViewController {
         // Alert
         let alertController = UIAlertController(title: "Corrections", message: "You can correct the amount of water", preferredStyle: .alert)
         let action = UIAlertAction(title: "Set", style: .default) { (action) in
-            if let text = Double(alertController.textFields?.first?.text ?? "0.0") {
-                print(text)
-                waterStore.writeWater(amount: text)
+            if let waterMl = Double(alertController.textFields?.first?.text ?? "0.0") {
+                print(waterMl)
+                self.waterModel.waterAmount += waterMl
 //                WaterModel.amountOfWater = text
 //                self.updateWaterAmount()
             }
@@ -77,15 +77,15 @@ class ViewController: UIViewController {
     
     
     // Add ml function
-    private func addMl(_ number: Int) {
-        WaterModel.amountOfWater += number
+    private func addMl(_ number: Double) {
+        waterModel.waterAmount += number
         updateWaterAmount()
-        print(WaterModel.amountOfWater)
+        print(waterModel.waterAmount)
     }
     
     // Update water amount
     private func updateWaterAmount() {
-        waterLable.text = "Сегодня я выпил: \(WaterModel.amountOfWater) мл"
+        waterLable.text = "Сегодня я выпил: \(waterModel.waterAmount) мл"
     }
     
     private func updateWaterAmount(_ amount: Double) {
@@ -94,10 +94,4 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: WaterStoreDelegate {
-    
-    public func amountOfWaterDidUpdate(_ store: WaterStore, amount: Double) {
-        updateWaterAmount(amount)
-    }
-    
-}
+

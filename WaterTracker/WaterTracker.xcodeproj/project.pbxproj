@@ -90,9 +90,8 @@
 		1B99E538277263EE00291801 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				55BE521D27DE7026006DFFC0 /* Propeerties */,
 				55A56C0F27DB321400296FD0 /* HealthKitAdapter.swift */,
-				1BBF3B6927D921DC00D0BC2C /* WaterRecord.swift */,
-				1BBF3B6C27D922F200D0BC2C /* UserSettings.swift */,
 				1B99E53D277267CB00291801 /* WaterStore.swift */,
 				1B9A5C0127BC3F8F008753D0 /* WaterModel.swift */,
 			);
@@ -141,6 +140,15 @@
 				1BD6DA5127B1BB4B00917AFB /* HealthKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		55BE521D27DE7026006DFFC0 /* Propeerties */ = {
+			isa = PBXGroup;
+			children = (
+				1BBF3B6C27D922F200D0BC2C /* UserSettings.swift */,
+				1BBF3B6927D921DC00D0BC2C /* WaterRecord.swift */,
+			);
+			path = Propeerties;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,6 +379,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = WaterTracker/WaterTracker.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T5LT7XRVG2;
 				INFOPLIST_FILE = "$(SRCROOT)/WaterTracker/Supporting Files/Info.plist";
@@ -380,6 +389,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "-000-.WaterTracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -391,6 +401,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = WaterTracker/WaterTracker.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T5LT7XRVG2;
 				INFOPLIST_FILE = "$(SRCROOT)/WaterTracker/Supporting Files/Info.plist";
@@ -400,6 +411,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "-000-.WaterTracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

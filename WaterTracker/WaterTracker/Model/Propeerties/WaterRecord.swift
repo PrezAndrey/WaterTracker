@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WaterRecord {
+struct WaterRecord: Codable {
     
     var waterAmount: Double
     
