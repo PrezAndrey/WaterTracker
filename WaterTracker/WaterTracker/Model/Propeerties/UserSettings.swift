@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum Sex {
+enum Sex: Codable {
     case male
     
     case female
 }
 
-struct UserSettings {
+struct UserSettings: Codable {
 
     
     var dayTarget: Double

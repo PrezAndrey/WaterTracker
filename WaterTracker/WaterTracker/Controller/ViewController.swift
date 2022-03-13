@@ -41,16 +41,14 @@ class ViewController: UIViewController {
    
     // Add 100 ml button
     @IBAction func didAdd100(_ sender: UIButton) {
-        waterModel.waterAmount += 100.0
-//        addMl(100)
-//        healthKitAdapter.writeWater(amount: Double(100))
+        addMl(100.0)
+
     }
     
     // Add 250ml button
     @IBAction func didAdd250(_ sender: UIButton) {
-        waterModel.waterAmount += 250.0
-//        addMl(250)
-//        healthKitAdapter.writeWater(amount: Double(250))
+        addMl(250.0)
+
     }
     
     
@@ -62,9 +60,8 @@ class ViewController: UIViewController {
         let action = UIAlertAction(title: "Set", style: .default) { (action) in
             if let waterMl = Double(alertController.textFields?.first?.text ?? "0.0") {
                 print(waterMl)
-                self.waterModel.waterAmount += waterMl
-//                WaterModel.amountOfWater = text
-//                self.updateWaterAmount()
+                self.addMl(waterMl)
+
             }
             else {
                 print("Error")

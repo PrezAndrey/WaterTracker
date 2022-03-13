@@ -97,11 +97,16 @@ class WaterStore: Codable {
     // Создать два метода, на чтение и запись текущих настроек
     
     func saveSettings(_ settings: UserSettings) {
-        UserDefaults.standard.set(settings, forKey: Constants.userSettingsKey)
+        if let data = try? PropertyListEncoder().encode(settings) {
+            UserDefaults.standard.set(data, forKey: Constants.userSettingsKey)
+        }
     }
     
     func getSettings() -> UserSettings? {
-        var userSettings = UserDefaults.standard.object(forKey: Constants.userSettingsKey)
-        return userSettings as! UserSettings
+        if let data = UserDefaults.standard.data(forKey: Constants.userSettingsKey) {
+            let settings = try! PropertyListDecoder().decode(UserSettings.self, from: data)
+            return settings
+        }
+        return nil
     }
 }
