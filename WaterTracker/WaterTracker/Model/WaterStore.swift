@@ -74,6 +74,7 @@ class WaterStore: Codable {
     func deleteRecord() {
         var currentRecordArray = get(key: Constants.waterKey)
         if currentRecordArray.isEmpty {
+            addRecord(WaterRecord(waterAmount: 0, date: Date()))
             return
         }
         else {
@@ -90,15 +91,9 @@ class WaterStore: Codable {
     }
     
     func getRecords() -> [WaterRecord] {
-        var waterArray = get(key: Constants.waterKey)
+        let waterArray = get(key: Constants.waterKey)
         
-        if waterArray.isEmpty {
-            waterArray = [WaterRecord(waterAmount: 0, date: Date())]
-            return waterArray
-        }
-        else {
-            return waterArray
-        }
+        return waterArray
         
     }
     

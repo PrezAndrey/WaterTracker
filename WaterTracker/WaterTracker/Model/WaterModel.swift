@@ -23,7 +23,7 @@ class WaterModel {
         }
         set {
             var oldValue = waterStore.getRecords()
-            var waterAdded = newValue - oldValue[-1].waterAmount
+            var waterAdded = newValue - oldValue[oldValue.count - 1].waterAmount
             let newRecord = WaterRecord(waterAmount: waterAdded, date: Date())
             waterStore.addRecord(newRecord)
             
@@ -32,8 +32,7 @@ class WaterModel {
     
     init() {
         healthKitAdapter.authorizeIfNeeded()
-        waterStore.getRecords()
-        // Test
+        waterStore.deleteRecord()
         
     }
     

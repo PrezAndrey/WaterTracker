@@ -7,11 +7,11 @@
 
 import Foundation
 
-enum Sex: Codable {
-    case male
-    
-    case female
-}
+//enum Sex: Codable {
+//    case male
+//
+//    case female
+//}
 
 struct UserSettings: Codable {
 
@@ -22,7 +22,7 @@ struct UserSettings: Codable {
     
     var dateOfBirth: Date
     
-    var sex: Sex
+   // var sex: Sex
     
     var height: Double
     
