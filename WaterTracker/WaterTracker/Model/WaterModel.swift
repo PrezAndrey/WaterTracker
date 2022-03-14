@@ -33,7 +33,7 @@ class WaterModel {
     init() {
         healthKitAdapter.authorizeIfNeeded()
         waterStore.getRecords()
-        
+        // Test
         
     }
     
