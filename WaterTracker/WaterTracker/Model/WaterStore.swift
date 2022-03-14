@@ -16,6 +16,9 @@ class WaterStore: Codable {
     
     
     
+    
+    
+    
     // MARK: Constants
     
     struct Constants {
@@ -89,7 +92,14 @@ class WaterStore: Codable {
     func getRecords() -> [WaterRecord] {
         var waterArray = get(key: Constants.waterKey)
         
-        return waterArray
+        if waterArray.isEmpty {
+            waterArray = [WaterRecord(waterAmount: 0, date: Date())]
+            return waterArray
+        }
+        else {
+            return waterArray
+        }
+        
     }
     
     

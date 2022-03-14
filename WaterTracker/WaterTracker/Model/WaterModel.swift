@@ -32,6 +32,9 @@ class WaterModel {
     
     init() {
         healthKitAdapter.authorizeIfNeeded()
+        waterStore.getRecords()
+        
+        
     }
     
     func sumOfWater(_ waterRecordArray: [WaterRecord]) -> Double {
