@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l9K-bG-K0M">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l9K-bG-K0M">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -236,16 +237,29 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vxz-7E-bye">
-                                <rect key="frame" x="150" y="556" width="90" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Authorize HK"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7iK-ss-6Vh">
+                                <rect key="frame" x="123" y="625" width="150" height="55"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="bEy-dH-SDn"/>
+                                    <constraint firstAttribute="height" constant="55" id="pCG-Ne-HTo"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Delete">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
+                                    <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="didDelete:" destination="JlC-KI-p0o" eventType="touchUpInside" id="GKd-3B-1P3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hju-Oy-VmI"/>
                         <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="BAU-wC-ZIJ" firstAttribute="leading" secondItem="hju-Oy-VmI" secondAttribute="leading" constant="30" id="8Rx-vu-VCq"/>
+                            <constraint firstItem="BAU-wC-ZIJ" firstAttribute="top" secondItem="7iK-ss-6Vh" secondAttribute="bottom" constant="55" id="FbI-fT-dK3"/>
+                            <constraint firstItem="7iK-ss-6Vh" firstAttribute="leading" secondItem="hju-Oy-VmI" secondAttribute="leading" constant="123" id="Qqx-kO-b5W"/>
                             <constraint firstItem="qJ8-hb-dsH" firstAttribute="top" secondItem="Ask-xZ-DC5" secondAttribute="bottom" constant="70" id="T0d-I0-XVy"/>
                             <constraint firstItem="Ask-xZ-DC5" firstAttribute="centerX" secondItem="qJ8-hb-dsH" secondAttribute="centerX" id="deY-Ou-xmE"/>
                             <constraint firstItem="BAU-wC-ZIJ" firstAttribute="centerX" secondItem="qJ8-hb-dsH" secondAttribute="centerX" id="g8i-PQ-gSj"/>
@@ -261,7 +275,6 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="vMK-Jg-Hai"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="authButton" destination="Vxz-7E-bye" id="E49-Z8-e6C"/>
                         <outlet property="waterLable" destination="Ask-xZ-DC5" id="Mbg-oZ-OqF"/>
                     </connections>
                 </viewController>
@@ -411,6 +424,9 @@
         <segue reference="nqN-Xr-m4o"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -430,7 +446,7 @@
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
-            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

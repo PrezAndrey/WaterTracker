@@ -21,11 +21,11 @@ class HealthKitAdapter {
      
     static let store = HKHealthStore()
      
-     private let objectTypes: [HKObjectType] = [
-         HKObjectType.quantityType(forIdentifier: .dietaryWater),
-         HKObjectType.characteristicType(forIdentifier: .dateOfBirth),
-         HKObjectType.characteristicType(forIdentifier: .biologicalSex),
-         HKObjectType.characteristicType(forIdentifier: .bloodType)
+    private let objectTypes: [HKObjectType] = [
+        HKObjectType.quantityType(forIdentifier: .dietaryWater),
+        HKObjectType.characteristicType(forIdentifier: .dateOfBirth),
+        HKObjectType.characteristicType(forIdentifier: .biologicalSex),
+        HKObjectType.characteristicType(forIdentifier: .bloodType)
      ].compactMap({ $0 })
     
     
@@ -59,28 +59,28 @@ class HealthKitAdapter {
     
     
         // ask for permission for every data type that we want to read and ask permissions for writing the samples.
-        func getAuthorization(completion: @escaping (Bool, Error?) -> Void) {
-        
-            guard HKHealthStore.isHealthDataAvailable() else {
-                completion(false, HealthKitAdapterError.deviceNotAvailable)
-                return
-            }
-        
-            guard
-                let water = HKObjectType.quantityType(forIdentifier: .dietaryWater),
-                let dob = HKObjectType.characteristicType(forIdentifier: .dateOfBirth),
-                let sex = HKObjectType.characteristicType(forIdentifier: .biologicalSex),
-                let bloodType = HKObjectType.characteristicType(forIdentifier: .bloodType)
-            else {
-                completion(false, HealthKitAdapterError.dataIsNotAvailable)
+    func getAuthorization(completion: @escaping (Bool, Error?) -> Void) {
+    
+        guard HKHealthStore.isHealthDataAvailable() else {
+            completion(false, HealthKitAdapterError.deviceNotAvailable)
+            return
+        }
+
+        guard
+            let water = HKObjectType.quantityType(forIdentifier: .dietaryWater),
+            let dob = HKObjectType.characteristicType(forIdentifier: .dateOfBirth),
+            let sex = HKObjectType.characteristicType(forIdentifier: .biologicalSex),
+            let bloodType = HKObjectType.characteristicType(forIdentifier: .bloodType)
+        else {
+            completion(false, HealthKitAdapterError.dataIsNotAvailable)
             
-                return
-            }
+            return
+        }
         
-            let writing: Set<HKSampleType> = [water]
-            let reading: Set<HKObjectType> = [water, dob, sex, bloodType]
+        let writing: Set<HKSampleType> = [water]
+        let reading: Set<HKObjectType> = [water, dob, sex, bloodType]
             
-            HKHealthStore().requestAuthorization(toShare: writing, read: reading, completion: completion)
+        HKHealthStore().requestAuthorization(toShare: writing, read: reading, completion: completion)
     }
       
         
@@ -90,16 +90,16 @@ class HealthKitAdapter {
         guard let waterType = HKSampleType.quantityType(forIdentifier: .dietaryWater) else {
                 print("Sample type not available")
                 return
-            }
+        }
             
-            let waterQuantity = HKQuantity(unit: HKUnit.literUnit(with: .milli), doubleValue: amount)
-            let today = Date()
-            let waterQuantitySample = HKQuantitySample(type: waterType, quantity: waterQuantity, start: today, end: today)
+        let waterQuantity = HKQuantity(unit: HKUnit.literUnit(with: .milli), doubleValue: amount)
+        let today = Date()
+        let waterQuantitySample = HKQuantitySample(type: waterType, quantity: waterQuantity, start: today, end: today)
             
-            HKHealthStore().save(waterQuantitySample) { (success, error) in
-                print("HK write finished - success: \(success); error: \(error)")
+        HKHealthStore().save(waterQuantitySample) { (success, error) in
+            print("HK write finished - success: \(success); error: \(error)")
                 
-            }
+        }
     }
     }
 }

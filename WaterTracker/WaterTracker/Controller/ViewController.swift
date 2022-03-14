@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     
     // MARK: Outlets
     
-    @IBOutlet weak var authButton: UIButton!
+    
     
     @IBOutlet weak var waterLable: UILabel! {
         didSet {
@@ -27,11 +27,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Checking authorization status
-//        HealthKitSetup.checkAuthorization()
-//        waterStore.initialize()
-//        waterStore.delegate = self
-//        healthKitAdapter.authorizeIfNeeded()
+       
        
         
     }
@@ -72,6 +68,10 @@ class ViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    @IBAction func didDelete(_ sender: Any) {
+        waterModel.waterStore.deleteRecord()
+        updateWaterAmount()
+    }
     
     // Add ml function
     private func addMl(_ number: Double) {
