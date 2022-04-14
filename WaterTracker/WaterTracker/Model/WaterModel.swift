@@ -8,51 +8,80 @@
 import Foundation
 import HealthKit
 
-// WaterModel - связывает хранилище и HK, хранилище данных
+protocol WaterModelDelegate {
+    func waterAmountDidUpdate(_ model: WaterModelProtocol)
+}
 
-class WaterModel {
+protocol WaterModelProtocol {
+    var waterAmount: Double { get }
+    var delegate: WaterModelDelegate? { get set }
+    
+    func deleteChosen(_ record: WaterRecord?, last: Bool)
+    func addWater(_ amount: Double)
+    
+}
+
+// WaterModel - связывает хранилище и HK, хранилище данныx
+class WaterModel: WaterModelProtocol {
+    
+    var delegate: WaterModelDelegate?
+    
     
     let waterStore = WaterStore()
     let healthKitAdapter = HealthKitAdapter()
+    let calculator = WaterCalculator()
+    let userSettings = UserSettings()
+    
+    var records: [WaterRecord] {
+        let currentWaterArray = waterStore.getRecords()
+        return currentWaterArray
+    }
     
     var waterAmount: Double {
-        get {
-            var currentWaterArray = waterStore.getRecords()
-            var currentWaterAmount = sumOfWater(currentWaterArray)
-            return currentWaterAmount
-        }
-        set {
-            var oldValue = waterStore.getRecords()
-            var waterAdded = newValue - oldValue[oldValue.count - 1].waterAmount
-            let newRecord = WaterRecord(waterAmount: waterAdded, date: Date())
-            waterStore.addRecord(newRecord)
-            
-        }
+       
+        let currentWaterArray = records
+        var currentWaterAmount = calculator.sumOfWater(currentWaterArray, from: userSettings.startDayInterval.from, to: userSettings.startDayInterval.to)
+        return currentWaterAmount
+        
+        
     }
     
     init() {
         healthKitAdapter.authorizeIfNeeded()
-        waterStore.deleteRecord()
+        
         
     }
     
-    func sumOfWater(_ waterRecordArray: [WaterRecord]) -> Double {
-        
-        var totalWater = 0.0
-        
-        for water in waterRecordArray {
-            totalWater += water.waterAmount
+    func deleteChosen(_ record: WaterRecord?, last: Bool) {
+        if last && record == nil {
+            var array = records
+            array.removeLast()
+            waterStore.save(record: array, key: "waterKey")
+            delegate?.waterAmountDidUpdate(self)
         }
-        return totalWater
+        else {
+            waterStore.deleteRecord(record: record!)
+            
+        }
     }
     
+    func addWater(_ amount: Double) {
+        let newRecord = WaterRecord(waterAmount: amount, date: Date())
+        waterStore.addRecord(newRecord)
+        delegate?.waterAmountDidUpdate(self)
+    }
     
-    
-    
-    
-    
-   
-    
+    func editWaterAmount(_ record: WaterRecord, newAmount: Double) {
+        var currentRecords = waterStore.getRecords()
+        
+        
+        for (index, value) in currentRecords.enumerated() {
+            if value == record {
+                currentRecords[index].waterAmount = newAmount
+            }
+        }
+        waterStore.save(record: currentRecords, key: "waterKey")
+    }
     
     
     

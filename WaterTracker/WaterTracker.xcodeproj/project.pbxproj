@@ -21,6 +21,8 @@
 		1BBF3B6A27D921DC00D0BC2C /* WaterRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBF3B6927D921DC00D0BC2C /* WaterRecord.swift */; };
 		1BBF3B6D27D922F200D0BC2C /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBF3B6C27D922F200D0BC2C /* UserSettings.swift */; };
 		1BD6DA5227B1BB4B00917AFB /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD6DA5127B1BB4B00917AFB /* HealthKit.framework */; };
+		5504F21C2807F013001CC40B /* WaterCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5504F21B2807F013001CC40B /* WaterCalculator.swift */; };
+		5504F21E2808196F001CC40B /* CustomAmountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5504F21D2808196F001CC40B /* CustomAmountVC.swift */; };
 		55A56C1027DB321400296FD0 /* HealthKitAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A56C0F27DB321400296FD0 /* HealthKitAdapter.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,8 @@
 		1BBF3B6927D921DC00D0BC2C /* WaterRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterRecord.swift; sourceTree = "<group>"; };
 		1BBF3B6C27D922F200D0BC2C /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		1BD6DA5127B1BB4B00917AFB /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		5504F21B2807F013001CC40B /* WaterCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterCalculator.swift; sourceTree = "<group>"; };
+		5504F21D2808196F001CC40B /* CustomAmountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAmountVC.swift; sourceTree = "<group>"; };
 		55A56C0F27DB321400296FD0 /* HealthKitAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +98,7 @@
 				55A56C0F27DB321400296FD0 /* HealthKitAdapter.swift */,
 				1B99E53D277267CB00291801 /* WaterStore.swift */,
 				1B9A5C0127BC3F8F008753D0 /* WaterModel.swift */,
+				5504F21B2807F013001CC40B /* WaterCalculator.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -112,6 +117,7 @@
 				1B99E526277123FE00291801 /* ViewController.swift */,
 				1B99E5482773AFE000291801 /* StatsViewController.swift */,
 				1B99E54C2773B0F400291801 /* GreetingsViewController.swift */,
+				5504F21D2808196F001CC40B /* CustomAmountVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -230,8 +236,10 @@
 				1BBF3B6D27D922F200D0BC2C /* UserSettings.swift in Sources */,
 				1B99E525277123FE00291801 /* SceneDelegate.swift in Sources */,
 				1B99E5492773AFE000291801 /* StatsViewController.swift in Sources */,
+				5504F21C2807F013001CC40B /* WaterCalculator.swift in Sources */,
 				55A56C1027DB321400296FD0 /* HealthKitAdapter.swift in Sources */,
 				1B99E53E277267CB00291801 /* WaterStore.swift in Sources */,
+				5504F21E2808196F001CC40B /* CustomAmountVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

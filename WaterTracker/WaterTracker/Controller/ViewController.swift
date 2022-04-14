@@ -10,7 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let waterModel = WaterModel()
+    private var waterModel: WaterModelProtocol = WaterModel()
+    
     
     
     // MARK: Outlets
@@ -23,13 +24,19 @@ class ViewController: UIViewController {
         }
     }
     
-    private let healthKitAdapter = HealthKitAdapter.shared
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        updateWaterAmount()
+    }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-       
-       
-        
+        waterModel.delegate = self
+        self.configureUI()
+    }
+    
+    func configureUI() {
+        updateWaterAmount()
     }
 
     // MARK: Functions
@@ -69,15 +76,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didDelete(_ sender: Any) {
-        waterModel.waterStore.deleteRecord()
-        updateWaterAmount()
+        waterModel.deleteChosen(nil, last: true)
     }
     
     // Add ml function
     private func addMl(_ number: Double) {
-        waterModel.waterAmount += number
-        updateWaterAmount()
-        print(waterModel.waterAmount)
+        
+        waterModel.addWater(number)
     }
     
     // Update water amount
@@ -85,9 +90,14 @@ class ViewController: UIViewController {
         waterLable.text = "Сегодня я выпил: \(waterModel.waterAmount) мл"
     }
     
-    private func updateWaterAmount(_ amount: Double) {
-        waterLable.text = "Сегодня я выпил: \(amount) мл"
+    
+}
+
+extension ViewController: WaterModelDelegate {
+    func waterAmountDidUpdate(_ model: WaterModelProtocol) {
+        waterLable.text = "Сегодня я выпил: \(waterModel.waterAmount) мл"
     }
+    
     
 }
 

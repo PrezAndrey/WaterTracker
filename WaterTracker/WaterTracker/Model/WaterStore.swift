@@ -71,17 +71,16 @@ class WaterStore: Codable {
         
     }
     
-    func deleteRecord() {
+    func deleteRecord(record: WaterRecord) {
         var currentRecordArray = get(key: Constants.waterKey)
-        if currentRecordArray.isEmpty {
-            addRecord(WaterRecord(waterAmount: 0, date: Date()))
-            return
+        for (index, value) in currentRecordArray.enumerated() {
+            if value == record {
+                currentRecordArray.remove(at: index)
+            }
         }
-        else {
-            currentRecordArray.removeLast()
-            save(record: currentRecordArray, key: Constants.waterKey)
-            
-        }
+        
+        save(record: currentRecordArray, key: Constants.waterKey)
+        
         
         
     }
