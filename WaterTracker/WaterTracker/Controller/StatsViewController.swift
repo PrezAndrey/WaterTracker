@@ -11,7 +11,7 @@ class StatsViewController: UIViewController {
     
     private var waterModel = WaterModel()
     private var newAmount = 0
-    private var index: Int?
+    
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -25,15 +25,16 @@ class StatsViewController: UIViewController {
     }
     
     // MARK: Prepare for Segue
-    
+    // TODO: создать статичный массив
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openCustomVolumeSegue" {
             if let customAmountVC = segue.destination as? CustomAmountVC {
                 customAmountVC.completion = {[weak self] newAmount in
                     guard let self = self else { return }
                     let element = self.waterModel.records
-                    if let indexPath = self.index {
-                        self.waterModel.editWaterAmount(element[indexPath], newAmount: newAmount)
+                    
+                    if let indexPath = self.tableView.indexPathForSelectedRow {
+                        self.waterModel.editWaterAmount(element[indexPath.row], newAmount: newAmount)
                         self.tableView.reloadData()
                     }
                 }
@@ -42,9 +43,10 @@ class StatsViewController: UIViewController {
     }
 }
 
+
 extension StatsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.index = indexPath.row
+        
         self.performSegue(withIdentifier: "openCustomVolumeSegue", sender: self)
         
         

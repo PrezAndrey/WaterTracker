@@ -23,8 +23,19 @@
 		1BD6DA5227B1BB4B00917AFB /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD6DA5127B1BB4B00917AFB /* HealthKit.framework */; };
 		5504F21C2807F013001CC40B /* WaterCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5504F21B2807F013001CC40B /* WaterCalculator.swift */; };
 		5504F21E2808196F001CC40B /* CustomAmountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5504F21D2808196F001CC40B /* CustomAmountVC.swift */; };
+		5504F226280838F0001CC40B /* WaterCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5504F225280838F0001CC40B /* WaterCalculatorTests.swift */; };
 		55A56C1027DB321400296FD0 /* HealthKitAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A56C0F27DB321400296FD0 /* HealthKitAdapter.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5504F227280838F0001CC40B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B99E517277123FE00291801 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1B99E51E277123FE00291801;
+			remoteInfo = WaterTracker;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1B99E51F277123FE00291801 /* WaterTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +56,8 @@
 		1BD6DA5127B1BB4B00917AFB /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		5504F21B2807F013001CC40B /* WaterCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterCalculator.swift; sourceTree = "<group>"; };
 		5504F21D2808196F001CC40B /* CustomAmountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAmountVC.swift; sourceTree = "<group>"; };
+		5504F223280838F0001CC40B /* WaterCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WaterCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5504F225280838F0001CC40B /* WaterCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterCalculatorTests.swift; sourceTree = "<group>"; };
 		55A56C0F27DB321400296FD0 /* HealthKitAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,6 +70,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5504F220280838F0001CC40B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -64,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				1B99E521277123FE00291801 /* WaterTracker */,
+				5504F224280838F0001CC40B /* WaterCalculatorTests */,
 				1B99E520277123FE00291801 /* Products */,
 				1BD6DA5027B1BB4B00917AFB /* Frameworks */,
 			);
@@ -73,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				1B99E51F277123FE00291801 /* WaterTracker.app */,
+				5504F223280838F0001CC40B /* WaterCalculatorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,6 +170,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5504F224280838F0001CC40B /* WaterCalculatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				5504F225280838F0001CC40B /* WaterCalculatorTests.swift */,
+			);
+			path = WaterCalculatorTests;
+			sourceTree = "<group>";
+		};
 		55BE521D27DE7026006DFFC0 /* Propeerties */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,17 +207,39 @@
 			productReference = 1B99E51F277123FE00291801 /* WaterTracker.app */;
 			productType = "com.apple.product-type.application";
 		};
+		5504F222280838F0001CC40B /* WaterCalculatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5504F22B280838F0001CC40B /* Build configuration list for PBXNativeTarget "WaterCalculatorTests" */;
+			buildPhases = (
+				5504F21F280838F0001CC40B /* Sources */,
+				5504F220280838F0001CC40B /* Frameworks */,
+				5504F221280838F0001CC40B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5504F228280838F0001CC40B /* PBXTargetDependency */,
+			);
+			name = WaterCalculatorTests;
+			productName = WaterCalculatorTests;
+			productReference = 5504F223280838F0001CC40B /* WaterCalculatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		1B99E517277123FE00291801 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					1B99E51E277123FE00291801 = {
 						CreatedOnToolsVersion = 12.4;
+					};
+					5504F222280838F0001CC40B = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 1B99E51E277123FE00291801;
 					};
 				};
 			};
@@ -205,6 +257,7 @@
 			projectRoot = "";
 			targets = (
 				1B99E51E277123FE00291801 /* WaterTracker */,
+				5504F222280838F0001CC40B /* WaterCalculatorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -217,6 +270,13 @@
 				1B99E52F2771240000291801 /* LaunchScreen.storyboard in Resources */,
 				1B99E52C2771240000291801 /* Assets.xcassets in Resources */,
 				1B99E52A277123FE00291801 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5504F221280838F0001CC40B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,7 +303,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5504F21F280838F0001CC40B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5504F226280838F0001CC40B /* WaterCalculatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5504F228280838F0001CC40B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1B99E51E277123FE00291801 /* WaterTracker */;
+			targetProxy = 5504F227280838F0001CC40B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1B99E528277123FE00291801 /* Main.storyboard */ = {
@@ -425,6 +501,44 @@
 			};
 			name = Release;
 		};
+		5504F229280838F0001CC40B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-000-.WaterCalculatorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WaterTracker.app/WaterTracker";
+			};
+			name = Debug;
+		};
+		5504F22A280838F0001CC40B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-000-.WaterCalculatorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WaterTracker.app/WaterTracker";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -442,6 +556,15 @@
 			buildConfigurations = (
 				1B99E5342771240000291801 /* Debug */,
 				1B99E5352771240000291801 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5504F22B280838F0001CC40B /* Build configuration list for PBXNativeTarget "WaterCalculatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5504F229280838F0001CC40B /* Debug */,
+				5504F22A280838F0001CC40B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

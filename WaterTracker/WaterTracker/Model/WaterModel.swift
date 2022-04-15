@@ -51,10 +51,12 @@ class WaterModel: WaterModelProtocol {
         
         
     }
-    
+    // TODO: разделить на 2 отдельные функции
     func deleteChosen(_ record: WaterRecord?, last: Bool) {
+       
         if last && record == nil {
             var array = records
+            guard !array.isEmpty else { return }
             array.removeLast()
             waterStore.save(record: array, key: "waterKey")
             delegate?.waterAmountDidUpdate(self)
@@ -74,12 +76,10 @@ class WaterModel: WaterModelProtocol {
     func editWaterAmount(_ record: WaterRecord, newAmount: Double) {
         var currentRecords = waterStore.getRecords()
         
-        
-        for (index, value) in currentRecords.enumerated() {
-            if value == record {
-                currentRecords[index].waterAmount = newAmount
-            }
+        if let index = currentRecords.firstIndex(of: record) {
+            currentRecords[index].waterAmount = newAmount
         }
+        
         waterStore.save(record: currentRecords, key: "waterKey")
     }
     
