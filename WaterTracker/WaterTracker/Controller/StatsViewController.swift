@@ -69,7 +69,7 @@ extension StatsViewController: UITableViewDelegate {
             
             let recordToDelete = staticRecords.remove(at: indexPath.row)
             
-            waterModel.deleteChosen(recordToDelete, last: false)
+            waterModel.deleteRecord(record: recordToDelete)
             tableView.deleteRows(at: [indexPath], with: .fade)
             
             

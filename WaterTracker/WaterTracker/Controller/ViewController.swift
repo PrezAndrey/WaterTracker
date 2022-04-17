@@ -20,14 +20,14 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var waterLable: UILabel! {
         didSet {
-            updateWaterAmount()
+            configureUI()
         }
     }
     
     
     
     override func viewWillAppear(_ animated: Bool) {
-        updateWaterAmount()
+        configureUI()
     }
     
     override func viewDidLoad() {
@@ -76,7 +76,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didDelete(_ sender: Any) {
-        waterModel.deleteChosen(nil, last: true)
+        waterModel.deleteLast()
+        configureUI()
+        
     }
     
     // Add ml function

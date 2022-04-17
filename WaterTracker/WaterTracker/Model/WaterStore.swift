@@ -9,6 +9,17 @@ import Foundation
 
 // WaterStore - хранение и обработка данных
 
+// MARK: Constants
+
+struct Constants {
+    static let defaultAmountOfWater: Int = 0
+    static let defaultUndoValue: Int = 0
+
+    static let waterKey = "waterKey"
+    static let userSettingsKey = "userSettingsKey"
+
+
+}
 
 class WaterStore: Codable {
     
@@ -19,17 +30,7 @@ class WaterStore: Codable {
     
     
     
-    // MARK: Constants
     
-    struct Constants {
-        static let defaultAmountOfWater: Int = 0
-        static let defaultUndoValue: Int = 0
-
-        static let waterKey = "waterKey"
-        static let userSettingsKey = "userSettingsKey"
-
-
-    }
     
     // MARK: Functions
     
@@ -85,9 +86,7 @@ class WaterStore: Codable {
         
     }
     
-    func editRecord(_ record: WaterRecord) {
-        
-    }
+
     
     func getRecords() -> [WaterRecord] {
         let waterArray = get(key: Constants.waterKey)

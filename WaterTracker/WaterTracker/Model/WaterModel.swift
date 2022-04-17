@@ -16,7 +16,7 @@ protocol WaterModelProtocol {
     var waterAmount: Double { get }
     var delegate: WaterModelDelegate? { get set }
     
-    func deleteChosen(_ record: WaterRecord?, last: Bool)
+    func deleteLast()
     func addWater(_ amount: Double)
     
 }
@@ -51,20 +51,25 @@ class WaterModel: WaterModelProtocol {
         
         
     }
-    // TODO: разделить на 2 отдельные функции
-    func deleteChosen(_ record: WaterRecord?, last: Bool) {
-       
-        if last && record == nil {
-            var array = records
-            guard !array.isEmpty else { return }
-            array.removeLast()
-            waterStore.save(record: array, key: "waterKey")
-            delegate?.waterAmountDidUpdate(self)
+    
+    
+    func deleteLast() {
+        var currentArray = records
+        guard !currentArray.isEmpty else { return }
+        currentArray.removeLast()
+        
+        waterStore.save(record: currentArray, key: Constants.waterKey)
+    }
+    
+    func deleteRecord(record: WaterRecord) {
+        var currentRecordArray = waterStore.getRecords()
+        for (index, value) in currentRecordArray.enumerated() {
+            if value == record {
+                currentRecordArray.remove(at: index)
+            }
         }
-        else {
-            waterStore.deleteRecord(record: record!)
-            
-        }
+        
+        waterStore.save(record: currentRecordArray, key: Constants.waterKey)
     }
     
     func addWater(_ amount: Double) {
