@@ -10,7 +10,9 @@ import UIKit
 class StatsViewController: UIViewController {
     
     private var waterModel = WaterModel()
+    private var waterStore = WaterStore()
     private var newAmount = 0
+    private var staticRecords = [WaterRecord]()
     
 
     @IBOutlet weak var tableView: UITableView!
@@ -23,6 +25,14 @@ class StatsViewController: UIViewController {
         tableView.dataSource = self
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        reloadRecords()
+    }
+    
+    private func reloadRecords() {
+        staticRecords = waterStore.getRecords()
+        tableView.reloadData()
+    }
     
     // MARK: Prepare for Segue
     // TODO: создать статичный массив
@@ -31,10 +41,10 @@ class StatsViewController: UIViewController {
             if let customAmountVC = segue.destination as? CustomAmountVC {
                 customAmountVC.completion = {[weak self] newAmount in
                     guard let self = self else { return }
-                    let element = self.waterModel.records
+                   
                     
                     if let indexPath = self.tableView.indexPathForSelectedRow {
-                        self.waterModel.editWaterAmount(element[indexPath.row], newAmount: newAmount)
+                        self.waterModel.editWaterAmount(self.staticRecords[indexPath.row], newAmount: newAmount)
                         self.tableView.reloadData()
                     }
                 }
@@ -55,8 +65,8 @@ extension StatsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let currentArray = waterModel.records
-            let recordToDelete = currentArray[indexPath.row]
+            
+            let recordToDelete = staticRecords[indexPath.row]
             waterModel.deleteChosen(recordToDelete, last: false)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
@@ -66,14 +76,13 @@ extension StatsViewController: UITableViewDelegate {
 
 extension StatsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let array = waterModel.records
         
-        return array.count
+        return staticRecords.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let info = waterModel.records
+        let info = staticRecords
         cell.textLabel?.text = "Added amount: \(info[indexPath.row].waterAmount)"
         cell.detailTextLabel?.text = "Date: \(info[indexPath.row].date)"
         
