@@ -45,6 +45,7 @@ class StatsViewController: UIViewController {
                     
                     if let indexPath = self.tableView.indexPathForSelectedRow {
                         self.waterModel.editWaterAmount(self.staticRecords[indexPath.row], newAmount: newAmount)
+                        self.reloadRecords()
                         self.tableView.reloadData()
                     }
                 }
