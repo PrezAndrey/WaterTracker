@@ -46,7 +46,7 @@ class StatsViewController: UIViewController {
                     if let indexPath = self.tableView.indexPathForSelectedRow {
                         self.waterModel.editWaterAmount(self.staticRecords[indexPath.row], newAmount: newAmount)
                         self.reloadRecords()
-                        self.tableView.reloadData()
+                        
                     }
                 }
             }
@@ -67,9 +67,12 @@ extension StatsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            let recordToDelete = staticRecords[indexPath.row]
+            let recordToDelete = staticRecords.remove(at: indexPath.row)
+            
             waterModel.deleteChosen(recordToDelete, last: false)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            
         }
     }
 }
