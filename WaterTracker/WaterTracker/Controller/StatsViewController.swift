@@ -42,11 +42,9 @@ class StatsViewController: UIViewController {
                 customAmountVC.completion = {[weak self] newAmount in
                     guard let self = self else { return }
                    
-                    
                     if let indexPath = self.tableView.indexPathForSelectedRow {
                         self.waterModel.editWaterAmount(self.staticRecords[indexPath.row], newAmount: newAmount)
                         self.reloadRecords()
-                        
                     }
                 }
             }
@@ -85,10 +83,10 @@ extension StatsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! StatisticTableViewCell
         let info = staticRecords
-        cell.textLabel?.text = "Added amount: \(info[indexPath.row].waterAmount)"
-        cell.detailTextLabel?.text = "Date: \(info[indexPath.row].date)"
+        
+        cell.configureWith(record: info[indexPath.row])
         
         return cell
     }

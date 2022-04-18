@@ -32,7 +32,7 @@ class WaterCalculatorTests: XCTestCase {
         let records: [WaterRecord] = []
         
         let date = Date()
-        let period = userSettings.startDayInterval
+        let period = userSettings.period(for: Date())
         let result = calculator.sumOfWater(records, from: period.from, to: period.to)
         
         
@@ -87,9 +87,9 @@ class WaterCalculatorTests: XCTestCase {
         let records: [WaterRecord] = [
             WaterRecord(waterAmount: 100.0, date: dateFormatter.date(from: "2022-04-16 05:59:59")!)
         ]
-        let period = userSettings.startDayInterval
-        let startDate = period.from
-        let endDate = period.to
+        let period = userSettings.period(for: Date())
+        let startDate = dateFormatter.date(from: "2022-04-16 05:59:59")!
+        let endDate = dateFormatter.date(from: "2022-04-17 06:00:00")!
         
         let result = calculator.sumOfWater(records, from: startDate, to: endDate)
         
@@ -105,12 +105,12 @@ class WaterCalculatorTests: XCTestCase {
         dateFormatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
         
         let records: [WaterRecord] = [
-            WaterRecord(waterAmount: 100.0, date: dateFormatter.date(from: "2022-04-16 05:59:59")!),
+            WaterRecord(waterAmount: 100.0, date: dateFormatter.date(from: "2022-04-16 05:59:58")!),
             WaterRecord(waterAmount: 100.0, date: dateFormatter.date(from: "2022-04-16 06:00:01")!)
         ]
-        let period = userSettings.startDayInterval
-        let startDate = period.from
-        let endDate = period.to
+        let period = userSettings.period(for: Date())
+        let startDate = dateFormatter.date(from: "2022-04-16 05:59:59")!
+        let endDate = dateFormatter.date(from: "2022-04-17 06:00:00")!
         
         let result = calculator.sumOfWater(records, from: startDate, to: endDate)
         

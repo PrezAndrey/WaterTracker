@@ -18,9 +18,7 @@ struct UserSettings: Codable, Equatable {
     
     var dayTarget: Double?
     
-    var startDayInterval: (from: Date, to: Date) {
-        return period(for: Date())
-    }
+    var startDayInterval: TimeInterval = 21599
     
     var dateOfBirth: Date?
     
@@ -36,8 +34,9 @@ struct UserSettings: Codable, Equatable {
 extension UserSettings {
     func period(for date: Date) -> (from: Date, to: Date) {
         let calendar = Calendar.current
+        let start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: date)!
         
-        let startOfThePeriod = calendar.date(bySettingHour: 5, minute: 59, second: 59, of: date)!
+        let startOfThePeriod = Date(timeInterval: startDayInterval, since: start)
         let endOfThePeriod = Date(timeInterval: 86401, since: startOfThePeriod)
         
         return (startOfThePeriod, endOfThePeriod)

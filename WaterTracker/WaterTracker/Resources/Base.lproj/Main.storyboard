@@ -43,7 +43,7 @@
                                 <rect key="frame" x="0.0" y="88" width="390" height="722"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="HzT-U9-DfP" detailTextLabel="0Xp-5A-jgi" style="IBUITableViewCellStyleSubtitle" id="D02-0P-3mb">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="HzT-U9-DfP" detailTextLabel="0Xp-5A-jgi" style="IBUITableViewCellStyleSubtitle" id="D02-0P-3mb" customClass="StatisticTableViewCell" customModule="WaterTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D02-0P-3mb" id="g8R-LK-yG5">
@@ -66,6 +66,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLable" destination="0Xp-5A-jgi" id="foI-zw-BGF"/>
+                                            <outlet property="waterAmountLable" destination="HzT-U9-DfP" id="hEO-8G-nkF"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -271,7 +275,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hju-Oy-VmI"/>
-                        <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.33097325417534385" green="0.32640928295922067" blue="0.63807169596354174" alpha="0.82652110927152322" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="BAU-wC-ZIJ" firstAttribute="leading" secondItem="hju-Oy-VmI" secondAttribute="leading" constant="30" id="8Rx-vu-VCq"/>
                             <constraint firstItem="BAU-wC-ZIJ" firstAttribute="top" secondItem="7iK-ss-6Vh" secondAttribute="bottom" constant="55" id="FbI-fT-dK3"/>
@@ -303,17 +307,17 @@
             <objects>
                 <viewController storyboardIdentifier="MainScreenID" title="Custom ml" useStoryboardIdentifierAsRestorationIdentifier="YES" id="upl-SW-g41" customClass="CustomAmountVC" customModule="WaterTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3aL-SS-yGA">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Custom ml" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSS-3X-Iav">
-                                <rect key="frame" x="103" y="64" width="184" height="48"/>
+                                <rect key="frame" x="103" y="152" width="184" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yel-RG-tuI">
-                                <rect key="frame" x="45" y="358" width="300" height="40"/>
+                                <rect key="frame" x="45" y="429" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Bjs-H5-IcX"/>
                                     <constraint firstAttribute="width" constant="300" id="HFT-kM-zny"/>
@@ -323,7 +327,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpl-vj-evj">
-                                <rect key="frame" x="82" y="683" width="216" height="50"/>
+                                <rect key="frame" x="82" y="737" width="216" height="50"/>
                                 <color key="backgroundColor" systemColor="systemIndigoColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Set">
@@ -468,7 +472,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="LNq-gU-YpL"/>
+        <segue reference="nqN-Xr-m4o"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">

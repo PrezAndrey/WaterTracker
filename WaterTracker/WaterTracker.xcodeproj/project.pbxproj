@@ -25,6 +25,7 @@
 		5504F21E2808196F001CC40B /* CustomAmountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5504F21D2808196F001CC40B /* CustomAmountVC.swift */; };
 		5504F226280838F0001CC40B /* WaterCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5504F225280838F0001CC40B /* WaterCalculatorTests.swift */; };
 		55A56C1027DB321400296FD0 /* HealthKitAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A56C0F27DB321400296FD0 /* HealthKitAdapter.swift */; };
+		55B97451280D61600069AEA2 /* StatisticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B97450280D61600069AEA2 /* StatisticTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		5504F223280838F0001CC40B /* WaterCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WaterCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5504F225280838F0001CC40B /* WaterCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterCalculatorTests.swift; sourceTree = "<group>"; };
 		55A56C0F27DB321400296FD0 /* HealthKitAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAdapter.swift; sourceTree = "<group>"; };
+		55B97450280D61600069AEA2 /* StatisticTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				1B99E53D277267CB00291801 /* WaterStore.swift */,
 				1B9A5C0127BC3F8F008753D0 /* WaterModel.swift */,
 				5504F21B2807F013001CC40B /* WaterCalculator.swift */,
+				55B97450280D61600069AEA2 /* StatisticTableViewCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				5504F21C2807F013001CC40B /* WaterCalculator.swift in Sources */,
 				55A56C1027DB321400296FD0 /* HealthKitAdapter.swift in Sources */,
 				1B99E53E277267CB00291801 /* WaterStore.swift in Sources */,
+				55B97451280D61600069AEA2 /* StatisticTableViewCell.swift in Sources */,
 				5504F21E2808196F001CC40B /* CustomAmountVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

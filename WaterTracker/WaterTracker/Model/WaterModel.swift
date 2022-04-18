@@ -40,7 +40,7 @@ class WaterModel: WaterModelProtocol {
     var waterAmount: Double {
        
         let currentWaterArray = records
-        var currentWaterAmount = calculator.sumOfWater(currentWaterArray, from: userSettings.startDayInterval.from, to: userSettings.startDayInterval.to)
+        let currentWaterAmount = calculator.sumOfWater(currentWaterArray, from: userSettings.period(for: Date()).from, to: userSettings.period(for: Date()).to)
         return currentWaterAmount
         
         
