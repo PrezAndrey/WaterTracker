@@ -74,6 +74,7 @@ class WaterModel: WaterModelProtocol {
     
     func addWater(_ amount: Double) {
         let newRecord = WaterRecord(waterAmount: amount, date: Date())
+        healthKitAdapter.writeWater(amount: amount)
         waterStore.addRecord(newRecord)
         delegate?.waterAmountDidUpdate(self)
     }

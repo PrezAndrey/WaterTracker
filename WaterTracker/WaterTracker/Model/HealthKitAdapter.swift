@@ -40,15 +40,17 @@ class HealthKitAdapter {
             let water = HKObjectType.quantityType(forIdentifier: .dietaryWater),
             let dob = HKObjectType.characteristicType(forIdentifier: .dateOfBirth),
             let sex = HKObjectType.characteristicType(forIdentifier: .biologicalSex),
-            let bloodType = HKObjectType.characteristicType(forIdentifier: .bloodType)
+            let bloodType = HKObjectType.characteristicType(forIdentifier: .bloodType),
+            let bodyMass = HKObjectType.quantityType(forIdentifier: .bodyMass),
+            let height = HKObjectType.quantityType(forIdentifier: .height)
         else {
             completion(false, HealthKitAdapterError.dataIsNotAvailable)
             
             return
         }
         
-        let writing: Set<HKSampleType> = [water]
-        let reading: Set<HKObjectType> = [water, dob, sex, bloodType]
+        let writing: Set<HKSampleType> = [water, bodyMass, height]
+        let reading: Set<HKObjectType> = [water, dob, sex, bloodType, bodyMass, height]
             
         HKHealthStore().requestAuthorization(toShare: writing, read: reading, completion: completion)
     }
@@ -81,6 +83,7 @@ class HealthKitAdapter {
                 fatalError()
             }
         }
+    }
     
     
         // ask for permission for every data type that we want to read and ask permissions for writing the samples.
@@ -93,15 +96,19 @@ class HealthKitAdapter {
                 print("Sample type not available")
                 return
         }
+        
             
         let waterQuantity = HKQuantity(unit: HKUnit.literUnit(with: .milli), doubleValue: amount)
         let today = Date()
         let waterQuantitySample = HKQuantitySample(type: waterType, quantity: waterQuantity, start: today, end: today)
+        
             
         HKHealthStore().save(waterQuantitySample) { (success, error) in
             print("HK write finished - success: \(success); error: \(error)")
                 
         }
     }
-    }
+    
+    
+    
 }

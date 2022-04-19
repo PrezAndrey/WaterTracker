@@ -440,35 +440,18 @@
         <!--Auto-aim-->
         <scene sceneID="O3z-xK-FAi">
             <objects>
-                <viewController title="Auto-aim" wantsFullScreenLayout="YES" modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="9UP-dC-F3P" sceneMemberID="viewController">
+                <viewController title="Auto-aim" wantsFullScreenLayout="YES" modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="9UP-dC-F3P" customClass="AutoAimViewController" customModule="WaterTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D3X-Ij-Mp8">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto-aim" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZ1-JM-3bl">
-                                <rect key="frame" x="45" y="299" width="300" height="300"/>
-                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="8Nb-h4-cI3"/>
-                                    <constraint firstAttribute="width" constant="300" id="ovZ-jW-e2a"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="45"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Vqc-Cs-xQt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="oZ1-JM-3bl" firstAttribute="centerX" secondItem="Vqc-Cs-xQt" secondAttribute="centerX" id="CpY-3o-j5F"/>
-                            <constraint firstItem="oZ1-JM-3bl" firstAttribute="centerY" secondItem="Vqc-Cs-xQt" secondAttribute="centerY" id="OCC-Ba-uB6"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nGO-aW-8Xs"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBf-92-B9B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4409.2307692307695" y="-412.32227488151659"/>
+            <point key="canvasLocation" x="4900" y="-412.32227488151659"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
