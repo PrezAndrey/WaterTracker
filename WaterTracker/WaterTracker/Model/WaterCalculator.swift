@@ -15,6 +15,7 @@ class WaterCalculator {
         for record in waterRecordArray {
             if from <= record.date && record.date <= to {
                 totalWater += record.waterAmount
+                print("Total: \(totalWater)")
                 
                 
         

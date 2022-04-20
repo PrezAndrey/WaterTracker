@@ -13,6 +13,7 @@ class AutoAimViewController: UITableViewController {
     
     
     var userSettings = UserSettings()
+    var waterModel = WaterModel()
     
     
     
@@ -22,6 +23,9 @@ class AutoAimViewController: UITableViewController {
     @IBOutlet weak var weightLable: UILabel!
     
     
+    @IBOutlet weak var dateOfBirthLable: UILabel!
+    @IBOutlet weak var sexLable: UILabel!
+    @IBOutlet weak var bloodTypeLable: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +58,19 @@ class AutoAimViewController: UITableViewController {
         
     }
     
+    
+    
+    @IBAction func didFetchDataFromHK(_ sender: Any) {
+        let datafromHK = try? waterModel.fetchDataFromHealthKit()
+        dateOfBirthLable.text = "\(datafromHK?.age)"
+        bloodTypeLable.text = "\(datafromHK?.bloodType)"
+        sexLable.text = "\(datafromHK?.biologicalSex)"
+    }
+    
+    
+    
+    @IBAction func didGenerateAim(_ sender: Any) {
+    }
     
     
     

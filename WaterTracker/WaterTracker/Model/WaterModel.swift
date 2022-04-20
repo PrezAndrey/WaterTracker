@@ -90,6 +90,14 @@ class WaterModel: WaterModelProtocol {
     }
     
     
+    func fetchDataFromHealthKit() throws -> (age: Int,
+                                         biologicalSex: HKBiologicalSex,
+                                         bloodType: HKBloodType){
+        let tupleHK = try healthKitAdapter.getAgeSexAndBloodType()
+        return tupleHK
+    }
+    
+    
     
     
 }
