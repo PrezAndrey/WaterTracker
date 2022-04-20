@@ -16,7 +16,7 @@ enum Sex: Codable {
 struct UserSettings: Codable, Equatable {
 
     
-    var dayTarget: Double?
+    var dayTarget = 2000
     
     var startDayInterval: TimeInterval = 21599
     
@@ -24,9 +24,9 @@ struct UserSettings: Codable, Equatable {
     
     var sex: Sex?
     
-    var height: Double?
+    var height = 175
     
-    var weight: Double?
+    var weight = 75
     
     
 }
