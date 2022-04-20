@@ -20,6 +20,7 @@ struct UserSettings: Codable, Equatable {
     
     var startDayInterval: TimeInterval = 21599
     
+    
     var dateOfBirth: Date?
     
     var sex: Sex?
@@ -27,6 +28,8 @@ struct UserSettings: Codable, Equatable {
     var height = 175
     
     var weight = 75
+    
+    
     
     
 }
@@ -42,5 +45,12 @@ extension UserSettings {
         return (startOfThePeriod, endOfThePeriod)
         
         
+    }
+    
+    func calculateStartDayInterval(setDate: Date) -> Double {
+        let calendar = Calendar.current
+        let start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: Date())!
+        let timeInterval = setDate.timeIntervalSince(start)
+        return timeInterval
     }
 }

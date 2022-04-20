@@ -26,6 +26,7 @@
 		5504F226280838F0001CC40B /* WaterCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5504F225280838F0001CC40B /* WaterCalculatorTests.swift */; };
 		55A56C1027DB321400296FD0 /* HealthKitAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A56C0F27DB321400296FD0 /* HealthKitAdapter.swift */; };
 		55A83628280FFD9A0099D144 /* AutoAimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A83627280FFD9A0099D144 /* AutoAimViewController.swift */; };
+		55A8362A28105F5C0099D144 /* StartingTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A8362928105F5C0099D144 /* StartingTimeViewController.swift */; };
 		55B97451280D61600069AEA2 /* StatisticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B97450280D61600069AEA2 /* StatisticTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		5504F225280838F0001CC40B /* WaterCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterCalculatorTests.swift; sourceTree = "<group>"; };
 		55A56C0F27DB321400296FD0 /* HealthKitAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAdapter.swift; sourceTree = "<group>"; };
 		55A83627280FFD9A0099D144 /* AutoAimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoAimViewController.swift; sourceTree = "<group>"; };
+		55A8362928105F5C0099D144 /* StartingTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingTimeViewController.swift; sourceTree = "<group>"; };
 		55B97450280D61600069AEA2 /* StatisticTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +148,7 @@
 				1B99E54C2773B0F400291801 /* GreetingsViewController.swift */,
 				5504F21D2808196F001CC40B /* CustomAmountVC.swift */,
 				55A83627280FFD9A0099D144 /* AutoAimViewController.swift */,
+				55A8362928105F5C0099D144 /* StartingTimeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				1BBF3B6D27D922F200D0BC2C /* UserSettings.swift in Sources */,
 				1B99E525277123FE00291801 /* SceneDelegate.swift in Sources */,
 				1B99E5492773AFE000291801 /* StatsViewController.swift in Sources */,
+				55A8362A28105F5C0099D144 /* StartingTimeViewController.swift in Sources */,
 				5504F21C2807F013001CC40B /* WaterCalculator.swift in Sources */,
 				55A56C1027DB321400296FD0 /* HealthKitAdapter.swift in Sources */,
 				1B99E53E277267CB00291801 /* WaterStore.swift in Sources */,
