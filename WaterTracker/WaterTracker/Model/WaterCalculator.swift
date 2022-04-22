@@ -15,13 +15,17 @@ class WaterCalculator {
         for record in waterRecordArray {
             if from <= record.date && record.date <= to {
                 totalWater += record.waterAmount
-                print("Total: \(totalWater)")
                 
-                
-        
             }
-            
         }
         return totalWater
+    }
+    
+    
+    func waterAimGenerator(weight: Int) -> Double {
+        let standartAim = weight * 30
+        
+        return Double(standartAim)
+        
     }
 }

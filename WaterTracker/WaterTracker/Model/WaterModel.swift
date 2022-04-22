@@ -19,6 +19,9 @@ protocol WaterModelProtocol {
     func deleteLast()
     func addWater(_ amount: Double)
     
+    func getUserSettings() -> UserSettings?
+    
+    
 }
 
 // WaterModel - связывает хранилище и HK, хранилище данныx
@@ -31,6 +34,8 @@ class WaterModel: WaterModelProtocol {
     let healthKitAdapter = HealthKitAdapter()
     let calculator = WaterCalculator()
     let userSettings = UserSettings()
+    
+    
     
     var records: [WaterRecord] {
         let currentWaterArray = waterStore.getRecords()
@@ -95,6 +100,28 @@ class WaterModel: WaterModelProtocol {
                                          bloodType: HKBloodType){
         let tupleHK = try healthKitAdapter.getAgeSexAndBloodType()
         return tupleHK
+    }
+    
+    func saveUserSettings(userSettings: UserSettings) {
+        waterStore.saveSettings(userSettings)
+    }
+    
+    func getUserSettings() -> UserSettings? {
+        let settings = waterStore.getSettings()
+        return settings
+        
+    }
+    
+    func editSettings(newSettings: UserSettings) {
+        guard var currentSettings = waterStore.getSettings()
+        else {return saveUserSettings(userSettings: UserSettings(dayTarget: 0, startDayInterval: 21599, height: 0, weight: 0))}
+        currentSettings.weight = newSettings.weight
+        currentSettings.dayTarget = newSettings.dayTarget
+        currentSettings.height = newSettings.height
+        currentSettings.startDayInterval = newSettings.startDayInterval
+        
+        waterStore.saveSettings(currentSettings)
+        
     }
     
     

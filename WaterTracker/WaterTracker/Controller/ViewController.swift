@@ -45,6 +45,7 @@ class ViewController: UIViewController {
     // Add 100 ml button
     @IBAction func didAdd100(_ sender: UIButton) {
         addMl(100.0)
+        
 
     }
     
@@ -85,11 +86,30 @@ class ViewController: UIViewController {
     private func addMl(_ number: Double) {
         
         waterModel.addWater(number)
+        checkTheTarget()
+        
     }
     
     // Update water amount
     private func updateWaterAmount() {
         waterLable.text = "Сегодня я выпил: \(waterModel.waterAmount) мл"
+    }
+    
+    private func showTargetGetAlert() {
+        let alertController = UIAlertController(title: "Complete✅", message: "You've got your day target", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "Continue", style: .default) { (action) in
+            return
+        }
+        
+        self.present(alertController, animated: true, completion: nil)
+        alertController.addAction(alertAction)
+    }
+    
+    private func checkTheTarget() {
+        let curentTarget = waterModel.getUserSettings()
+        if waterModel.waterAmount >= Double(curentTarget?.dayTarget ?? 0) {
+            showTargetGetAlert()
+        }
     }
     
     

@@ -7,13 +7,22 @@
 
 import Foundation
 import UIKit
+import HealthKit
 
+protocol AutoAimDelegate {
+    func updateAim(newAim: Int)
+}
 
 class AutoAimViewController: UITableViewController {
     
     
     var userSettings = UserSettings()
     var waterModel = WaterModel()
+    let waterCalculator = WaterCalculator()
+    
+
+    var settings = UserSettings(dayTarget: 0, startDayInterval: 21599, height: 0, weight: 0)
+    
     
     
     
@@ -29,11 +38,17 @@ class AutoAimViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("current sttings before: \(settings)")
+        updateSettings()
+        weightLable.text = "\(settings.weight!)кг"
+        heightLable.text = "\(settings.height!)см"
+        aimLable.text = "\(settings.dayTarget!)мл"
         
-        weightLable.text = "\(userSettings.weight)кг"
-        heightLable.text = "\(userSettings.height)см"
-        aimLable.text = "\(userSettings.dayTarget)мл"
-        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        waterModel.editSettings(newSettings: settings)
+        print("current sttings after: \(settings)")
     }
     
     
@@ -62,14 +77,50 @@ class AutoAimViewController: UITableViewController {
     
     @IBAction func didFetchDataFromHK(_ sender: Any) {
         let datafromHK = try? waterModel.fetchDataFromHealthKit()
-        dateOfBirthLable.text = "\(datafromHK?.age)"
-        bloodTypeLable.text = "\(datafromHK?.bloodType)"
-        sexLable.text = "\(datafromHK?.biologicalSex)"
+        guard let age = datafromHK?.age,
+              let blood = datafromHK?.bloodType,
+              let sex = datafromHK?.biologicalSex
+        else { return }
+        dateOfBirthLable.text = "\(age)"
+        bloodTypeLable.text = "\(blood.rawValue)"
+        
+        switch sex.rawValue {
+        case 0:
+            sexLable.text = "notSet"
+        case 1:
+            sexLable.text = "female"
+        case 2:
+            sexLable.text = "male"
+        case 3:
+            sexLable.text = "other"
+        default:
+            return
+        }
+        
+       
+        
     }
     
     
     
     @IBAction func didGenerateAim(_ sender: Any) {
+        if let currentWeight = settings.weight {
+            let newAim = waterCalculator.waterAimGenerator(weight: currentWeight)
+            settings.dayTarget = Int(newAim)
+            aimLable.text = "\(newAim)мл"
+            
+            
+            
+        }
+        
+    }
+    
+    
+    private func updateSettings() {
+        if let newSettings = waterModel.getUserSettings() {
+            settings = newSettings
+        }
+        
     }
     
     
@@ -82,7 +133,7 @@ class AutoAimViewController: UITableViewController {
                     guard let self = self else { return }
                     print("previous interval: \(self.userSettings.startDayInterval)")
                     let newInterval = self.userSettings.calculateStartDayInterval(setDate: startingTime)
-                    self.userSettings.startDayInterval = newInterval
+                    self.settings.startDayInterval = newInterval
                     
                     print("new interval is: \(newInterval)")
                     self.startingPeriod.text = "\(startingTime)"
@@ -103,8 +154,9 @@ extension AutoAimViewController {
         let alertController = UIAlertController(title: "Weight", message: "You can correct a body mass", preferredStyle: .alert)
         let action = UIAlertAction(title: "Set", style: .default) { (action) in
             if let bodyMass = alertController.textFields?.first?.text {
-                self.userSettings.weight = Int(bodyMass) ?? 0
-                self.weightLable.text = "\(self.userSettings.weight)кг"
+                self.settings.weight = Int(bodyMass) ?? 0
+                
+                self.weightLable.text = "\(self.settings.weight ?? 0)кг"
             }
             else {
                 print("Error")
@@ -124,8 +176,8 @@ extension AutoAimViewController {
         let alertController = UIAlertController(title: "Height", message: "You can correct a height", preferredStyle: .alert)
         let action = UIAlertAction(title: "Set", style: .default) { (action) in
             if let height = alertController.textFields?.first?.text {
-                self.userSettings.height = Int(height) ?? 0
-                self.heightLable.text = "\(self.userSettings.height)см"
+                self.settings.height = Int(height) ?? 0
+                self.heightLable.text = "\(self.settings.height)см"
             }
             else {
                 print("Error")
@@ -145,8 +197,8 @@ extension AutoAimViewController {
         let alertController = UIAlertController(title: "Aim", message: "You can correct a day aim", preferredStyle: .alert)
         let action = UIAlertAction(title: "Set", style: .default) { (action) in
             if let aim = alertController.textFields?.first?.text {
-                self.userSettings.dayTarget = Int(aim) ?? 0
-                self.aimLable.text = "\(self.userSettings.dayTarget)мл"
+                self.settings.dayTarget = Int(aim) ?? 0
+                self.aimLable.text = "\(self.settings.dayTarget)мл"
             }
             else {
                 print("Error")
@@ -156,6 +208,13 @@ extension AutoAimViewController {
         alertController.addTextField(configurationHandler: nil)
         alertController.addAction(action)
         self.present(alertController, animated: true, completion: nil)
+        
+    }
+}
+
+extension AutoAimViewController: AutoAimDelegate {
+    func updateAim(newAim: Int) {
+        settings.dayTarget = newAim
         
     }
 }
