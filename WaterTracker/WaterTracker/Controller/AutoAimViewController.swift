@@ -11,6 +11,7 @@ import HealthKit
 
 protocol AutoAimDelegate {
     func updateAim(newAim: Int)
+    func resetSettings()
 }
 
 class AutoAimViewController: UITableViewController {
@@ -36,6 +37,9 @@ class AutoAimViewController: UITableViewController {
     @IBOutlet weak var sexLable: UILabel!
     @IBOutlet weak var bloodTypeLable: UILabel!
     
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("current sttings before: \(settings)")
@@ -45,6 +49,10 @@ class AutoAimViewController: UITableViewController {
         aimLable.text = "\(settings.dayTarget!)мл"
         
     }
+    
+    
+    
+    
     
     override func viewDidDisappear(_ animated: Bool) {
         waterModel.editSettings(newSettings: settings)
@@ -177,7 +185,7 @@ extension AutoAimViewController {
         let action = UIAlertAction(title: "Set", style: .default) { (action) in
             if let height = alertController.textFields?.first?.text {
                 self.settings.height = Int(height) ?? 0
-                self.heightLable.text = "\(self.settings.height)см"
+                self.heightLable.text = "\(self.settings.height!)см"
             }
             else {
                 print("Error")
@@ -198,7 +206,7 @@ extension AutoAimViewController {
         let action = UIAlertAction(title: "Set", style: .default) { (action) in
             if let aim = alertController.textFields?.first?.text {
                 self.settings.dayTarget = Int(aim) ?? 0
-                self.aimLable.text = "\(self.settings.dayTarget)мл"
+                self.aimLable.text = "\(self.settings.dayTarget!)мл"
             }
             else {
                 print("Error")
@@ -213,8 +221,16 @@ extension AutoAimViewController {
 }
 
 extension AutoAimViewController: AutoAimDelegate {
+    func resetSettings() {
+        let defaultSettings = UserSettings(dayTarget: 0, startDayInterval: 21599, height: 0, weight: 0)
+        waterModel.saveUserSettings(userSettings: defaultSettings)
+    }
+    
     func updateAim(newAim: Int) {
+        settings = waterModel.getUserSettings() ?? settings
         settings.dayTarget = newAim
+        waterModel.saveUserSettings(userSettings: settings)
+        
         
     }
 }

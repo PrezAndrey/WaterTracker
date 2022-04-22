@@ -24,6 +24,33 @@ class SettingsViewController: UIViewController {
     }
     
     
+    
+    
+    @IBAction func didReset(_ sender: Any) {
+        resetAlert()
+    }
+    
+    
+    
+    private func resetAlert() {
+        
+        let alertController = UIAlertController(title: "Reset", message: "Do you want to reset settings", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Reset", style: .default) { (action) in
+            self.resetSettings()
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+       
+        
+        alertController.addAction(cancel)
+        alertController.addAction(action)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    private func resetSettings() {
+        autoAimDelegate?.resetSettings()
+    }
+    
     private func aimSetAlert() {
 
         let alertController = UIAlertController(title: "Aim", message: "You can correct a day aim", preferredStyle: .alert)
