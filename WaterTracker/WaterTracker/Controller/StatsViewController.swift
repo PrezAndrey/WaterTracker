@@ -83,11 +83,14 @@ extension StatsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! StatisticTableViewCell
-        let info = staticRecords
+        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: StatisticTableViewCell.self), for: indexPath) as? StatisticTableViewCell {
+            let info = staticRecords[indexPath.row]
+            cell.configureWith(record: info)
+            
+            return cell
+        }
         
-        cell.configureWith(record: info[indexPath.row])
         
-        return cell
+        return UITableViewCell()
     }
 }

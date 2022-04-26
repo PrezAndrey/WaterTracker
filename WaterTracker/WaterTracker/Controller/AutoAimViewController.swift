@@ -9,10 +9,7 @@ import Foundation
 import UIKit
 import HealthKit
 
-protocol AutoAimDelegate {
-    func updateAim(newAim: Int)
-    func resetSettings()
-}
+
 
 class AutoAimViewController: UITableViewController {
     
@@ -56,7 +53,7 @@ class AutoAimViewController: UITableViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         waterModel.editSettings(newSettings: settings)
-        print("current sttings after: \(settings)")
+        print("current settings after: \(settings)")
     }
     
     
@@ -81,32 +78,33 @@ class AutoAimViewController: UITableViewController {
         
     }
     
+    enum HKSex: Int {
+        case notSet
+        case female
+        case male
+        case other
+        
+        var name: String {
+            switch self {
+            case .notSet: return "Not Set"
+            case .female: return "Female"
+            case .male: return "Male"
+            case .other: return "Other"
+            }
+        }
+    }
     
     
     @IBAction func didFetchDataFromHK(_ sender: Any) {
         let datafromHK = try? waterModel.fetchDataFromHealthKit()
         guard let age = datafromHK?.age,
               let blood = datafromHK?.bloodType,
-              let sex = datafromHK?.biologicalSex
+              let sex = datafromHK?.biologicalSex,
+              let hkSex = HKSex(rawValue: sex.rawValue)
         else { return }
         dateOfBirthLable.text = "\(age)"
         bloodTypeLable.text = "\(blood.rawValue)"
-        
-        switch sex.rawValue {
-        case 0:
-            sexLable.text = "notSet"
-        case 1:
-            sexLable.text = "female"
-        case 2:
-            sexLable.text = "male"
-        case 3:
-            sexLable.text = "other"
-        default:
-            return
-        }
-        
-       
-        
+        sexLable.text = hkSex.name
     }
     
     
@@ -220,17 +218,4 @@ extension AutoAimViewController {
     }
 }
 
-extension AutoAimViewController: AutoAimDelegate {
-    func resetSettings() {
-        let defaultSettings = UserSettings(dayTarget: 0, startDayInterval: 21599, height: 0, weight: 0)
-        waterModel.saveUserSettings(userSettings: defaultSettings)
-    }
-    
-    func updateAim(newAim: Int) {
-        settings = waterModel.getUserSettings() ?? settings
-        settings.dayTarget = newAim
-        waterModel.saveUserSettings(userSettings: settings)
-        
-        
-    }
-}
+

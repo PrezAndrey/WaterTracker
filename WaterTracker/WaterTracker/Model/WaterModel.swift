@@ -59,11 +59,10 @@ class WaterModel: WaterModelProtocol {
     
     
     func deleteLast() {
-        var currentArray = records
-        guard !currentArray.isEmpty else { return }
-        currentArray.removeLast()
         
-        waterStore.save(record: currentArray, key: Constants.waterKey)
+        guard let lastRecord = records.last else { return }
+        deleteRecord(record: lastRecord)
+        
     }
     
     func deleteRecord(record: WaterRecord) {
@@ -113,14 +112,8 @@ class WaterModel: WaterModelProtocol {
     }
     
     func editSettings(newSettings: UserSettings) {
-        guard var currentSettings = waterStore.getSettings()
-        else {return saveUserSettings(userSettings: UserSettings(dayTarget: 0, startDayInterval: 21599, height: 0, weight: 0))}
-        currentSettings.weight = newSettings.weight
-        currentSettings.dayTarget = newSettings.dayTarget
-        currentSettings.height = newSettings.height
-        currentSettings.startDayInterval = newSettings.startDayInterval
         
-        waterStore.saveSettings(currentSettings)
+        waterStore.saveSettings(newSettings)
         
     }
     

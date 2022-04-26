@@ -48,8 +48,8 @@ extension UserSettings {
         let calendar = Calendar.current
         let start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: date)!
         
-        let startOfThePeriod = Date(timeInterval: startDayInterval ?? 21599, since: start)
-        let endOfThePeriod = Date(timeInterval: 86401, since: startOfThePeriod)
+        let startOfThePeriod = Date(timeInterval: startDayInterval ?? (6 * 60 * 60), since: start)
+        let endOfThePeriod = Date(timeInterval: 24 * 60 * 60, since: startOfThePeriod)
         
         return (startOfThePeriod, endOfThePeriod)
         

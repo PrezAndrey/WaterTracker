@@ -10,14 +10,10 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
-    var autoAimDelegate: AutoAimDelegate?
     
-   
+    private var waterModel = WaterModel()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.autoAimDelegate = AutoAimViewController()
-    }
+    
     
     @IBAction func didSetDayAim(_ sender: Any) {
         aimSetAlert()
@@ -48,7 +44,19 @@ class SettingsViewController: UIViewController {
     
     
     private func resetSettings() {
-        autoAimDelegate?.resetSettings()
+        
+        let newSettings = UserSettings(dayTarget: 0, startDayInterval: 21599, height: 0, weight: 0)
+        waterModel.editSettings(newSettings: newSettings)
+        
+        
+    }
+    
+    private func setNewAim(target: Int) {
+        if let currentSettings = waterModel.getUserSettings() {
+            var newSettings = currentSettings
+            newSettings.dayTarget = target
+            waterModel.editSettings(newSettings: newSettings)
+        }
     }
     
     private func aimSetAlert() {
@@ -56,7 +64,7 @@ class SettingsViewController: UIViewController {
         let alertController = UIAlertController(title: "Aim", message: "You can correct a day aim", preferredStyle: .alert)
         let action = UIAlertAction(title: "Set", style: .default) { (action) in
             if let aim = alertController.textFields?.first?.text {
-                self.autoAimDelegate?.updateAim(newAim: Int(aim) ?? 0)
+                self.setNewAim(target: Int(aim) ?? 0)
             }
             else {
                 print("Error")
