@@ -52,6 +52,7 @@ class AutoAimViewController: UITableViewController {
     
     
     override func viewDidDisappear(_ animated: Bool) {
+        
         waterModel.editSettings(newSettings: settings)
         print("current settings after: \(settings)")
     }
@@ -61,20 +62,7 @@ class AutoAimViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Selected row is: \(indexPath.row)")
         
-        guard indexPath.section == 0 else { return }
-        switch indexPath.row {
-        case 0:
-            weightSetAlert()
-        case 1:
-            heightSetAlert()
-        case 2:
-            aimSetAlert()
-        case 3:
-            return
-        default:
-            return
-        }
-        
+        valueSetAlert(indexPath: indexPath)
         
     }
     
@@ -155,14 +143,46 @@ class AutoAimViewController: UITableViewController {
 
 extension AutoAimViewController {
     
-    private func weightSetAlert() {
+    
+    private func valueSetAlert(indexPath: IndexPath) {
         
-        let alertController = UIAlertController(title: "Weight", message: "You can correct a body mass", preferredStyle: .alert)
+        var title = "Weight"
+        var newLable = self.weightLable
+        
+        
+        guard indexPath.section == 0 else { return }
+        switch indexPath.row {
+        case 0:
+            title = "Weight"
+            newLable = self.weightLable
+        case 1:
+            title = "Height"
+            newLable = self.heightLable
+        case 2:
+            title = "Aim"
+            newLable = self.aimLable
+        case 3:
+            return
+        default:
+            return
+        }
+        
+        let alertController = UIAlertController(title: "\(title)", message: "You can correct \(title.lowercased())", preferredStyle: .alert)
         let action = UIAlertAction(title: "Set", style: .default) { (action) in
-            if let bodyMass = alertController.textFields?.first?.text {
-                self.settings.weight = Int(bodyMass) ?? 0
+            if let set = alertController.textFields?.first?.text {
+                let setting = Int(set) ?? 0
+                if newLable == self.weightLable {
+                    self.settings.weight = setting
+                }
+                else if newLable == self.heightLable {
+                    self.settings.height = setting
+                }
+                else {
+                    self.settings.dayTarget = setting
+                }
                 
-                self.weightLable.text = "\(self.settings.weight ?? 0)кг"
+                newLable?.text = "\(setting)мл"
+                
             }
             else {
                 print("Error")
@@ -173,47 +193,6 @@ extension AutoAimViewController {
         alertController.addAction(action)
         self.present(alertController, animated: true, completion: nil)
         
-    }
-    
-    
-    
-    private func heightSetAlert() {
-        
-        let alertController = UIAlertController(title: "Height", message: "You can correct a height", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Set", style: .default) { (action) in
-            if let height = alertController.textFields?.first?.text {
-                self.settings.height = Int(height) ?? 0
-                self.heightLable.text = "\(self.settings.height!)см"
-            }
-            else {
-                print("Error")
-            }
-        }
-        
-        alertController.addTextField(configurationHandler: nil)
-        alertController.addAction(action)
-        self.present(alertController, animated: true, completion: nil)
-        
-    }
-    
-    
-    
-    private func aimSetAlert() {
-        
-        let alertController = UIAlertController(title: "Aim", message: "You can correct a day aim", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Set", style: .default) { (action) in
-            if let aim = alertController.textFields?.first?.text {
-                self.settings.dayTarget = Int(aim) ?? 0
-                self.aimLable.text = "\(self.settings.dayTarget!)мл"
-            }
-            else {
-                print("Error")
-            }
-        }
-        
-        alertController.addTextField(configurationHandler: nil)
-        alertController.addAction(action)
-        self.present(alertController, animated: true, completion: nil)
         
     }
 }
