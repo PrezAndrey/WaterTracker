@@ -11,8 +11,8 @@ import UIKit
 
 class StartingTimeViewController: UIViewController {
     
-    
-    var completion: ((Date) -> ())?
+    var delegate: PickerDelegate?
+    //var completion: ((Date) -> ())?
     
     
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -21,14 +21,14 @@ class StartingTimeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        delegate = AutoAimViewController()
         
     }
     
     
     @IBAction func didSetTime(_ sender: Any) {
-        let startingTime = datePicker.date
-        completion?(startingTime)
         
+        delegate?.updateInterval(time: datePicker.date)
         dismiss(animated: true)
     }
 }
