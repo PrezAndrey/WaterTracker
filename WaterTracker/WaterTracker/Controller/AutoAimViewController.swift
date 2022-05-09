@@ -113,8 +113,8 @@ extension AutoAimViewController {
     
     private func configureWithSettings() {
         
-        weightLable.text = "\(settings.weight!)кг"
-        aimLable.text = "\(settings.dayTarget!)мл"
+        weightLable.text = "\(settings.weight ?? 0)кг"
+        aimLable.text = "\(settings.dayTarget ?? 0)мл"
     }
     
 }
