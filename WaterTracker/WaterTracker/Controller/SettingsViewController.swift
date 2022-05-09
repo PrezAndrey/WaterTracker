@@ -45,7 +45,7 @@ class SettingsViewController: UIViewController {
     
     private func resetSettings() {
         
-        let newSettings = UserSettings(dayTarget: 0, startDayInterval: 21599, height: 0, weight: 0)
+        let newSettings = UserSettings(dayTarget: 0, startDayInterval: 21599, weight: 0)
         waterModel.editSettings(newSettings: newSettings)
         
         

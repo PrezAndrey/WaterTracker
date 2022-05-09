@@ -19,14 +19,13 @@ class AutoAimViewController: UITableViewController {
     let waterCalculator = WaterCalculator()
     
 
-    var settings = UserSettings(dayTarget: 0, startDayInterval: 21599, height: 0, weight: 0)
+    var settings = UserSettings(dayTarget: 0, startDayInterval: 21599, weight: 0)
     
     
     
     
     @IBOutlet weak var startingPeriod: UILabel!
     @IBOutlet weak var aimLable: UILabel!
-    @IBOutlet weak var heightLable: UILabel!
     @IBOutlet weak var weightLable: UILabel!
     
     
@@ -42,7 +41,6 @@ class AutoAimViewController: UITableViewController {
         print("current sttings before: \(settings)")
         updateSettings()
         weightLable.text = "\(settings.weight!)кг"
-        heightLable.text = "\(settings.height!)см"
         aimLable.text = "\(settings.dayTarget!)мл"
         
     }
@@ -156,12 +154,9 @@ extension AutoAimViewController {
             title = "Weight"
             newLable = self.weightLable
         case 1:
-            title = "Height"
-            newLable = self.heightLable
-        case 2:
             title = "Aim"
             newLable = self.aimLable
-        case 3:
+        case 2:
             return
         default:
             return
@@ -173,15 +168,14 @@ extension AutoAimViewController {
                 let setting = Int(set) ?? 0
                 if newLable == self.weightLable {
                     self.settings.weight = setting
-                }
-                else if newLable == self.heightLable {
-                    self.settings.height = setting
+                    newLable?.text = "\(setting)кг"
                 }
                 else {
                     self.settings.dayTarget = setting
+                    newLable?.text = "\(setting)мл"
                 }
                 
-                newLable?.text = "\(setting)мл"
+                
                 
             }
             else {

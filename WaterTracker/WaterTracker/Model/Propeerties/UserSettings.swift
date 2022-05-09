@@ -24,13 +24,6 @@ struct UserSettings: Codable, Equatable {
     
     var startDayInterval: TimeInterval?  //21599
     
-    
-    //var dateOfBirth: Date
-    
-    //var sex: Sex
-    
-    var height: Int?
-    
     var weight: Int?
     
     
