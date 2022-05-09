@@ -17,10 +17,8 @@ class AutoAimViewController: UITableViewController {
     var userSettings = UserSettings()
     var waterModel = WaterModel()
     let waterCalculator = WaterCalculator()
-    
 
     var settings = UserSettings(dayTarget: 0, startDayInterval: 21599, weight: 0)
-    
     
     
     
@@ -29,23 +27,19 @@ class AutoAimViewController: UITableViewController {
     @IBOutlet weak var weightLable: UILabel!
     
     
+    
     @IBOutlet weak var dateOfBirthLable: UILabel!
     @IBOutlet weak var sexLable: UILabel!
     @IBOutlet weak var bloodTypeLable: UILabel!
     
     
     
-    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        print("current sttings before: \(settings)")
-        updateSettings()
-        weightLable.text = "\(settings.weight!)кг"
-        aimLable.text = "\(settings.dayTarget!)мл"
         
+        super.viewDidLoad()
+        updateSettings()
+        configureWithSettings()
     }
-    
-    
     
     
     
@@ -56,64 +50,33 @@ class AutoAimViewController: UITableViewController {
     }
     
     
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Selected row is: \(indexPath.row)")
-        
-        valueSetAlert(indexPath: indexPath)
-        
-    }
-    
-    enum HKSex: Int {
-        case notSet
-        case female
-        case male
-        case other
-        
-        var name: String {
-            switch self {
-            case .notSet: return "Not Set"
-            case .female: return "Female"
-            case .male: return "Male"
-            case .other: return "Other"
-            }
-        }
-    }
-    
-    
+
     @IBAction func didFetchDataFromHK(_ sender: Any) {
-        let datafromHK = try? waterModel.fetchDataFromHealthKit()
-        guard let age = datafromHK?.age,
-              let blood = datafromHK?.bloodType,
-              let sex = datafromHK?.biologicalSex,
-              let hkSex = HKSex(rawValue: sex.rawValue)
-        else { return }
-        dateOfBirthLable.text = "\(age)"
-        bloodTypeLable.text = "\(blood.rawValue)"
-        sexLable.text = hkSex.name
+        
+        HKDataFetch()
     }
     
     
     
     @IBAction func didGenerateAim(_ sender: Any) {
+        
         if let currentWeight = settings.weight {
+            
             let newAim = waterCalculator.waterAimGenerator(weight: currentWeight)
             settings.dayTarget = Int(newAim)
             aimLable.text = "\(newAim)мл"
-            
-            
-            
         }
-        
     }
     
     
-    private func updateSettings() {
-        if let newSettings = waterModel.getUserSettings() {
-            settings = newSettings
-        }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        valueSetAlert(indexPath: indexPath)
     }
+    
+    
+    
     
     
     
@@ -123,7 +86,7 @@ class AutoAimViewController: UITableViewController {
             if let startingTimeVC = segue.destination as? StartingTimeViewController {
                 startingTimeVC.completion = {[weak self] startingTime in
                     guard let self = self else { return }
-                    print("previous interval: \(self.userSettings.startDayInterval)")
+                    print("previous interval: \(self.userSettings.startDayInterval ?? 0)")
                     let newInterval = self.userSettings.calculateStartDayInterval(setDate: startingTime)
                     self.settings.startDayInterval = newInterval
                     
@@ -137,6 +100,27 @@ class AutoAimViewController: UITableViewController {
     
     
 }
+
+// MARK: Settings configurations
+
+extension AutoAimViewController {
+    
+    private func updateSettings() {
+        if let newSettings = waterModel.getUserSettings() {
+            settings = newSettings
+        }
+    }
+    
+    private func configureWithSettings() {
+        
+        weightLable.text = "\(settings.weight!)кг"
+        aimLable.text = "\(settings.dayTarget!)мл"
+    }
+    
+}
+
+
+
 // MARK: Alert functions for Weight, Height and Aim
 
 extension AutoAimViewController {
@@ -147,8 +131,8 @@ extension AutoAimViewController {
         var title = "Weight"
         var newLable = self.weightLable
         
-        
         guard indexPath.section == 0 else { return }
+        
         switch indexPath.row {
         case 0:
             title = "Weight"
@@ -168,15 +152,15 @@ extension AutoAimViewController {
                 let setting = Int(set) ?? 0
                 if newLable == self.weightLable {
                     self.settings.weight = setting
-                    newLable?.text = "\(setting)кг"
+                    
                 }
                 else {
                     self.settings.dayTarget = setting
-                    newLable?.text = "\(setting)мл"
+                    
                 }
                 
-                
-                
+                self.configureWithSettings()
+    
             }
             else {
                 print("Error")
@@ -188,6 +172,42 @@ extension AutoAimViewController {
         self.present(alertController, animated: true, completion: nil)
         
         
+    }
+}
+
+
+
+// MARK: HealthKit configuration
+
+extension AutoAimViewController {
+      
+    enum HKSex: Int {
+        case notSet
+        case female
+        case male
+        case other
+        
+        var name: String {
+            switch self {
+            case .notSet: return "Not Set"
+            case .female: return "Female"
+            case .male: return "Male"
+            case .other: return "Other"
+            }
+        }
+    }
+    
+    
+    private func HKDataFetch() {
+        let datafromHK = try? waterModel.fetchDataFromHealthKit()
+        guard let age = datafromHK?.age,
+              let blood = datafromHK?.bloodType,
+              let sex = datafromHK?.biologicalSex,
+              let hkSex = HKSex(rawValue: sex.rawValue)
+        else { return }
+        dateOfBirthLable.text = "\(age)"
+        bloodTypeLable.text = "\(blood.rawValue)"
+        sexLable.text = hkSex.name
     }
 }
 
