@@ -126,13 +126,12 @@
 		1B99E538277263EE00291801 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				55AA41E5282AE214006F3B21 /* Cell */,
 				55BE521D27DE7026006DFFC0 /* Propeerties */,
 				55A56C0F27DB321400296FD0 /* HealthKitAdapter.swift */,
 				1B99E53D277267CB00291801 /* WaterStore.swift */,
 				1B9A5C0127BC3F8F008753D0 /* WaterModel.swift */,
 				5504F21B2807F013001CC40B /* WaterCalculator.swift */,
-				55B97450280D61600069AEA2 /* StatisticTableViewCell.swift */,
-				55AA41BD28297948006F3B21 /* SettingsCollectionViewCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -191,6 +190,15 @@
 				5504F225280838F0001CC40B /* WaterCalculatorTests.swift */,
 			);
 			path = WaterCalculatorTests;
+			sourceTree = "<group>";
+		};
+		55AA41E5282AE214006F3B21 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				55B97450280D61600069AEA2 /* StatisticTableViewCell.swift */,
+				55AA41BD28297948006F3B21 /* SettingsCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		55BE521D27DE7026006DFFC0 /* Propeerties */ = {

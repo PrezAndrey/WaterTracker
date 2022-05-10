@@ -46,15 +46,13 @@ class WaterModel: WaterModelProtocol {
        
         let currentWaterArray = records
         let currentWaterAmount = calculator.sumOfWater(currentWaterArray, from: userSettings.period(for: Date()).from, to: userSettings.period(for: Date()).to)
+        
         return currentWaterAmount
-        
-        
     }
     
     init() {
+        
         healthKitAdapter.authorizeIfNeeded()
-        
-        
     }
     
     
@@ -62,19 +60,20 @@ class WaterModel: WaterModelProtocol {
         
         guard let lastRecord = records.last else { return }
         deleteRecord(record: lastRecord)
-        
     }
     
+    
     func deleteRecord(record: WaterRecord) {
+        
         var currentRecordArray = waterStore.getRecords()
         for (index, value) in currentRecordArray.enumerated() {
             if value == record {
                 currentRecordArray.remove(at: index)
             }
         }
-        
         waterStore.save(record: currentRecordArray, key: Constants.waterKey)
     }
+    
     
     func addWater(_ amount: Double) {
         let newRecord = WaterRecord(waterAmount: amount, date: Date())
@@ -84,6 +83,7 @@ class WaterModel: WaterModelProtocol {
     }
     
     func editWaterAmount(_ record: WaterRecord, newAmount: Double) {
+        
         var currentRecords = waterStore.getRecords()
         
         if let index = currentRecords.firstIndex(of: record) {

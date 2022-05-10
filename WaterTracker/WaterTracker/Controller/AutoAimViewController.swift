@@ -116,9 +116,16 @@ extension AutoAimViewController {
     
     private func configureWithSettings() {
         
-        weightLable.text = "\(settings.weight ?? 0)кг"
-        aimLable.text = "\(settings.dayTarget ?? 0)мл"
-        startingPeriod.text = "\(settings.startDayInterval ?? 0)"
+        guard let weight = settings.weight,
+              let target = settings.dayTarget,
+              let interval = settings.startDayInterval
+        else { return }
+        
+        let dateFromInterval = userSettings.convertInterval(interval: interval)
+        
+        weightLable.text = "\(weight)кг"
+        aimLable.text = "\(target)мл"
+        startingPeriod.text = dateFromInterval
         
     }
     

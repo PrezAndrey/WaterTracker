@@ -36,7 +36,10 @@ struct UserSettings: Codable, Equatable {
 //    }
 }
 
+// MARK: Converting and Calculating date
+
 extension UserSettings {
+    
     func period(for date: Date) -> (from: Date, to: Date) {
         let calendar = Calendar.current
         let start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: date)!
@@ -45,14 +48,33 @@ extension UserSettings {
         let endOfThePeriod = Date(timeInterval: 24 * 60 * 60, since: startOfThePeriod)
         
         return (startOfThePeriod, endOfThePeriod)
-        
-        
     }
     
     func calculateStartDayInterval(setDate: Date) -> Double {
+        
         let calendar = Calendar.current
         let start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: Date())!
         let timeInterval = setDate.timeIntervalSince(start)
+        
         return timeInterval
+    }
+    
+    func convertInterval(interval: TimeInterval) -> String {
+        
+        let calendar = Calendar.current
+        var start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: Date())!
+        start.addTimeInterval(interval)
+        let result = convertDate(start)
+        
+        return result
+    }
+    
+    func convertDate(_ date: Date) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
+        let convertedDate = dateFormatter.string(from: date)
+        
+        return convertedDate
     }
 }
