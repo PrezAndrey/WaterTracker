@@ -9,19 +9,20 @@ import Foundation
 import HealthKit
 
 protocol WaterModelDelegate {
+    
     func waterAmountDidUpdate(_ model: WaterModelProtocol)
 }
 
 protocol WaterModelProtocol {
+    
     var waterAmount: Double { get }
     var delegate: WaterModelDelegate? { get set }
+    
     
     func deleteLast()
     func addWater(_ amount: Double)
     
     func getUserSettings() -> UserSettings?
-    
-    
 }
 
 // WaterModel - связывает хранилище и HK, хранилище данныx
@@ -34,6 +35,8 @@ class WaterModel: WaterModelProtocol {
     let healthKitAdapter = HealthKitAdapter()
     let calculator = WaterCalculator()
     var userSettings = UserSettings()
+    
+    
     
     
     
@@ -122,6 +125,7 @@ class WaterModel: WaterModelProtocol {
         
         waterStore.saveSettings(newSettings)
         userSettings.startDayInterval = newSettings.startDayInterval
+        
     }
     
     

@@ -26,6 +26,8 @@ struct UserSettings: Codable, Equatable {
     
     var weight: Int?
     
+    static var dayTargetStatus: Bool = true
+    
     
     
 //    init(dayTarget: Int, startDayInterval: TimeInterval, height: Int, weight: Int) {

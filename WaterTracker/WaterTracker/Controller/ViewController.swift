@@ -8,9 +8,15 @@
 
 import UIKit
 
+
+
 class ViewController: UIViewController {
     
     private var waterModel: WaterModelProtocol = WaterModel()
+    
+    private var userSettings = UserSettings()
+    
+    
     
     
     // MARK: Outlets
@@ -89,6 +95,8 @@ class ViewController: UIViewController {
 
 extension ViewController: WaterModelDelegate {
     
+    
+    
     func waterAmountDidUpdate(_ model: WaterModelProtocol) {
         
         waterLable.text = "Сегодня я выпил: \(waterModel.waterAmount) мл"
@@ -134,17 +142,24 @@ extension ViewController {
     
     // For showGetTargetAlert
     private func checkTheTarget() {
-        
+        print("Status was \(UserSettings.dayTargetStatus)")
         let curentTarget = waterModel.getUserSettings()
         
         guard let target = curentTarget?.dayTarget else { return }
         
-        if waterModel.waterAmount >= Double(target) {
+        if waterModel.waterAmount >= Double(target) && UserSettings.dayTargetStatus {
             
             showGetTargetAlert()
+            UserSettings.dayTargetStatus = false
+            
         }
+        
+        print("Status now is \(UserSettings.dayTargetStatus)")
     }
 }
+
+
+
 
 
 

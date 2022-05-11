@@ -19,6 +19,7 @@ class AutoAimViewController: UITableViewController {
     var userSettings = UserSettings()
     let waterModel = WaterModel()
     let waterCalculator = WaterCalculator()
+    
 
     var settings = UserSettings(dayTarget: 0, startDayInterval: 21599, weight: 0)
     
@@ -39,6 +40,7 @@ class AutoAimViewController: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         updateSettings()
         configureWithSettings()
         print("settings viewDidLoad: \(settings)")
@@ -62,12 +64,14 @@ class AutoAimViewController: UITableViewController {
     
     
     @IBAction func didGenerateAim(_ sender: Any) {
-        
+       
         if let currentWeight = settings.weight {
             
             let newAim = waterCalculator.waterAimGenerator(weight: currentWeight)
             settings.dayTarget = Int(newAim)
             aimLable.text = "\(newAim)мл"
+            UserSettings.dayTargetStatus = true
+            
         }
     }
     
@@ -152,6 +156,7 @@ extension AutoAimViewController {
         case 1:
             title = "Aim"
             newLable = self.aimLable
+            UserSettings.dayTargetStatus = true
         case 2:
             return
         default:
