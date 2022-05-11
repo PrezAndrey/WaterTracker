@@ -33,11 +33,12 @@ class WaterModel: WaterModelProtocol {
     let waterStore = WaterStore()
     let healthKitAdapter = HealthKitAdapter()
     let calculator = WaterCalculator()
-    let userSettings = UserSettings()
+    var userSettings = UserSettings()
     
     
     
     var records: [WaterRecord] {
+        
         let currentWaterArray = waterStore.getRecords()
         return currentWaterArray
     }
@@ -45,9 +46,13 @@ class WaterModel: WaterModelProtocol {
     var waterAmount: Double {
        
         let currentWaterArray = records
-        let currentWaterAmount = calculator.sumOfWater(currentWaterArray, from: userSettings.period(for: Date()).from, to: userSettings.period(for: Date()).to)
-        
-        return currentWaterAmount
+        if let interval = getUserSettings() {
+            let currentWaterAmount = calculator.sumOfWater(currentWaterArray, from: userSettings.period(for: Date(), interval: interval.startDayInterval ?? 21599).from, to: userSettings.period(for: Date(), interval: interval.startDayInterval ?? 21599).to)
+            
+            return currentWaterAmount
+        }
+       
+        return 0
     }
     
     init() {
@@ -85,7 +90,6 @@ class WaterModel: WaterModelProtocol {
     func editWaterAmount(_ record: WaterRecord, newAmount: Double) {
         
         var currentRecords = waterStore.getRecords()
-        
         if let index = currentRecords.firstIndex(of: record) {
             currentRecords[index].waterAmount = newAmount
         }
@@ -101,20 +105,23 @@ class WaterModel: WaterModelProtocol {
         return tupleHK
     }
     
-    func saveUserSettings(userSettings: UserSettings) {
-        waterStore.saveSettings(userSettings)
+    func saveUserSettings(settings: UserSettings) {
+        
+        waterStore.saveSettings(settings)
+        userSettings.startDayInterval = settings.startDayInterval
     }
     
     func getUserSettings() -> UserSettings? {
-        let settings = waterStore.getSettings()
-        return settings
         
+        let settings = waterStore.getSettings()
+        
+        return settings
     }
     
     func editSettings(newSettings: UserSettings) {
         
         waterStore.saveSettings(newSettings)
-        
+        userSettings.startDayInterval = newSettings.startDayInterval
     }
     
     
