@@ -13,7 +13,7 @@ class SettingsCollectionVC: UICollectionViewController {
     
     private let waterModel = WaterModel()
     
-    let actions = ["Авто-цель", "Настройка периода", "HealthKit", "Уведомления", "Сброс настроек"]
+    let actions = ["Авто-цель", "Настройка периода", "Уведомления", "Сброс настроек"]
 
    
     // MARK: UICollectionViewDataSource
@@ -25,7 +25,7 @@ class SettingsCollectionVC: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SettingsCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? SettingsCollectionViewCell else { return UICollectionViewCell() }
         
         cell.lable.text = actions[indexPath.row]
     

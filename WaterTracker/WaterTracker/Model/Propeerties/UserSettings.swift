@@ -54,19 +54,19 @@ extension UserSettings {
         return (startOfThePeriod, endOfThePeriod)
     }
     
-    func calculateStartDayInterval(setDate: Date) -> Double {
+    func calculateStartDayInterval(setDate date: Date) -> Double {
         
         let calendar = Calendar.current
-        let start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: Date())!
-        let timeInterval = setDate.timeIntervalSince(start)
+        let start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: date)!
+        let timeInterval = date.timeIntervalSince(start)
         
         return timeInterval
     }
     
-    func convertInterval(interval: TimeInterval) -> String {
+    func convertInterval(interval: TimeInterval, date: Date = Date()) -> String {
         
         let calendar = Calendar.current
-        var start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: Date())!
+        var start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: date)!
         start.addTimeInterval(interval)
         let result = convertDate(start)
         

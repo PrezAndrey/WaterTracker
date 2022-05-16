@@ -110,15 +110,15 @@ class AutoAimViewController: UITableViewController {
 
 // MARK: Settings configurations
 
-extension AutoAimViewController {
+private extension AutoAimViewController {
     
-    private func updateSettings() {
+    func updateSettings() {
         if let newSettings = waterModel.getUserSettings() {
             settings = newSettings
         }
     }
     
-    private func configureWithSettings() {
+    func configureWithSettings() {
         
         guard let weight = settings.weight,
               let target = settings.dayTarget,
@@ -127,8 +127,8 @@ extension AutoAimViewController {
         
         let dateFromInterval = userSettings.convertInterval(interval: interval)
         
-        weightLable.text = "\(weight)кг"
-        aimLable.text = "\(target)мл"
+        weightLable.text = "\(weight) кг"
+        aimLable.text = "\(target) мл"
         startingPeriod.text = dateFromInterval
         
     }
@@ -144,52 +144,39 @@ extension AutoAimViewController {
     
     private func valueSetAlert(indexPath: IndexPath) {
         
-        var title = "Weight"
-        var newLable = self.weightLable
-        
-        guard indexPath.section == 0 else { return }
-        
-        switch indexPath.row {
-        case 0:
-            title = "Weight"
-            newLable = self.weightLable
-        case 1:
-            title = "Aim"
-            newLable = self.aimLable
-            UserSettings.dayTargetStatus = true
-        case 2:
-            return
+        switch (indexPath.section, indexPath.row) {
+        case (0, 0):
+            showAlert("Weight") { [weak self] setting in
+                self?.settings.weight = Int(setting)
+                self?.configureWithSettings()
+            }
+        case (0, 1):
+            showAlert("Aim") { [weak self] setting in
+                self?.settings.dayTarget = Int(setting)
+                self?.configureWithSettings()
+            }
         default:
             return
         }
         
+        
+        
+        
+        
+    }
+    
+    private func showAlert(_ title: String, completion: @escaping (String) -> Void) {
+        
         let alertController = UIAlertController(title: "\(title)", message: "You can correct \(title.lowercased())", preferredStyle: .alert)
+        
         let action = UIAlertAction(title: "Set", style: .default) { (action) in
             
-            if let set = alertController.textFields?.first?.text {
-                let setting = Int(set) ?? 0
-                if newLable == self.weightLable {
-                    self.settings.weight = setting
-                    
-                }
-                else {
-                    self.settings.dayTarget = setting
-                    
-                }
-                
-                self.configureWithSettings()
-    
-            }
-            else {
-                print("Error")
-            }
+            completion(alertController.textFields?.first?.text ?? "")
         }
         
         alertController.addTextField(configurationHandler: nil)
         alertController.addAction(action)
         self.present(alertController, animated: true, completion: nil)
-        
-        
     }
 }
 
@@ -225,12 +212,14 @@ extension AutoAimViewController {
         guard let age = datafromHK?.age,
               let blood = datafromHK?.bloodType,
               let sex = datafromHK?.biologicalSex,
-              let hkSex = HKSex(rawValue: sex.rawValue)
+              let hkSex = HKSex(rawValue: sex.rawValue),
+              let bodyMass = datafromHK?.bodyMass
         else { return }
         
         dateOfBirthLable.text = "\(age)"
         bloodTypeLable.text = "\(blood.rawValue)"
         sexLable.text = hkSex.name
+        print("_____________________The body mass is \(bodyMass)______________________")
         
     }
 }
@@ -250,4 +239,5 @@ extension AutoAimViewController: PickerDelegate {
         
     }
 }
+
 

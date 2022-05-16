@@ -46,8 +46,8 @@ class WaterStore: Codable {
     
     func get(key: String) -> [WaterRecord] {
         if let data = UserDefaults.standard.data(forKey: key) {
-            let array = try! PropertyListDecoder().decode([WaterRecord].self, from: data)
-            return array
+            let array = try? PropertyListDecoder().decode([WaterRecord].self, from: data)
+            return array ?? []
         }
         return []
     }
@@ -107,7 +107,7 @@ class WaterStore: Codable {
     
     func getSettings() -> UserSettings? {
         if let data = UserDefaults.standard.data(forKey: Constants.userSettingsKey) {
-            let settings = try! PropertyListDecoder().decode(UserSettings.self, from: data)
+            let settings = try? PropertyListDecoder().decode(UserSettings.self, from: data)
             return settings
         }
         return nil

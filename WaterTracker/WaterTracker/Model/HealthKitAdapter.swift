@@ -91,7 +91,7 @@ class HealthKitAdapter {
         
     func getAgeSexAndBloodType() throws -> (age: Int,
                                                   biologicalSex: HKBiologicalSex,
-                                                  bloodType: HKBloodType) {
+                                            bloodType: HKBloodType, bodyMass: String) {
         
       let healthKitStore = HKHealthStore()
       do {
@@ -99,6 +99,7 @@ class HealthKitAdapter {
         let birthdayComponents =  try healthKitStore.dateOfBirthComponents()
         let biologicalSex =       try healthKitStore.biologicalSex()
         let bloodType =           try healthKitStore.bloodType()
+        let bodyMass =            try HKQuantityTypeIdentifier.bodyMass.rawValue
           
         //2. Use Calendar to calculate age.
         let today = Date()
@@ -111,7 +112,7 @@ class HealthKitAdapter {
         let unwrappedBiologicalSex = biologicalSex.biologicalSex
         let unwrappedBloodType = bloodType.bloodType
           
-        return (age, unwrappedBiologicalSex, unwrappedBloodType)
+        return (age, unwrappedBiologicalSex, unwrappedBloodType, bodyMass)
       }
     }
     
@@ -136,6 +137,8 @@ class HealthKitAdapter {
                 
         }
     }
+    
+    
     
     
     
