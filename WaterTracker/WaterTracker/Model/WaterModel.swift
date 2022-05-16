@@ -47,10 +47,13 @@ class WaterModel: WaterModelProtocol {
     }
     
     var waterAmount: Double {
-       
+        
         let currentWaterArray = records
         if let interval = getUserSettings() {
-            let currentWaterAmount = calculator.sumOfWater(currentWaterArray, from: userSettings.period(for: Date(), interval: interval.startDayInterval ?? 21599).from, to: userSettings.period(for: Date(), interval: interval.startDayInterval ?? 21599).to)
+            
+            let fromDate = userSettings.period(for: Date(), interval: interval.startDayInterval ?? 21599).from
+            let toDate = userSettings.period(for: Date(), interval: interval.startDayInterval ?? 21599).to
+            let currentWaterAmount = calculator.sumOfWater(currentWaterArray, from: fromDate, to: toDate)
             
             return currentWaterAmount
         }
@@ -101,11 +104,10 @@ class WaterModel: WaterModelProtocol {
     }
     
     
-    func fetchDataFromHealthKit() throws -> (age: Int,
-                                         biologicalSex: HKBiologicalSex,
-                                             bloodType: HKBloodType, bodyMass: String){
-        let tupleHK = try healthKitAdapter.getAgeSexAndBloodType()
-        return tupleHK
+    func fetchDataFromHealthKit() throws -> (HKTypes){
+        let hkTypes = try healthKitAdapter.getAgeSexAndBloodType()
+        
+        return hkTypes
     }
     
     func saveUserSettings(settings: UserSettings) {

@@ -10,6 +10,18 @@ import HealthKit
 
 // HealthKitAdapter - работает с HealthKit
 
+struct HKTypes {
+    
+    var age: Int
+        
+    var biologicalSex: HKBiologicalSex
+    
+    var bloodType: HKBloodType
+    
+    var bodyMass: String
+    
+}
+
 class HealthKitAdapter {
     
      enum HealthKitAdapterError: Error {
@@ -89,9 +101,7 @@ class HealthKitAdapter {
         // ask for permission for every data type that we want to read and ask permissions for writing the samples.
     
         
-    func getAgeSexAndBloodType() throws -> (age: Int,
-                                                  biologicalSex: HKBiologicalSex,
-                                            bloodType: HKBloodType, bodyMass: String) {
+    func getAgeSexAndBloodType() throws -> (HKTypes) {
         
       let healthKitStore = HKHealthStore()
       do {
@@ -112,7 +122,9 @@ class HealthKitAdapter {
         let unwrappedBiologicalSex = biologicalSex.biologicalSex
         let unwrappedBloodType = bloodType.bloodType
           
-        return (age, unwrappedBiologicalSex, unwrappedBloodType, bodyMass)
+        let hkTypes = HKTypes(age: age, biologicalSex: unwrappedBiologicalSex, bloodType: unwrappedBloodType, bodyMass: bodyMass)
+          
+        return hkTypes
       }
     }
     
