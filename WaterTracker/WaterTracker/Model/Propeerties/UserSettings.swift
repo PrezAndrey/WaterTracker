@@ -63,7 +63,7 @@ extension UserSettings {
         return timeInterval
     }
     
-    func convertInterval(interval: TimeInterval, date: Date = Date()) -> String {
+    static func convertInterval(interval: TimeInterval, date: Date = Date()) -> String {
         
         let calendar = Calendar.current
         var start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: date)!
@@ -73,7 +73,7 @@ extension UserSettings {
         return result
     }
     
-    func convertDate(_ date: Date) -> String {
+    static func convertDate(_ date: Date) -> String {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"

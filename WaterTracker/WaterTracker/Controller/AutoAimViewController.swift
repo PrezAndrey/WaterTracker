@@ -16,7 +16,7 @@ protocol PickerDelegate {
 class AutoAimViewController: UITableViewController {
     
     
-    var userSettings = UserSettings()
+  
     let waterModel = WaterModel()
     let waterCalculator = WaterCalculator()
     
@@ -125,7 +125,7 @@ private extension AutoAimViewController {
               let interval = settings.startDayInterval
         else { return }
         
-        let dateFromInterval = userSettings.convertInterval(interval: interval)
+        let dateFromInterval = UserSettings.convertInterval(interval: interval)
         
         weightLable.text = "\(weight) кг"
         aimLable.text = "\(target) мл"
@@ -231,7 +231,9 @@ extension AutoAimViewController {
 extension AutoAimViewController: PickerDelegate {
     func updateInterval(time: Date) {
         
-        let newInterval = self.userSettings.calculateStartDayInterval(setDate: time)
+        let us = UserSettings()
+        
+        let newInterval = us.calculateStartDayInterval(setDate: time)
         
         guard var settings = waterModel.getUserSettings() else { return }
         settings.startDayInterval = newInterval

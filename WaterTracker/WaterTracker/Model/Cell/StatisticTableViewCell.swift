@@ -21,7 +21,7 @@ class StatisticTableViewCell: UITableViewCell {
     }
     
     func configureWith(record: WaterRecord) {
-        let convertedDate = userSettings.convertDate(record.date)
+        let convertedDate = UserSettings.convertDate(record.date)
         
         waterAmountLable.text = "Added amount: \(record.waterAmount)"
         dateLable.text = "Date: \(convertedDate)"
