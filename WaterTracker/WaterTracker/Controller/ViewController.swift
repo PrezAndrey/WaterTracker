@@ -15,9 +15,6 @@ class ViewController: UIViewController {
     private var waterModel: WaterModelProtocol = WaterModel()
     
     private var savedTarget: Int = 0
-    private var targetState = true
-    
-    
     
     // MARK: Outlets
     
