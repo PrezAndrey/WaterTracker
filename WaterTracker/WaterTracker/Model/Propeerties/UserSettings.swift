@@ -26,15 +26,6 @@ struct UserSettings: Codable, Equatable {
     
     var weight: Int?
     
-    
-    
-    
-//    init(dayTarget: Int, startDayInterval: TimeInterval, height: Int, weight: Int) {
-//        self.startDayInterval = startDayInterval
-//        self.dayTarget = dayTarget
-//        self.height = height
-//        self.weight = weight
-//    }
 }
 
 // MARK: Converting and Calculating date
@@ -53,7 +44,7 @@ extension UserSettings {
         return (startOfThePeriod, endOfThePeriod)
     }
     
-    func calculateStartDayInterval(setDate date: Date) -> Double {
+    static func calculateStartDayInterval(setDate date: Date) -> Double {
         
         let calendar = Calendar.current
         let start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: date)!

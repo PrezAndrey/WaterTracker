@@ -9,9 +9,6 @@ import Foundation
 import UIKit
 import HealthKit
 
-protocol PickerDelegate {
-    func updateInterval(time: Date)
-}
 
 class AutoAimViewController: UITableViewController {
     
@@ -21,11 +18,11 @@ class AutoAimViewController: UITableViewController {
     let waterCalculator = WaterCalculator()
     
 
-    var settings = UserSettings(dayTarget: 0, startDayInterval: 21599, weight: 0)
+    var settings = UserSettings(dayTarget: 0, weight: 0)
     
     
     
-    @IBOutlet weak var startingPeriod: UILabel!
+    
     @IBOutlet weak var aimLable: UILabel!
     @IBOutlet weak var weightLable: UILabel!
     
@@ -43,7 +40,7 @@ class AutoAimViewController: UITableViewController {
         
         updateSettings()
         configureWithSettings()
-        print("settings viewDidLoad: \(settings)")
+        
     }
     
     
@@ -51,7 +48,6 @@ class AutoAimViewController: UITableViewController {
     override func viewDidDisappear(_ animated: Bool) {
         
         waterModel.editSettings(newSettings: settings)
-        print("current settings after: \(settings)")
     }
     
     
@@ -69,7 +65,7 @@ class AutoAimViewController: UITableViewController {
             
             let newAim = waterCalculator.waterAimGenerator(weight: currentWeight)
             settings.dayTarget = Int(newAim)
-            aimLable.text = "\(newAim)мл"
+            aimLable.text = "\(newAim) мл"
         }
     }
     
@@ -79,31 +75,6 @@ class AutoAimViewController: UITableViewController {
         
         valueSetAlert(indexPath: indexPath)
     }
-    
-    
-    
-    
-    
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        if segue.identifier == "openPicker" {
-//            if let startingTimeVC = segue.destination as? StartingTimeViewController {
-//                startingTimeVC.completion = {[weak self] startingTime in
-//                    guard let self = self else { return }
-//                    print("previous interval: \(self.userSettings.startDayInterval ?? 0)")
-//                    let newInterval = self.userSettings.calculateStartDayInterval(setDate: startingTime)
-//                    self.settings.startDayInterval = newInterval
-//
-//                    print("new interval is: \(newInterval)")
-//                    self.startingPeriod.text = "\(startingTime)"
-//                }
-//            }
-//        }
-//    }
-    
-    
-    
 }
 
 // MARK: Settings configurations
@@ -123,12 +94,8 @@ private extension AutoAimViewController {
               let interval = settings.startDayInterval
         else { return }
         
-        let dateFromInterval = UserSettings.convertInterval(interval: interval)
-        
         weightLable.text = "\(weight) кг"
         aimLable.text = "\(target) мл"
-        startingPeriod.text = dateFromInterval
-        
     }
     
 }
@@ -167,7 +134,7 @@ extension AutoAimViewController {
         
         let alertController = UIAlertController(title: "\(title)", message: "You can correct \(title.lowercased())", preferredStyle: .alert)
         
-        let action = UIAlertAction(title: "Set", style: .default) { (action) in
+        let action = UIAlertAction(title: "Set", style: .default) { (_) in
             
             completion(alertController.textFields?.first?.text ?? "")
         }
@@ -218,25 +185,6 @@ extension AutoAimViewController {
         bloodTypeLable.text = "\(blood.rawValue)"
         sexLable.text = hkSex.name
         print("_____________________The body mass is \(bodyMass)______________________")
-        
-    }
-}
-
-
-
-// MARK: Picker Delegate
-
-extension AutoAimViewController: PickerDelegate {
-    
-    func updateInterval(time: Date) {
-        
-        let us = UserSettings()
-        
-        let newInterval = us.calculateStartDayInterval(setDate: time)
-        
-        guard var settings = waterModel.getUserSettings() else { return }
-        settings.startDayInterval = newInterval
-        waterModel.editSettings(newSettings: settings)
         
     }
 }
