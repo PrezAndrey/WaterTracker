@@ -14,8 +14,8 @@ class ViewController: UIViewController {
     
     private var waterModel: WaterModelProtocol = WaterModel()
     
-    private var userSettings = UserSettings()
-    
+    private var savedTarget: Int = 0
+    private var targetState = true
     
     
     
@@ -112,7 +112,7 @@ extension ViewController {
     private func correctAlert() {
         
         let alertController = UIAlertController(title: "Corrections", message: "You can correct the amount of water", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Set", style: .default) { (action) in
+        let action = UIAlertAction(title: "Set", style: .default) { (_) in
             if let waterMl = Double(alertController.textFields?.first?.text ?? "0.0") {
                 print(waterMl)
                 self.addMl(waterMl)
@@ -142,19 +142,18 @@ extension ViewController {
     
     // For showGetTargetAlert
     private func checkTheTarget() {
-        print("Status was \(UserSettings.dayTargetStatus)")
+        
         let curentTarget = waterModel.getUserSettings()
         
         guard let target = curentTarget?.dayTarget else { return }
         
-        if waterModel.waterAmount >= Double(target) && UserSettings.dayTargetStatus {
+        
+        if waterModel.waterAmount >= Double(target) && target != savedTarget {
             
             showGetTargetAlert()
-            UserSettings.dayTargetStatus = false
+            self.savedTarget = target
             
         }
-        
-        print("Status now is \(UserSettings.dayTargetStatus)")
     }
 }
 

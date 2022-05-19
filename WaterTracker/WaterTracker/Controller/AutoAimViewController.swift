@@ -70,8 +70,6 @@ class AutoAimViewController: UITableViewController {
             let newAim = waterCalculator.waterAimGenerator(weight: currentWeight)
             settings.dayTarget = Int(newAim)
             aimLable.text = "\(newAim)мл"
-            UserSettings.dayTargetStatus = true
-            
         }
     }
     
@@ -229,6 +227,7 @@ extension AutoAimViewController {
 // MARK: Picker Delegate
 
 extension AutoAimViewController: PickerDelegate {
+    
     func updateInterval(time: Date) {
         
         let us = UserSettings()
@@ -241,5 +240,3 @@ extension AutoAimViewController: PickerDelegate {
         
     }
 }
-
-

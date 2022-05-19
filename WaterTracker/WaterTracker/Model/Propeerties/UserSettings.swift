@@ -26,7 +26,6 @@ struct UserSettings: Codable, Equatable {
     
     var weight: Int?
     
-    static var dayTargetStatus: Bool = true
     
     
     
@@ -47,7 +46,7 @@ extension UserSettings {
         let calendar = Calendar.current
         let start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: date)!
         
-        let startOfThePeriod = Date(timeInterval: interval ?? (6 * 60 * 60), since: start)
+        let startOfThePeriod = Date(timeInterval: interval, since: start)
         print("Start day interval from function period is: \(interval)")
         let endOfThePeriod = Date(timeInterval: 24 * 60 * 60, since: startOfThePeriod)
         
