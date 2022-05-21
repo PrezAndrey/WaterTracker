@@ -7,10 +7,63 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Settings Table View Controller-->
+        <scene sceneID="HGC-ao-51E">
+            <objects>
+                <tableViewController id="zFC-3x-4xv" customClass="SettingsTableViewController" customModule="WaterTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="OLY-Mx-PRX">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Настройки" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2gV-AB-Qa0">
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="30"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="settingCell" textLabel="GQP-mn-aZK" style="IBUITableViewCellStyleDefault" id="kZj-mO-x2w" customClass="SettingCell" customModule="WaterTracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="93" width="390" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kZj-mO-x2w" id="ZDd-fS-TS0">
+                                    <rect key="frame" x="0.0" y="0.0" width="361.33333333333331" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Авто-цель" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GQP-mn-aZK">
+                                            <rect key="frame" x="20" y="0.0" width="333.33333333333331" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lable" destination="GQP-mn-aZK" id="EJi-lr-UIo"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="zFC-3x-4xv" id="T1Z-Ww-h8k"/>
+                            <outlet property="delegate" destination="zFC-3x-4xv" id="6sN-gv-pb1"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="tmK-ak-vm9"/>
+                    <connections>
+                        <segue destination="apl-Mr-WQf" kind="show" identifier="showPeriod" id="O79-bj-VZ9"/>
+                        <segue destination="MvM-f5-JWh" kind="show" identifier="aim" id="ZeJ-Za-CVh"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vg2-Zc-D8S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3563" y="-412"/>
+        </scene>
         <!--navigation screen-->
         <scene sceneID="exm-dr-go4">
             <objects>
@@ -94,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sQa-nC-hP5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3744.6153846153843" y="-1179.3838862559242"/>
+            <point key="canvasLocation" x="3140" y="-1179"/>
         </scene>
         <!--Greetings View Controller-->
         <scene sceneID="jzY-8F-1AS">
@@ -186,7 +239,7 @@
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="oxX-Li-heU" kind="show" id="ids-2f-ak6"/>
+                                            <segue destination="zFC-3x-4xv" kind="show" id="Pce-Dp-Buf"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -304,68 +357,6 @@
             </objects>
             <point key="canvasLocation" x="2349.2307692307691" y="-412.32227488151659"/>
         </scene>
-        <!--Settings CollectionVC-->
-        <scene sceneID="KGf-zf-jlp">
-            <objects>
-                <collectionViewController id="oxX-Li-heU" customClass="SettingsCollectionVC" customModule="WaterTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="cb7-y2-9EQ">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="40" minimumInteritemSpacing="40" id="Y9a-uX-Phg">
-                            <size key="itemSize" width="340" height="100"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="40" maxX="0.0" maxY="40"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="g8j-YG-NwC" customClass="SettingsCollectionViewCell" customModule="WaterTracker" customModuleProvider="target">
-                                <rect key="frame" x="25" y="40" width="340" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WsF-oJ-mpg">
-                                    <rect key="frame" x="0.0" y="0.0" width="340" height="100"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9n-3G-CG3">
-                                            <rect key="frame" x="0.0" y="0.0" width="340" height="100"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="100" id="J2N-VI-uXb"/>
-                                                <constraint firstAttribute="width" constant="340" id="Rhf-bA-IVv"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="c9n-3G-CG3" secondAttribute="bottom" id="JhF-0I-cP3"/>
-                                        <constraint firstItem="c9n-3G-CG3" firstAttribute="leading" secondItem="WsF-oJ-mpg" secondAttribute="leading" id="erY-8X-HOx"/>
-                                        <constraint firstItem="c9n-3G-CG3" firstAttribute="top" secondItem="WsF-oJ-mpg" secondAttribute="top" id="ubV-RI-a6z"/>
-                                        <constraint firstAttribute="trailing" secondItem="c9n-3G-CG3" secondAttribute="trailing" id="vcZ-by-MCs"/>
-                                    </constraints>
-                                </collectionViewCellContentView>
-                                <color key="backgroundColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <size key="customSize" width="340" height="100"/>
-                                <connections>
-                                    <outlet property="lable" destination="c9n-3G-CG3" id="kvi-Tm-TNG"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="oxX-Li-heU" id="wyv-rx-LnL"/>
-                            <outlet property="delegate" destination="oxX-Li-heU" id="uAk-px-yjM"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" id="kVL-Lf-lwn"/>
-                    <connections>
-                        <segue destination="MvM-f5-JWh" kind="show" identifier="ShowAutoAim" id="FTN-5L-hDE"/>
-                        <segue destination="apl-Mr-WQf" kind="presentation" identifier="openPicker" id="wxu-qP-mH6"/>
-                    </connections>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CBi-We-hin" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3372" y="-412"/>
-        </scene>
         <!--Custom ml-->
         <scene sceneID="tSL-dw-HGj">
             <objects>
@@ -423,7 +414,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wa6-pf-WvJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3792" y="891"/>
+            <point key="canvasLocation" x="3140" y="339"/>
         </scene>
         <!--Auto Aim View Controller-->
         <scene sceneID="slx-cE-cAE">
@@ -659,21 +650,21 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k5L-Z8-Vry" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5320" y="83"/>
+            <point key="canvasLocation" x="4575" y="-795"/>
         </scene>
         <!--Starting Time View Controller-->
         <scene sceneID="kUg-Ax-1DV">
             <objects>
                 <viewController id="apl-Mr-WQf" customClass="StartingTimeViewController" customModule="WaterTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0A8-l7-8Tu">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="NGv-Ky-Qyl">
-                                <rect key="frame" x="0.0" y="350" width="390" height="216"/>
+                                <rect key="frame" x="0.0" y="438" width="390" height="216"/>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBY-6j-3Km">
-                                <rect key="frame" x="42" y="647" width="307" height="51"/>
+                                <rect key="frame" x="42" y="701" width="307" height="51"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Set">
@@ -685,13 +676,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set a starting time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hak-g3-mG6">
-                                <rect key="frame" x="65" y="37" width="261" height="36"/>
+                                <rect key="frame" x="65" y="125" width="261" height="36"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1IG-C4-yta">
-                                <rect key="frame" x="0.0" y="164" width="390" height="100"/>
+                                <rect key="frame" x="0.0" y="252" width="390" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="390" id="NiE-lO-sTS"/>
                                     <constraint firstAttribute="height" constant="100" id="ecK-5t-F1y"/>
@@ -726,7 +717,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u5E-BE-O6i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5283" y="-714"/>
+            <point key="canvasLocation" x="4574" y="61"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
