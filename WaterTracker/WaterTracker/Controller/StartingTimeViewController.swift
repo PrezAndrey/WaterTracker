@@ -23,13 +23,14 @@ class StartingTimeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        datePicker.maximumDate = Date()
         updateCurrentPeriod()
         updateLable()
     }
     
     
     @IBAction func didSetTime(_ sender: Any) {
-
+        print(datePicker.date)
         updateInterval(time: datePicker.date)
     }
 }
@@ -37,7 +38,7 @@ class StartingTimeViewController: UIViewController {
 
 extension StartingTimeViewController {
     
-    private func updateInterval(time: Date) {
+    func updateInterval(time: Date) {
         
         let newInterval = UserSettings.calculateStartDayInterval(setDate: time)
         var settings = getCurrentSettings()
@@ -55,7 +56,7 @@ extension StartingTimeViewController {
     }
     
     private func updateCurrentPeriod() {
-        guard let inerval = getCurrentSettings().startDayInterval else { return }
+        let inerval = getCurrentSettings().startDayInterval ?? 0
         currentPeriod = UserSettings.convertInterval(interval: inerval)
     }
     

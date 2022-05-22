@@ -8,6 +8,7 @@
 import Foundation
 
 class WaterCalculator {
+    
     func sumOfWater(_ waterRecordArray: [WaterRecord], from: Date, to: Date) -> Double {
         var totalWater = 0.0
         print("from: \(from)")

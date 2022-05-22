@@ -45,9 +45,12 @@ extension UserSettings {
     }
     
     static func calculateStartDayInterval(setDate date: Date) -> Double {
-        
+        var newDate = date
         let calendar = Calendar.current
-        let start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: date)!
+        if date > Date() {
+            newDate = date.addingTimeInterval(-24 * 60 * 60)
+        }
+        let start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: newDate)!
         let timeInterval = date.timeIntervalSince(start)
         
         return timeInterval

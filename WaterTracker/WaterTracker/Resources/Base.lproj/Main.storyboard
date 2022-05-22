@@ -662,6 +662,7 @@
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="NGv-Ky-Qyl">
                                 <rect key="frame" x="0.0" y="438" width="390" height="216"/>
+                                <locale key="locale" localeIdentifier="ru_RU"/>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBY-6j-3Km">
                                 <rect key="frame" x="42" y="701" width="307" height="51"/>
