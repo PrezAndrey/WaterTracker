@@ -11,15 +11,12 @@ import UIKit
 
 class StartingTimeViewController: UIViewController {
     
-    
     private var currentPeriod: String?
     private var waterModel = WaterModel()
     
-    
-    
     @IBOutlet weak var datePicker: UIDatePicker!
-    
     @IBOutlet weak var timeLable: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +32,8 @@ class StartingTimeViewController: UIViewController {
     }
 }
 
+
+// MARK: Update functions
 
 extension StartingTimeViewController {
     
@@ -55,10 +54,13 @@ extension StartingTimeViewController {
         self.timeLable.text = currentPeriod
     }
     
+    
     private func updateCurrentPeriod() {
+        
         let inerval = getCurrentSettings().startDayInterval ?? 0
         currentPeriod = UserSettings.convertInterval(interval: inerval)
     }
+    
     
     private func getCurrentSettings() -> UserSettings {
         guard let settings = waterModel.getUserSettings() else { return UserSettings() }

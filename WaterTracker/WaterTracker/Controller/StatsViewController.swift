@@ -14,7 +14,7 @@ class StatsViewController: UIViewController {
     private var newAmount = 0
     private var staticRecords = [WaterRecord]()
     
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -23,19 +23,24 @@ class StatsViewController: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
-        
     }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
+        
         reloadRecords()
     }
     
+    
     private func reloadRecords() {
+        
         staticRecords = waterStore.getRecords()
         tableView.reloadData()
     }
     
+    
     // MARK: Prepare for Segue
-    // TODO: создать статичный массив
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openCustomVolumeSegue" {
             if let customAmountVC = segue.destination as? CustomAmountVC {
@@ -53,28 +58,31 @@ class StatsViewController: UIViewController {
 }
 
 
+
+// MARK: TableView Delegate
+
 extension StatsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         self.performSegue(withIdentifier: "openCustomVolumeSegue", sender: self)
-        
-        
     }
     
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
         if editingStyle == .delete {
             
             let recordToDelete = staticRecords.remove(at: indexPath.row)
             
             waterModel.deleteRecord(record: recordToDelete)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            
-            
         }
     }
 }
 
+
+
+// MARK: TableView DataSource
 
 extension StatsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -89,7 +97,6 @@ extension StatsViewController: UITableViewDataSource {
             
             return cell
         }
-        
         
         return UITableViewCell()
     }

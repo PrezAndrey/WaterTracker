@@ -16,12 +16,12 @@ class ViewController: UIViewController {
     
     private var savedTarget: Int = 0
     
+    
     // MARK: Outlets
     
     @IBOutlet weak var waterLable: UILabel! {
-        
+
         didSet {
-            
             configureUI()
         }
     }
@@ -31,14 +31,16 @@ class ViewController: UIViewController {
         configureUI()
     }
     
+    
     override func viewDidLoad() {
         waterModel.delegate = self
         self.configureUI()
     }
     
 
+    
     // MARK: Functions
-   
+    
     func configureUI() {
         updateWaterAmount()
     }
@@ -56,7 +58,6 @@ class ViewController: UIViewController {
         
         addMl(250.0)
     }
-    
     
     // Correct button
     @IBAction func didCorrect(_ sender: UIButton) {
@@ -92,8 +93,6 @@ class ViewController: UIViewController {
 
 extension ViewController: WaterModelDelegate {
     
-    
-    
     func waterAmountDidUpdate(_ model: WaterModelProtocol) {
         
         waterLable.text = "Сегодня я выпил: \(waterModel.waterAmount) мл"
@@ -113,8 +112,7 @@ extension ViewController {
             if let waterMl = Double(alertController.textFields?.first?.text ?? "0.0") {
                 print(waterMl)
                 self.addMl(waterMl)
-            }
-            else {
+            } else {
                 print("Error")
             }
         }
@@ -128,7 +126,7 @@ extension ViewController {
     private func showGetTargetAlert() {
         
         let alertController = UIAlertController(title: "Complete✅", message: "You've got your day target", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "Continue", style: .default) { (action) in
+        let alertAction = UIAlertAction(title: "Continue", style: .default) { (_) in
             return
         }
         
@@ -144,12 +142,10 @@ extension ViewController {
         
         guard let target = curentTarget?.dayTarget else { return }
         
-        
         if waterModel.waterAmount >= Double(target) && target != savedTarget {
             
             showGetTargetAlert()
             self.savedTarget = target
-            
         }
     }
 }

@@ -14,7 +14,6 @@
 		1B99E52C2771240000291801 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B99E52B2771240000291801 /* Assets.xcassets */; };
 		1B99E52F2771240000291801 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B99E52D2771240000291801 /* LaunchScreen.storyboard */; };
 		1B99E53E277267CB00291801 /* WaterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99E53D277267CB00291801 /* WaterStore.swift */; };
-		1B99E541277267DC00291801 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99E540277267DC00291801 /* View.swift */; };
 		1B99E5492773AFE000291801 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99E5482773AFE000291801 /* StatsViewController.swift */; };
 		1B99E54D2773B0F400291801 /* GreetingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99E54C2773B0F400291801 /* GreetingsViewController.swift */; };
 		1B9A5C0227BC3F8F008753D0 /* WaterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A5C0127BC3F8F008753D0 /* WaterModel.swift */; };
@@ -53,7 +52,6 @@
 		1B99E52E2771240000291801 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B99E5302771240000291801 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B99E53D277267CB00291801 /* WaterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterStore.swift; sourceTree = "<group>"; };
-		1B99E540277267DC00291801 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		1B99E5482773AFE000291801 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		1B99E54C2773B0F400291801 /* GreetingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsViewController.swift; sourceTree = "<group>"; };
 		1B9A5C0127BC3F8F008753D0 /* WaterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterModel.swift; sourceTree = "<group>"; };
@@ -141,7 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				55AA41E5282AE214006F3B21 /* Cell */,
-				1B99E540277267DC00291801 /* View.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -340,7 +337,6 @@
 				55A83628280FFD9A0099D144 /* AutoAimViewController.swift in Sources */,
 				1B99E527277123FE00291801 /* ViewController.swift in Sources */,
 				1B99E523277123FE00291801 /* AppDelegate.swift in Sources */,
-				1B99E541277267DC00291801 /* View.swift in Sources */,
 				1B99E54D2773B0F400291801 /* GreetingsViewController.swift in Sources */,
 				1B9A5C0227BC3F8F008753D0 /* WaterModel.swift in Sources */,
 				1BBF3B6D27D922F200D0BC2C /* UserSettings.swift in Sources */,

@@ -7,7 +7,10 @@
 
 import Foundation
 
+
+
 enum Sex: Codable {
+    
     case notSet
 
     case female 
@@ -17,23 +20,24 @@ enum Sex: Codable {
     case other
 }
 
+
+
 struct UserSettings: Codable, Equatable {
 
-    
     var dayTarget: Int?
-    
     var startDayInterval: TimeInterval?
-    
     var weight: Int?
-    
 }
+
+
+
 
 // MARK: Converting and Calculating date
 
 extension UserSettings {
     
-    
-    func period(for date: Date, interval: TimeInterval) -> (from: Date, to: Date) {
+    func period(for date: Date, interval: TimeInterval=21599) -> (from: Date, to: Date) {
+        
         let calendar = Calendar.current
         let start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: date)!
         
@@ -43,6 +47,7 @@ extension UserSettings {
         
         return (startOfThePeriod, endOfThePeriod)
     }
+    
     
     static func calculateStartDayInterval(setDate date: Date) -> Double {
         var newDate = date
@@ -56,6 +61,7 @@ extension UserSettings {
         return timeInterval
     }
     
+    
     static func convertInterval(interval: TimeInterval, date: Date = Date()) -> String {
         
         let calendar = Calendar.current
@@ -65,6 +71,7 @@ extension UserSettings {
         
         return result
     }
+    
     
     static func convertDate(_ date: Date) -> String {
         

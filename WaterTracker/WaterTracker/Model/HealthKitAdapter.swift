@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-// HealthKitAdapter - работает с HealthKit
+
 
 struct HKTypes {
     
@@ -19,18 +19,18 @@ struct HKTypes {
     var bloodType: HKBloodType
     
     var bodyMass: String
-    
 }
+
+
 
 class HealthKitAdapter {
     
      enum HealthKitAdapterError: Error {
+         
         case dataIsNotAvailable, deviceNotAvailable
-        
     }
     
-    static let shared: HealthKitAdapter = HealthKitAdapter()
-     
+    
     static let store = HKHealthStore()
      
     private let objectTypes: [HKObjectType] = [
@@ -57,7 +57,6 @@ class HealthKitAdapter {
             let height = HKObjectType.quantityType(forIdentifier: .height)
         else {
             completion(false, HealthKitAdapterError.dataIsNotAvailable)
-            
             return
         }
         
@@ -69,9 +68,9 @@ class HealthKitAdapter {
       
     
     func authorizeIfNeeded() {
+        
         var typesWithoutAuth: [HKObjectType] = []
         for objectType in objectTypes {
-            
             let status = HealthKitAdapter.store.authorizationStatus(for: objectType)
             
             switch status {
@@ -98,27 +97,25 @@ class HealthKitAdapter {
     }
     
     
-        // ask for permission for every data type that we want to read and ask permissions for writing the samples.
-    
-        
+    // ask for permission for every data type that we want to read and ask permissions for writing the samples.
     func getAgeSexAndBloodType() throws -> (HKTypes) {
         
       let healthKitStore = HKHealthStore()
       do {
-        //1. This method throws an error if these data are not available.
+        // 1. This method throws an error if these data are not available.
         let birthdayComponents =  try healthKitStore.dateOfBirthComponents()
         let biologicalSex =       try healthKitStore.biologicalSex()
         let bloodType =           try healthKitStore.bloodType()
         let bodyMass =            try HKQuantityTypeIdentifier.bodyMass.rawValue
           
-        //2. Use Calendar to calculate age.
+        // 2. Use Calendar to calculate age.
         let today = Date()
         let calendar = Calendar.current
         let todayDateComponents = calendar.dateComponents([.year], from: today)
         let thisYear = todayDateComponents.year!
         let age = thisYear - birthdayComponents.year!
          
-        //3. Unwrap the wrappers to get the underlying enum values.
+        // 3. Unwrap the wrappers to get the underlying enum values.
         let unwrappedBiologicalSex = biologicalSex.biologicalSex
         let unwrappedBloodType = bloodType.bloodType
           
@@ -129,8 +126,6 @@ class HealthKitAdapter {
     }
     
     
-    
-    
     // writing water to HealthKit
     func writeWater(amount: Double) {
         guard let waterType = HKSampleType.quantityType(forIdentifier: .dietaryWater) else {
@@ -138,20 +133,12 @@ class HealthKitAdapter {
                 return
         }
         
-            
         let waterQuantity = HKQuantity(unit: HKUnit.literUnit(with: .milli), doubleValue: amount)
         let today = Date()
         let waterQuantitySample = HKQuantitySample(type: waterType, quantity: waterQuantity, start: today, end: today)
         
-            
         HKHealthStore().save(waterQuantitySample) { (success, error) in
             print("HK write finished - success: \(success); error: \(error)")
-                
         }
     }
-    
-    
-    
-    
-    
 }

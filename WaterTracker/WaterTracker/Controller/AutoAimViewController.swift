@@ -12,37 +12,24 @@ import HealthKit
 
 class AutoAimViewController: UITableViewController {
     
-    
-  
     let waterModel = WaterModel()
     let waterCalculator = WaterCalculator()
     
-
     var settings = UserSettings(dayTarget: 0, weight: 0)
-    
-    
-    
     
     @IBOutlet weak var aimLable: UILabel!
     @IBOutlet weak var weightLable: UILabel!
-    
-    
-    
     @IBOutlet weak var dateOfBirthLable: UILabel!
     @IBOutlet weak var sexLable: UILabel!
     @IBOutlet weak var bloodTypeLable: UILabel!
     
     
-    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
         updateSettings()
         configureWithSettings()
-        
     }
-    
     
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -50,13 +37,11 @@ class AutoAimViewController: UITableViewController {
         waterModel.editSettings(newSettings: settings)
     }
     
-    
 
     @IBAction func didFetchDataFromHK(_ sender: Any) {
         
         HKDataFetch()
     }
-    
     
     
     @IBAction func didGenerateAim(_ sender: Any) {
@@ -70,12 +55,13 @@ class AutoAimViewController: UITableViewController {
     }
     
     
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         valueSetAlert(indexPath: indexPath)
     }
 }
+
+
 
 // MARK: Settings configurations
 
@@ -106,7 +92,6 @@ private extension AutoAimViewController {
 
 extension AutoAimViewController {
     
-    
     private func valueSetAlert(indexPath: IndexPath) {
         
         switch (indexPath.section, indexPath.row) {
@@ -123,12 +108,8 @@ extension AutoAimViewController {
         default:
             return
         }
-        
-        
-        
-        
-        
     }
+    
     
     private func showAlert(_ title: String, completion: @escaping (String) -> Void) {
         
@@ -185,6 +166,5 @@ extension AutoAimViewController {
         bloodTypeLable.text = "\(blood.rawValue)"
         sexLable.text = hkSex.name
         print("_____________________The body mass is \(bodyMass)______________________")
-        
     }
 }

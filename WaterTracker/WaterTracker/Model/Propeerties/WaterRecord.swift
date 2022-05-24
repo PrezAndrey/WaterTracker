@@ -10,11 +10,5 @@ import Foundation
 struct WaterRecord: Codable, Equatable {
     
     var waterAmount: Double
-    
     var date: Date
-    
-    
-    
-    
 }
-

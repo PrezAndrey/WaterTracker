@@ -8,37 +8,35 @@
 import Foundation
 import HealthKit
 
+
+
 protocol WaterModelDelegate {
     
     func waterAmountDidUpdate(_ model: WaterModelProtocol)
 }
 
+
 protocol WaterModelProtocol {
     
     var waterAmount: Double { get }
     var delegate: WaterModelDelegate? { get set }
-    
-    
+
     func deleteLast()
     func addWater(_ amount: Double)
-    
     func getUserSettings() -> UserSettings?
 }
+
+
 
 // WaterModel - связывает хранилище и HK, хранилище данныx
 class WaterModel: WaterModelProtocol {
     
     var delegate: WaterModelDelegate?
     
-    
     let waterStore = WaterStore()
     let healthKitAdapter = HealthKitAdapter()
     let calculator = WaterCalculator()
     var userSettings = UserSettings()
-    
-    
-    
-    
     
     var records: [WaterRecord] {
         
@@ -57,7 +55,6 @@ class WaterModel: WaterModelProtocol {
             
             return currentWaterAmount
         }
-       
         return 0
     }
     
@@ -66,6 +63,8 @@ class WaterModel: WaterModelProtocol {
         healthKitAdapter.authorizeIfNeeded()
     }
     
+    
+    // MARK: Functions
     
     func deleteLast() {
         
@@ -93,13 +92,13 @@ class WaterModel: WaterModelProtocol {
         delegate?.waterAmountDidUpdate(self)
     }
     
+    
     func editWaterAmount(_ record: WaterRecord, newAmount: Double) {
         
         var currentRecords = waterStore.getRecords()
         if let index = currentRecords.firstIndex(of: record) {
             currentRecords[index].waterAmount = newAmount
         }
-        
         waterStore.save(record: currentRecords, key: "waterKey")
     }
     
@@ -110,11 +109,13 @@ class WaterModel: WaterModelProtocol {
         return hkTypes
     }
     
+    
     func saveUserSettings(settings: UserSettings) {
         
         waterStore.saveSettings(settings)
         userSettings.startDayInterval = settings.startDayInterval
     }
+    
     
     func getUserSettings() -> UserSettings? {
         
@@ -123,14 +124,10 @@ class WaterModel: WaterModelProtocol {
         return settings
     }
     
+    
     func editSettings(newSettings: UserSettings) {
         
         waterStore.saveSettings(newSettings)
         userSettings.startDayInterval = newSettings.startDayInterval
-        
     }
-    
-    
-    
-    
 }

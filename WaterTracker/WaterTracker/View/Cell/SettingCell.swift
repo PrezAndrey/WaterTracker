@@ -7,8 +7,9 @@
 
 import UIKit
 
+
+
 class SettingCell: UITableViewCell {
 
     @IBOutlet weak var lable: UILabel!
-
 }

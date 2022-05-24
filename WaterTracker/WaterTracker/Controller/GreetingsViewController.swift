@@ -20,6 +20,4 @@ class GreetingsViewController: UIViewController {
     @IBAction func didTapToMoveToMain() {
         self.dismiss(animated: true, completion: nil)
     }
-    
-
 }
