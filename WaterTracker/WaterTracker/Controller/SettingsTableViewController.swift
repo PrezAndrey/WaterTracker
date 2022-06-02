@@ -13,7 +13,6 @@ class SettingsTableViewController: UITableViewController {
     
     let settingButtons = ["Авто-цель", "Настройка периода", "Уведомления", "Сброс настроек"]
     private let waterModel = WaterModel()
-
 }
 
 
@@ -31,8 +30,23 @@ extension SettingsTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "settingCell", for: indexPath) as? SettingCell
-        cell?.lable.text = settingButtons[indexPath.row]
-            
+        
+        switch indexPath.row {
+        case 0:
+            guard let aim = waterModel.getUserSettings()?.dayTarget else { return UITableViewCell() }
+            cell?.lable.text = settingButtons[indexPath.row]
+            cell?.valueLable.isHidden = false
+            cell?.valueLable.text = String(aim)
+        case 1:
+            cell?.lable.text = settingButtons[indexPath.row]
+            cell?.valueLable.isHidden = false
+            guard let time = waterModel.getUserSettings()?.startDayInterval else { return UITableViewCell() }
+            let newTime = UserSettings.convertInterval(interval: time)
+            cell?.valueLable.text = newTime
+        default:
+            cell?.lable.text = settingButtons[indexPath.row]
+        }
+        
         return cell ?? UITableViewCell()
     }
 }

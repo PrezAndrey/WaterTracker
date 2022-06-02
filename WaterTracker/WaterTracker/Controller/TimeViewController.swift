@@ -20,7 +20,6 @@ class StartingTimeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        datePicker.maximumDate = Date()
         updateCurrentPeriod()
         updateLable()
     }

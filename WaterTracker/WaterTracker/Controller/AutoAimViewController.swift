@@ -32,7 +32,7 @@ class AutoAimViewController: UITableViewController {
     }
     
     
-    override func viewDidDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         
         waterModel.editSettings(newSettings: settings)
     }

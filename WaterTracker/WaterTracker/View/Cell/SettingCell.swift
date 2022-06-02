@@ -11,5 +11,6 @@ import UIKit
 
 class SettingCell: UITableViewCell {
 
+    @IBOutlet weak var valueLable: UILabel!
     @IBOutlet weak var lable: UILabel!
 }

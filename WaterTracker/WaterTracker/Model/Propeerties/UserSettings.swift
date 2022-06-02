@@ -36,6 +36,8 @@ struct UserSettings: Codable, Equatable {
 
 extension UserSettings {
     
+    static let dateFormatter = DateFormatter()
+    
     func period(for date: Date, interval: TimeInterval=21599) -> (from: Date, to: Date) {
         
         let calendar = Calendar.current
@@ -52,11 +54,11 @@ extension UserSettings {
     static func calculateStartDayInterval(setDate date: Date) -> Double {
         var newDate = date
         let calendar = Calendar.current
-        if date > Date() {
-            newDate = date.addingTimeInterval(-24 * 60 * 60)
-        }
+//        if date > Date() {
+//            newDate = date.addingTimeInterval(-24 * 60 * 60)
+//        }
         let start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: newDate)!
-        let timeInterval = date.timeIntervalSince(start)
+        let timeInterval = newDate.timeIntervalSince(start)
         
         return timeInterval
     }
@@ -67,6 +69,9 @@ extension UserSettings {
         let calendar = Calendar.current
         var start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: date)!
         start.addTimeInterval(interval)
+        if start > date {
+            start = start.addingTimeInterval(-24 * 60 * 60)
+        }
         let result = convertDate(start)
         
         return result
@@ -75,8 +80,8 @@ extension UserSettings {
     
     static func convertDate(_ date: Date) -> String {
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
+        
+        dateFormatter.dateFormat = "HH:mm"
         let convertedDate = dateFormatter.string(from: date)
         
         return convertedDate

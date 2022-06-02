@@ -128,6 +128,6 @@ class WaterModel: WaterModelProtocol {
     func editSettings(newSettings: UserSettings) {
         
         waterStore.saveSettings(newSettings)
-        userSettings.startDayInterval = newSettings.startDayInterval
+       
     }
 }

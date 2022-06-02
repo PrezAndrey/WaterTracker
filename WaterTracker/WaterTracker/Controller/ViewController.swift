@@ -14,7 +14,14 @@ class ViewController: UIViewController {
     
     private var waterModel: WaterModelProtocol = WaterModel()
     
-    private var savedTarget: Int = 0
+    private var savedTarget: Int?
+    
+    private var currentWaterAmount: Double = 0 {
+        didSet {
+            updateWaterAmount()
+        }
+    }
+    
     
     
     // MARK: Outlets
@@ -42,7 +49,8 @@ class ViewController: UIViewController {
     // MARK: Functions
     
     func configureUI() {
-        updateWaterAmount()
+        currentWaterAmount = waterModel.waterAmount
+//        updateWaterAmount()
     }
     
     
@@ -77,7 +85,7 @@ class ViewController: UIViewController {
     private func addMl(_ number: Double) {
         
         waterModel.addWater(number)
-        checkTheTarget()
+//        checkTheTarget()
     }
     
     
@@ -94,8 +102,8 @@ class ViewController: UIViewController {
 extension ViewController: WaterModelDelegate {
     
     func waterAmountDidUpdate(_ model: WaterModelProtocol) {
-        
-        waterLable.text = "Сегодня я выпил: \(waterModel.waterAmount) мл"
+        showAlertIfNeeded(waterModel.waterAmount)
+        currentWaterAmount = waterModel.waterAmount
     }
 }
 
@@ -136,6 +144,18 @@ extension ViewController {
     
     
     // For showGetTargetAlert
+    private func showAlertIfNeeded(_ newWaterAmount: Double) {
+        guard currentWaterAmount > 0 else { return }
+        
+        let curentTarget = waterModel.getUserSettings()
+        
+        guard let target = curentTarget?.dayTarget else { return }
+        
+        if newWaterAmount >= Double(target) && currentWaterAmount < Double(target) {
+            showGetTargetAlert()
+        }
+    }
+    
     private func checkTheTarget() {
         
         let curentTarget = waterModel.getUserSettings()
@@ -149,9 +169,4 @@ extension ViewController {
         }
     }
 }
-
-
-
-
-
 
