@@ -22,9 +22,19 @@ class SettingsTableViewController: UITableViewController {
         configureLabels()
     }
     
+    @IBAction func didResetSettings(_ sender: Any) {
+        resetAlert()
+    }
+    
     private func configureLabels() {
-        if let aim = waterModel.getUserSettings()?.dayTarget {
+        let settings = waterModel.getUserSettings()
+        if let aim = settings?.dayTarget {
             currentAim.text = "\(aim) ml"
+        }
+        if let interval = settings?.startDayInterval {
+            
+            let newTime = UserSettings.convertInterval(interval: interval)
+            currentPeriod.text = "\(newTime)"
         }
         tableView.reloadData()
     }
@@ -100,6 +110,7 @@ extension SettingsTableViewController {
         alertController.addAction(cancel)
         alertController.addAction(action)
         self.present(alertController, animated: true, completion: nil)
+        
     }
     
     
@@ -107,6 +118,8 @@ extension SettingsTableViewController {
         
         let newSettings = UserSettings(dayTarget: 0, startDayInterval: 21599, weight: 0)
         waterModel.editSettings(newSettings: newSettings)
+        
+        configureLabels()
     }
 }
     
