@@ -11,8 +11,23 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
     
-    let settingButtons = ["Авто-цель", "Настройка периода", "Уведомления", "Сброс настроек"]
+    @IBOutlet weak var currentPeriod: UILabel!
+    @IBOutlet weak var currentAim: UILabel!
+    
+    
     private let waterModel = WaterModel()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureLabels()
+    }
+    
+    private func configureLabels() {
+        if let aim = waterModel.getUserSettings()?.dayTarget {
+            currentAim.text = "\(aim) ml"
+        }
+        tableView.reloadData()
+    }
 }
 
 
@@ -21,56 +36,53 @@ class SettingsTableViewController: UITableViewController {
 
 extension SettingsTableViewController {
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return settingButtons.count
-    }
     
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "settingCell", for: indexPath) as? SettingCell
-        
-        switch indexPath.row {
-        case 0:
-            guard let aim = waterModel.getUserSettings()?.dayTarget else { return UITableViewCell() }
-            cell?.lable.text = settingButtons[indexPath.row]
-            cell?.valueLable.isHidden = false
-            cell?.valueLable.text = String(aim)
-        case 1:
-            cell?.lable.text = settingButtons[indexPath.row]
-            cell?.valueLable.isHidden = false
-            guard let time = waterModel.getUserSettings()?.startDayInterval else { return UITableViewCell() }
-            let newTime = UserSettings.convertInterval(interval: time)
-            cell?.valueLable.text = newTime
-        default:
-            cell?.lable.text = settingButtons[indexPath.row]
-        }
-        
-        return cell ?? UITableViewCell()
-    }
+    
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "settingCell", for: indexPath) as? SettingCell
+//        
+//        switch indexPath.row {
+//        case 0:
+//            guard let aim = waterModel.getUserSettings()?.dayTarget else { return UITableViewCell() }
+//            cell?.lable.text = settingButtons[indexPath.row]
+//            cell?.valueLable.isHidden = false
+//            cell?.valueLable.text = String(aim)
+//        case 1:
+//            cell?.lable.text = settingButtons[indexPath.row]
+//            cell?.valueLable.isHidden = false
+//            guard let time = waterModel.getUserSettings()?.startDayInterval else { return UITableViewCell() }
+//            let newTime = UserSettings.convertInterval(interval: time)
+//            cell?.valueLable.text = newTime
+//        default:
+//            cell?.lable.text = settingButtons[indexPath.row]
+//        }
+//        
+//        return cell ?? UITableViewCell()
+//    }
 }
 
 
 
-extension SettingsTableViewController {
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            performSegue(withIdentifier: "aim", sender: self)
-        case 1:
-            performSegue(withIdentifier: "showPeriod", sender: self)
-        case 2:
-            print("Уведомления")
-        case 3:
-            resetAlert()
-            print("Сброс")
-        default:
-            return
-        }
-    }
-}
+//extension SettingsTableViewController {
+//
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        switch indexPath.row {
+//        case 0:
+//            performSegue(withIdentifier: "aim", sender: self)
+//        case 1:
+//            performSegue(withIdentifier: "showPeriod", sender: self)
+//        case 2:
+//            print("Уведомления")
+//        case 3:
+//            resetAlert()
+//            print("Сброс")
+//        default:
+//            return
+//        }
+//    }
+//}
 
 
 
