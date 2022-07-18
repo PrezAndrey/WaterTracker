@@ -13,6 +13,7 @@ import UIKit
 class ViewController: UIViewController {
     
     private var waterModel: WaterModelProtocol = WaterModel()
+    private var userNotifications = Notifications()
     
     private var savedTarget: Int?
     
@@ -25,7 +26,6 @@ class ViewController: UIViewController {
     
     
     // MARK: Outlets
-    
     @IBOutlet weak var waterLable: UILabel! {
 
         didSet {
@@ -33,13 +33,13 @@ class ViewController: UIViewController {
         }
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         configureUI()
     }
     
     
     override func viewDidLoad() {
+        userNotifications.requestNotification()
         waterModel.delegate = self
         self.configureUI()
     }
@@ -47,7 +47,6 @@ class ViewController: UIViewController {
 
     
     // MARK: Functions
-    
     func configureUI() {
         currentWaterAmount = waterModel.waterAmount
 //        updateWaterAmount()
