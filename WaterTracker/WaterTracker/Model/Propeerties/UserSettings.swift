@@ -24,9 +24,9 @@ enum Sex: Codable {
 
 struct UserSettings: Codable, Equatable {
 
-    var dayTarget: Int?
-    var startDayInterval: TimeInterval?
-    var weight: Int?
+    var dayTarget: Int? = 2000
+    var startDayInterval: TimeInterval? = 21599
+    var weight: Int? 
 }
 
 
@@ -40,11 +40,15 @@ extension UserSettings {
     
     func period(for date: Date, interval: TimeInterval=21599) -> (from: Date, to: Date) {
         
-        let calendar = Calendar.current
+        var calendar = Calendar.current
         let start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: date)!
-        
-        let startOfThePeriod = Date(timeInterval: interval, since: start)
+        print("START TIME: \(start)")
+        var startOfThePeriod = Date(timeInterval: interval, since: start)
+        if startOfThePeriod > date {
+            startOfThePeriod.addTimeInterval(-24 * 60 * 60)
+        }
         print("Start day interval from function period is: \(interval)")
+        print("Start day TIME from function period is: \(startOfThePeriod)")
         let endOfThePeriod = Date(timeInterval: 24 * 60 * 60, since: startOfThePeriod)
         
         return (startOfThePeriod, endOfThePeriod)
@@ -54,9 +58,9 @@ extension UserSettings {
     static func calculateStartDayInterval(setDate date: Date) -> Double {
         var newDate = date
         let calendar = Calendar.current
-//        if date > Date() {
-//            newDate = date.addingTimeInterval(-24 * 60 * 60)
-//        }
+        if date > Date() {
+            newDate = date.addingTimeInterval(-24 * 60 * 60)
+        }
         let start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: newDate)!
         let timeInterval = newDate.timeIntervalSince(start)
         

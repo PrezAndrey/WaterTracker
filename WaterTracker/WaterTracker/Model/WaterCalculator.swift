@@ -20,6 +20,7 @@ class WaterCalculator {
                 totalWater += record.waterAmount
             }
         }
+        print("@@@@ TOTAL WATER: \(totalWater)@@@@@")
         return totalWater
     }
     

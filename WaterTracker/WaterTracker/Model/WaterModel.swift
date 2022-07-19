@@ -47,15 +47,19 @@ class WaterModel: WaterModelProtocol {
     var waterAmount: Double {
         
         let currentWaterArray = records
+        var newInterval = userSettings
+        
         if let interval = getUserSettings() {
             
-            let fromDate = userSettings.period(for: Date(), interval: interval.startDayInterval ?? 21599).from
-            let toDate = userSettings.period(for: Date(), interval: interval.startDayInterval ?? 21599).to
-            let currentWaterAmount = calculator.sumOfWater(currentWaterArray, from: fromDate, to: toDate)
-            
-            return currentWaterAmount
+            newInterval = interval
         }
-        return 0
+        
+        let fromDate = userSettings.period(for: Date(), interval: newInterval.startDayInterval ?? 21599).from
+        let toDate = userSettings.period(for: Date(), interval: newInterval.startDayInterval ?? 21599).to
+        let currentWaterAmount = calculator.sumOfWater(currentWaterArray, from: fromDate, to: toDate)
+        print("###### I AM WORKING ####### WATER AMOUNT IS: \(currentWaterAmount), START DATE: \(fromDate), FINISH DATE: \(toDate), DATE: \(Date())")
+        
+        return currentWaterAmount
     }
     
     init() {

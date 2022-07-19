@@ -39,7 +39,6 @@ class ViewController: UIViewController {
     
     
     override func viewDidLoad() {
-        userNotifications.requestNotification()
         waterModel.delegate = self
         self.configureUI()
     }
@@ -82,8 +81,11 @@ class ViewController: UIViewController {
     
     // Add ml function
     private func addMl(_ number: Double) {
-        
+        if currentWaterAmount >= 250 {
+            userNotifications.requestNotification()
+        }
         waterModel.addWater(number)
+        print("Water amount: \(waterModel.waterAmount)")
 //        checkTheTarget()
     }
     
