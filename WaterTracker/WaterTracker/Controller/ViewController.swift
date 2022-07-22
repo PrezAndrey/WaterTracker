@@ -13,7 +13,7 @@ import UIKit
 class ViewController: UIViewController {
     
     private var waterModel: WaterModelProtocol = WaterModel()
-    private var userNotifications = Notifications()
+    private var notifications = Notifications()
     
     private var savedTarget: Int?
     
@@ -81,12 +81,10 @@ class ViewController: UIViewController {
     
     // Add ml function
     private func addMl(_ number: Double) {
-        if currentWaterAmount >= 250 {
-            userNotifications.requestNotification()
-        }
+        notifications.checkAuthorization()
+        
         waterModel.addWater(number)
         print("Water amount: \(waterModel.waterAmount)")
-//        checkTheTarget()
     }
     
     

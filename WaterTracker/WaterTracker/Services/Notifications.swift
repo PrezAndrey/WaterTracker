@@ -12,7 +12,7 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
     
     let notificationCenter = UNUserNotificationCenter.current()
     
-    func requestNotification() {
+    private func requestNotification() {
         
         notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
             
@@ -21,16 +21,25 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
             guard granted else { return }
             
             self.getNotificationSettings()
-            
         }
     }
     
     
-    func getNotificationSettings() {
-        
+    private func getNotificationSettings() {
+    
         notificationCenter.getNotificationSettings { (settings) in
             
             print("Notification settings: \(settings)")
+        }
+    }
+    
+    
+    func checkAuthorization() {
+        
+        notificationCenter.getNotificationSettings { (settings) in
+            if settings.authorizationStatus == .notDetermined {
+                self.requestNotification()
+            }
         }
     }
 }
