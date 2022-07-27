@@ -18,6 +18,11 @@ class SettingsTableViewController: UITableViewController {
     private let notifications = Notifications()
     private let waterModel = WaterModel()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        notificationSwitch.addTarget(self, action: #selector(switchNotification), for: .valueChanged)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureUI()
@@ -28,6 +33,7 @@ class SettingsTableViewController: UITableViewController {
         resetAlert()
     }
     
+
     private func configureUI() {
         let settings = waterModel.getUserSettings()
         
@@ -46,6 +52,16 @@ class SettingsTableViewController: UITableViewController {
         tableView.reloadData()
     }
   
+    
+    @objc func switchNotification() {
+        
+        if notificationSwitch.isOn == false {
+            notifications.notificationCenter.removeDeliveredNotifications(withIdentifiers: ["Local Notification"])
+    
+        }
+    }
+    
+    
     func setSwitchStatus() {
         
         notifications.notificationCenter.getNotificationSettings { (settings) in

@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     private var waterModel: WaterModelProtocol = WaterModel()
     private var notifications = Notifications()
     
+    
     private var savedTarget: Int?
     
     private var currentWaterAmount: Double = 0 {
@@ -22,7 +23,6 @@ class ViewController: UIViewController {
             updateWaterAmount()
         }
     }
-    
     
     
     // MARK: Outlets
@@ -41,6 +41,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         waterModel.delegate = self
         self.configureUI()
+        
+        // TODO: Разобраться с целью
+        notifications.scheduleTimeNotification(title: "Alert",
+                                               time: "middle",
+                                               waterAmount: Int(waterModel.waterAmount) ?? 0,
+                                               currentAim: waterModel.getUserSettings()?.dayTarget ?? 0)
+        
+        notifications.scheduleTimeNotification(title: "Alert",
+                                               time: "end",
+                                               waterAmount: Int(waterModel.waterAmount) ?? 0, currentAim: waterModel.getUserSettings()?.dayTarget ?? 0)
     }
     
 
@@ -73,7 +83,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func didDelete(_ sender: Any) {
-        
+        notifications.scheduleNotification(notficationType: "TEST")
         waterModel.deleteLast()
         configureUI()
     }
@@ -82,7 +92,9 @@ class ViewController: UIViewController {
     // Add ml function
     private func addMl(_ number: Double) {
         notifications.checkAuthorization()
-        print("---------- DATE FROM STRING IS: \(UserSettings.convertStringToDate("14:20"))")
+        
+        
+        
         
         waterModel.addWater(number)
         print("Water amount: \(waterModel.waterAmount)")
