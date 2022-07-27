@@ -42,6 +42,7 @@ class StatsViewController: UIViewController {
     // MARK: Prepare for Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "openCustomVolumeSegue" {
             if let customAmountVC = segue.destination as? CustomAmountVC {
                 customAmountVC.completion = {[weak self] newAmount in

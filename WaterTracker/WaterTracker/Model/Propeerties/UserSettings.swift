@@ -76,13 +76,13 @@ extension UserSettings {
         if start > date {
             start = start.addingTimeInterval(-24 * 60 * 60)
         }
-        let result = convertDate(start)
+        let result = convertDateToString(start)
         
         return result
     }
     
     
-    static func convertDate(_ date: Date) -> String {
+    static func convertDateToString(_ date: Date) -> String {
         
         
         dateFormatter.dateFormat = "HH:mm"
@@ -90,4 +90,14 @@ extension UserSettings {
         
         return convertedDate
     }
+    
+    static func convertStringToDate(_ string: String) -> Date {
+        
+        
+        guard let date = dateFormatter.date(from: string) else { return Date() }
+        
+        return date
+    }
+    
+    
 }

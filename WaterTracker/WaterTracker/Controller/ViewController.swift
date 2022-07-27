@@ -82,6 +82,7 @@ class ViewController: UIViewController {
     // Add ml function
     private func addMl(_ number: Double) {
         notifications.checkAuthorization()
+        print("---------- DATE FROM STRING IS: \(UserSettings.convertStringToDate("14:20"))")
         
         waterModel.addWater(number)
         print("Water amount: \(waterModel.waterAmount)")

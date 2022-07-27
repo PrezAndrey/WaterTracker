@@ -12,6 +12,7 @@ import UIKit
 class StatisticTableViewCell: UITableViewCell {
     
     let userSettings = UserSettings()
+    
 
     @IBOutlet weak var waterAmountLable: UILabel!
     @IBOutlet weak var dateLable: UILabel!
@@ -19,7 +20,7 @@ class StatisticTableViewCell: UITableViewCell {
     
     func configureWith(record: WaterRecord) {
         
-        let convertedDate = UserSettings.convertDate(record.date)
+        let convertedDate = UserSettings.convertDateToString(record.date)
         waterAmountLable.text = "Added amount: \(record.waterAmount)"
         dateLable.text = "Date: \(convertedDate)"
     }

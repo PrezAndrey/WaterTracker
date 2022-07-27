@@ -33,6 +33,13 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
         }
     }
     
+    func setAthorizationStatusToSwitch() {
+        
+        notificationCenter.getNotificationSettings {  (settings) in
+            
+        }
+    }
+    
     
     func checkAuthorization() {
         
@@ -42,4 +49,6 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
             }
         }
     }
+    
+    
 }

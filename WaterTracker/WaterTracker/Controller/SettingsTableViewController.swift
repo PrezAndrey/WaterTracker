@@ -13,31 +13,52 @@ class SettingsTableViewController: UITableViewController {
     
     @IBOutlet weak var currentPeriod: UILabel!
     @IBOutlet weak var currentAim: UILabel!
+    @IBOutlet weak var notificationSwitch: UISwitch!
     
-    
+    private let notifications = Notifications()
     private let waterModel = WaterModel()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configureLabels()
+        configureUI()
     }
+    
     
     @IBAction func didResetSettings(_ sender: Any) {
         resetAlert()
     }
     
-    private func configureLabels() {
+    private func configureUI() {
         let settings = waterModel.getUserSettings()
+        
+        setSwitchStatus()
+        
         if let aim = settings?.dayTarget {
             currentAim.text = "\(aim) ml"
         }
+        
         if let interval = settings?.startDayInterval {
             
             let newTime = UserSettings.convertInterval(interval: interval)
             currentPeriod.text = "\(newTime)"
         }
+        
         tableView.reloadData()
     }
+  
+    func setSwitchStatus() {
+        
+        notifications.notificationCenter.getNotificationSettings { (settings) in
+            DispatchQueue.main.async {
+                if settings.authorizationStatus == .notDetermined {
+                    self.notificationSwitch.isOn = false
+                } else {
+                    self.notificationSwitch.isOn = true
+                }
+            }
+        }
+    }
+    
 }
 
 
@@ -119,7 +140,7 @@ extension SettingsTableViewController {
         let newSettings = UserSettings(dayTarget: 0, startDayInterval: 21599, weight: 0)
         waterModel.editSettings(newSettings: newSettings)
         
-        configureLabels()
+        configureUI()
     }
 }
     
