@@ -35,19 +35,26 @@ class SettingsTableViewController: UITableViewController {
     
 
     private func configureUI() {
-        let settings = waterModel.getUserSettings()
         
-        setSwitchStatus()
+        var settings = UserSettings(dayTarget: 0, startDayInterval: 21599, weight: 0, notificationState: false)
         
-        if let aim = settings?.dayTarget {
-            currentAim.text = "\(aim) ml"
+        if let existingSettings = waterModel.getUserSettings() {
+            settings = existingSettings
+        } else {
+            waterModel.saveUserSettings(settings: settings)
         }
         
-        if let interval = settings?.startDayInterval {
-            
-            let newTime = UserSettings.convertInterval(interval: interval)
-            currentPeriod.text = "\(newTime)"
-        }
+        print("CURRENT USER SETTINGS: \(settings)")
+        
+        
+        setSwitchStatus(settings.notificationState ?? false)
+        
+        
+        currentAim.text = "\(settings.dayTarget ?? 0) ml"
+        
+        let newTime = UserSettings.convertInterval(interval: settings.startDayInterval ?? 21599)
+        currentPeriod.text = "\(newTime)"
+        
         
         tableView.reloadData()
     }
@@ -55,24 +62,19 @@ class SettingsTableViewController: UITableViewController {
     
     @objc func switchNotification() {
         
+        guard var newSettings = waterModel.getUserSettings() else { return }
+        
         if notificationSwitch.isOn == false {
             notifications.notificationCenter.removeDeliveredNotifications(withIdentifiers: ["Local Notification"])
-    
         }
+        
+        newSettings.notificationState = notificationSwitch.isOn
+        waterModel.saveUserSettings(settings: newSettings)
     }
     
     
-    func setSwitchStatus() {
-        
-        notifications.notificationCenter.getNotificationSettings { (settings) in
-            DispatchQueue.main.async {
-                if settings.authorizationStatus == .notDetermined {
-                    self.notificationSwitch.isOn = false
-                } else {
-                    self.notificationSwitch.isOn = true
-                }
-            }
-        }
+    func setSwitchStatus(_ status: Bool) {
+        notificationSwitch.isOn = status
     }
     
 }

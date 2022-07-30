@@ -31,12 +31,14 @@ protocol WaterModelProtocol {
 // WaterModel - связывает хранилище и HK, хранилище данныx
 class WaterModel: WaterModelProtocol {
     
+    
     var delegate: WaterModelDelegate?
     
     let waterStore = WaterStore()
     let healthKitAdapter = HealthKitAdapter()
     let calculator = WaterCalculator()
     var userSettings = UserSettings()
+    var notifications = Notifications()
     
     var records: [WaterRecord] {
         

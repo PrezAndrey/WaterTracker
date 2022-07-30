@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     private var notifications = Notifications()
     
     
+    
     private var savedTarget: Int?
     
     private var currentWaterAmount: Double = 0 {
@@ -83,7 +84,9 @@ class ViewController: UIViewController {
     
     
     @IBAction func didDelete(_ sender: Any) {
-        notifications.scheduleNotification(notficationType: "TEST")
+        
+        notifications.scheduleNotificationTest(notficationType: "TEST", waterAmount: waterModel.waterAmount)
+        
         waterModel.deleteLast()
         configureUI()
     }
@@ -92,10 +95,7 @@ class ViewController: UIViewController {
     // Add ml function
     private func addMl(_ number: Double) {
         notifications.checkAuthorization()
-        
-        
-        
-        
+
         waterModel.addWater(number)
         print("Water amount: \(waterModel.waterAmount)")
     }

@@ -10,14 +10,23 @@ import UserNotifications
 
 class Notifications: NSObject, UNUserNotificationCenterDelegate {
     
+// MARK: Properties
+    
     let notificationCenter = UNUserNotificationCenter.current()
+    
     private var date = DateComponents()
+    
+    static var notificationSettings: UNNotificationSettings?
+    
+    
+// MARK: Functions
     
     private func requestNotification() {
         
         notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
             
             print("Permission granted: \(granted)")
+            print("Error: \(error)")
             
             guard granted else { return }
             
@@ -29,15 +38,8 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
     private func getNotificationSettings() {
     
         notificationCenter.getNotificationSettings { (settings) in
-            
-            print("Notification settings: \(settings)")
-        }
-    }
-    
-    func setAthorizationStatusToSwitch() {
-        
-        notificationCenter.getNotificationSettings {  (settings) in
-            
+            Notifications.notificationSettings = settings
+            print("Notification settings: \(Notifications.notificationSettings)")
         }
     }
     
@@ -72,16 +74,16 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
         
         switch time?.lowercased() {
         case "middle":
-            date.hour = 2
-            date.minute = 21
+            date.hour = 15
+            date.minute = 00
             identifier = "Middle Identifier"
         case "end":
-            date.hour = 2
-            date.minute = 21
+            date.hour = 21
+            date.minute = 00
             identifier = "End Identifier"
         default:
-            date.hour = 2
-            date.minute = 12
+            date.hour = 21
+            date.minute = 00
             identifier = "End Identifier"
         }
         
@@ -89,18 +91,18 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: timeTrigger)
         
         notificationCenter.add(request) { (error) in
-            print("Error: \(error?.localizedDescription)")
+            print("Error: \(String(describing: error?.localizedDescription))")
         }
     }
     
     
-    func scheduleNotification(notficationType: String) {
+    func scheduleNotificationTest(notficationType: String, waterAmount: Double) {
         
         let content = UNMutableNotificationContent()
         
         
         content.title = notficationType
-        content.body = "This is example of " + notficationType
+        content.body = "Water amount \(waterAmount)"
         content.sound = UNNotificationSound.default
         content.badge = 1
         
@@ -127,7 +129,9 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
     }
     
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
         
         if response.notification.request.identifier == "Local Notification" {
             
@@ -141,7 +145,7 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
             print("Default")
         case "Snooze":
             print("Snooze")
-            scheduleNotification(notficationType: "Reminder")
+            
         case "Delete":
             print("Delete")
         default:
