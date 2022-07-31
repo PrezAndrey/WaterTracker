@@ -41,15 +41,12 @@ extension UserSettings {
     
     func period(for date: Date, interval: TimeInterval=21599) -> (from: Date, to: Date) {
         
-        var calendar = Calendar.current
+        let calendar = Calendar.current
         let start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: date)!
-        print("START TIME: \(start)")
         var startOfThePeriod = Date(timeInterval: interval, since: start)
         if startOfThePeriod > date {
             startOfThePeriod.addTimeInterval(-24 * 60 * 60)
         }
-        print("Start day interval from function period is: \(interval)")
-        print("Start day TIME from function period is: \(startOfThePeriod)")
         let endOfThePeriod = Date(timeInterval: 24 * 60 * 60, since: startOfThePeriod)
         
         return (startOfThePeriod, endOfThePeriod)

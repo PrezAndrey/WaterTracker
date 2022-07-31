@@ -18,6 +18,8 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
     
     static var notificationSettings: UNNotificationSettings?
     
+    var askForAtuhorization: Int = 0
+    
     
 // MARK: Functions
     
@@ -26,7 +28,7 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
         notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
             
             print("Permission granted: \(granted)")
-            print("Error: \(error)")
+            print("Error: \(String(describing: error))")
             
             guard granted else { return }
             
@@ -39,31 +41,41 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
     
         notificationCenter.getNotificationSettings { (settings) in
             Notifications.notificationSettings = settings
-            print("Notification settings: \(Notifications.notificationSettings)")
+            print("Notification settings: \(String(describing: Notifications.notificationSettings))")
         }
     }
     
     
-    func checkAuthorization() {
+    func checkAuthorization() -> Bool {
+        
         
         notificationCenter.getNotificationSettings { (settings) in
             if settings.authorizationStatus == .notDetermined {
                 self.requestNotification()
+            } else if settings.authorizationStatus == .denied {
+                self.askForAtuhorization += 1
             }
         }
+        
+        if askForAtuhorization > 10 {
+            print("------------- SHOW ALERT --------------")
+            askForAtuhorization = 0
+            return true
+        }
+        return false
     }
     
     
-    func scheduleTimeNotification(title: String, time: String?, waterAmount: Int, currentAim: Int) {
+    func scheduleTimeNotification(title: String, waterAmount: Double, currentAim: Int) {
         
         let content = UNMutableNotificationContent()
         
         content.title = title
         content.sound = UNNotificationSound.default
         content.badge = 1
-        var identifier = "Middle Identifier"
+        var identifier = "Planned Notification"
         
-        let needToDrink = currentAim - waterAmount
+        let needToDrink = currentAim - Int(waterAmount)
         if needToDrink == 0 {
             content.body = "Отлично! Вы достигли сегодняшней цели"
         } else if needToDrink < 0 {
@@ -72,22 +84,9 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
             content.body = "Осталось совсем чуть чуть! \(needToDrink)мл до цели"
         }
         
-        switch time?.lowercased() {
-        case "middle":
-            date.hour = 15
-            date.minute = 00
-            identifier = "Middle Identifier"
-        case "end":
-            date.hour = 21
-            date.minute = 00
-            identifier = "End Identifier"
-        default:
-            date.hour = 21
-            date.minute = 00
-            identifier = "End Identifier"
-        }
         
-        let timeTrigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
+        
+        let timeTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: timeTrigger)
         
         notificationCenter.add(request) { (error) in

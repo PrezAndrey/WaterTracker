@@ -36,6 +36,7 @@ class SettingsTableViewController: UITableViewController {
 
     private func configureUI() {
         
+        
         var settings = UserSettings(dayTarget: 0, startDayInterval: 21599, weight: 0, notificationState: false)
         
         if let existingSettings = waterModel.getUserSettings() {
@@ -44,17 +45,12 @@ class SettingsTableViewController: UITableViewController {
             waterModel.saveUserSettings(settings: settings)
         }
         
-        print("CURRENT USER SETTINGS: \(settings)")
-        
-        
         setSwitchStatus(settings.notificationState ?? false)
-        
         
         currentAim.text = "\(settings.dayTarget ?? 0) ml"
         
         let newTime = UserSettings.convertInterval(interval: settings.startDayInterval ?? 21599)
         currentPeriod.text = "\(newTime)"
-        
         
         tableView.reloadData()
     }
@@ -66,6 +62,8 @@ class SettingsTableViewController: UITableViewController {
         
         if notificationSwitch.isOn == false {
             notifications.notificationCenter.removeDeliveredNotifications(withIdentifiers: ["Local Notification"])
+        } else {
+            notifications.checkAuthorization()
         }
         
         newSettings.notificationState = notificationSwitch.isOn

@@ -43,15 +43,6 @@ class ViewController: UIViewController {
         waterModel.delegate = self
         self.configureUI()
         
-        // TODO: Разобраться с целью
-        notifications.scheduleTimeNotification(title: "Alert",
-                                               time: "middle",
-                                               waterAmount: Int(waterModel.waterAmount) ?? 0,
-                                               currentAim: waterModel.getUserSettings()?.dayTarget ?? 0)
-        
-        notifications.scheduleTimeNotification(title: "Alert",
-                                               time: "end",
-                                               waterAmount: Int(waterModel.waterAmount) ?? 0, currentAim: waterModel.getUserSettings()?.dayTarget ?? 0)
     }
     
 
@@ -94,8 +85,6 @@ class ViewController: UIViewController {
     
     // Add ml function
     private func addMl(_ number: Double) {
-        notifications.checkAuthorization()
-
         waterModel.addWater(number)
         print("Water amount: \(waterModel.waterAmount)")
     }

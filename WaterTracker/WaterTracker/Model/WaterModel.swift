@@ -39,6 +39,7 @@ class WaterModel: WaterModelProtocol {
     let calculator = WaterCalculator()
     var userSettings = UserSettings()
     var notifications = Notifications()
+    var dateComponents = DateComponents()
     
     var records: [WaterRecord] {
         
@@ -55,9 +56,9 @@ class WaterModel: WaterModelProtocol {
             
             newInterval = interval
         }
-        
-        let fromDate = userSettings.period(for: Date(), interval: newInterval.startDayInterval ?? 21599).from
-        let toDate = userSettings.period(for: Date(), interval: newInterval.startDayInterval ?? 21599).to
+        let date = userSettings.period(for: Date(), interval: newInterval.startDayInterval ?? 21599)
+        let fromDate = date.from
+        let toDate = date.to
         let currentWaterAmount = calculator.sumOfWater(currentWaterArray, from: fromDate, to: toDate)
         print("###### I AM WORKING ####### WATER AMOUNT IS: \(currentWaterAmount), START DATE: \(fromDate), FINISH DATE: \(toDate), DATE: \(Date())")
         
@@ -96,6 +97,9 @@ class WaterModel: WaterModelProtocol {
         healthKitAdapter.writeWater(amount: amount)
         waterStore.addRecord(newRecord)
         delegate?.waterAmountDidUpdate(self)
+        
+        notificationRequest()
+        
     }
     
     
@@ -135,5 +139,29 @@ class WaterModel: WaterModelProtocol {
         
         waterStore.saveSettings(newSettings)
        
+    }
+    
+    
+    func notificationRequest() {
+        
+        var settings = getUserSettings()
+        let calendar = Calendar.current
+        let currentHour = calendar.dateComponents([.hour], from: Date())
+        notifications.checkAuthorization()
+        
+        switch settings?.notificationState {
+        case true:
+
+            if (14 <= currentHour.hour! && currentHour.hour! <= 16) || (19 <= currentHour.hour! && currentHour.hour! <= 23){
+                print("Day Notification Works")
+                notifications.scheduleTimeNotification(title: "Плановое уведомление", waterAmount: waterAmount, currentAim: settings?.dayTarget ?? 2100)
+            }
+        case false:
+            print("Present Alert to switch on Notifications")
+        default:
+            print("setting are nil")
+        }
+       
+        
     }
 }
