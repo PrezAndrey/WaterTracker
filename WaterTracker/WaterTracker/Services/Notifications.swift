@@ -8,6 +8,13 @@
 import UIKit
 import UserNotifications
 
+
+enum NotificationState {
+    case deniedInApp
+    case deniedInSettings
+    case auth
+}
+
 class Notifications: NSObject, UNUserNotificationCenterDelegate {
     
 // MARK: Properties
@@ -15,8 +22,6 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
     let notificationCenter = UNUserNotificationCenter.current()
     
     private var date = DateComponents()
-    
-    static var notificationSettings: UNNotificationSettings?
     
     var askForAtuhorization: Int = 0
     
@@ -40,29 +45,30 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
     private func getNotificationSettings() {
     
         notificationCenter.getNotificationSettings { (settings) in
-            Notifications.notificationSettings = settings
-            print("Notification settings: \(String(describing: Notifications.notificationSettings))")
+    
+            print("Notification settings: \(settings))")
         }
     }
     
     
-    func checkAuthorization() -> Bool {
+    func checkAuthorization() -> NotificationState {
         
         
         notificationCenter.getNotificationSettings { (settings) in
             if settings.authorizationStatus == .notDetermined {
                 self.requestNotification()
+                self.askForAtuhorization = 0
             } else if settings.authorizationStatus == .denied {
                 self.askForAtuhorization += 1
             }
         }
         
-        if askForAtuhorization > 10 {
+        if askForAtuhorization >= 20 {
             print("------------- SHOW ALERT --------------")
             askForAtuhorization = 0
-            return true
+            return .deniedInSettings
         }
-        return false
+        return .auth
     }
     
     

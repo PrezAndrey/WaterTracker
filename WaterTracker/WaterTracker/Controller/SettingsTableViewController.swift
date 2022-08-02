@@ -36,7 +36,6 @@ class SettingsTableViewController: UITableViewController {
 
     private func configureUI() {
         
-        
         var settings = UserSettings(dayTarget: 0, startDayInterval: 21599, weight: 0, notificationState: false)
         
         if let existingSettings = waterModel.getUserSettings() {

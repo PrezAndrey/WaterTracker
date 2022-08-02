@@ -13,7 +13,7 @@ import UIKit
 class ViewController: UIViewController {
     
     private var waterModel: WaterModelProtocol = WaterModel()
-    private var notifications = Notifications()
+    
     
     
     
@@ -76,7 +76,6 @@ class ViewController: UIViewController {
     
     @IBAction func didDelete(_ sender: Any) {
         
-        notifications.scheduleNotificationTest(notficationType: "TEST", waterAmount: waterModel.waterAmount)
         
         waterModel.deleteLast()
         configureUI()
@@ -85,9 +84,22 @@ class ViewController: UIViewController {
     
     // Add ml function
     private func addMl(_ number: Double) {
-        waterModel.addWater(number)
+        let notState = waterModel.addWater(number)
         print("Water amount: \(waterModel.waterAmount)")
+        
+        switch notState {
+        case .deniedInApp:
+            deniedInAppAlert()
+            print("Denied in appSettings")
+        case .deniedInSettings:
+            deniedInSettingsAlert()
+            print("Denied in settings")
+        case .auth:
+            print("authorized")
+            
+        }
     }
+        
     
     
     // Update water amount
@@ -155,6 +167,41 @@ extension ViewController {
         if newWaterAmount >= Double(target) && currentWaterAmount < Double(target) {
             showGetTargetAlert()
         }
+    }
+    
+    
+    // ALERT: Notifications denied in app
+    
+    private func deniedInAppAlert() {
+        let title = "Уведомления выключены в настройках приложения"
+        let message = "Если вы хотите получать уведомления, перейдите в настройки приложения"
+        let alertController = UIAlertController(title: title,
+                                                message: message,
+                                                preferredStyle: .alert)
+        let moveToSettings = UIAlertAction(title: "Перейти", style: .default) { (action) in
+            
+            self.performSegue(withIdentifier: "showSettings", sender: self)
+        }
+        let snooze = UIAlertAction(title: "Отложить", style: .cancel)
+        
+        alertController.addAction(moveToSettings)
+        alertController.addAction(snooze)
+        self.present(alertController, animated: true)
+    }
+    
+    
+    // ALERT: Notifications denied in settings
+    private func deniedInSettingsAlert() {
+        let title = "Уведомления выключены в настройках телефона"
+        let message = "Если вы хотите получать уведомления, перейдите: Настройки -> Уведомления -> WaterTracker"
+        let alertController = UIAlertController(title: title,
+                                                message: message,
+                                                preferredStyle: .alert)
+        let moveToSettings = UIAlertAction(title: "Ок", style: .cancel)
+        
+        
+        alertController.addAction(moveToSettings)
+        self.present(alertController, animated: true)
     }
     
     private func checkTheTarget() {

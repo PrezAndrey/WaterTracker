@@ -20,9 +20,10 @@ protocol WaterModelProtocol {
     
     var waterAmount: Double { get }
     var delegate: WaterModelDelegate? { get set }
+//    var notificationState: NotificationState { get set }
 
     func deleteLast()
-    func addWater(_ amount: Double)
+    func addWater(_ amount: Double) -> NotificationState
     func getUserSettings() -> UserSettings?
 }
 
@@ -40,6 +41,10 @@ class WaterModel: WaterModelProtocol {
     var userSettings = UserSettings()
     var notifications = Notifications()
     var dateComponents = DateComponents()
+//    var notificationState: NotificationState = .auth
+    
+    private var requestNumber = 0
+    
     
     var records: [WaterRecord] {
         
@@ -92,14 +97,13 @@ class WaterModel: WaterModelProtocol {
     }
     
     
-    func addWater(_ amount: Double) {
+    func addWater(_ amount: Double) -> NotificationState {
         let newRecord = WaterRecord(waterAmount: amount, date: Date())
         healthKitAdapter.writeWater(amount: amount)
         waterStore.addRecord(newRecord)
         delegate?.waterAmountDidUpdate(self)
         
-        notificationRequest()
-        
+        return notificationRequest()
     }
     
     
@@ -140,28 +144,47 @@ class WaterModel: WaterModelProtocol {
         waterStore.saveSettings(newSettings)
        
     }
+}
+
+
+
+extension WaterModel {
     
-    
-    func notificationRequest() {
+    func notificationRequest() -> NotificationState {
         
         var settings = getUserSettings()
         let calendar = Calendar.current
         let currentHour = calendar.dateComponents([.hour], from: Date())
-        notifications.checkAuthorization()
+        var mainState = notifications.checkAuthorization()
         
         switch settings?.notificationState {
         case true:
-
             if (14 <= currentHour.hour! && currentHour.hour! <= 16) || (19 <= currentHour.hour! && currentHour.hour! <= 23){
                 print("Day Notification Works")
                 notifications.scheduleTimeNotification(title: "Плановое уведомление", waterAmount: waterAmount, currentAim: settings?.dayTarget ?? 2100)
             }
         case false:
-            print("Present Alert to switch on Notifications")
+            requestNumber += 1
         default:
             print("setting are nil")
         }
-       
+        
+        
+        print("Main State: \(mainState)")
+        
+        if requestNumber >= 25 {
+            mainState = .deniedInApp
+            requestNumber = 0
+        }
+//        if requestNumber >= 26 && mainState != .deniedInSettings {
+//            mainState = .deniedInApp
+//            requestNumber = 0
+//        } else if requestNumber >= 26 && mainState == .deniedInSettings {
+//            mainState = .bothDenied
+//            requestNumber = 0
+//        }
+        
+        return mainState
         
     }
 }
