@@ -17,6 +17,7 @@ class SettingsTableViewController: UITableViewController {
     
     private let notifications = Notifications()
     private let waterModel = WaterModel()
+    private let dateService = DateService()
     
     
     override func viewDidLoad() {
@@ -49,7 +50,7 @@ class SettingsTableViewController: UITableViewController {
         
         currentAim.text = "\(settings.dayTarget ?? 0) ml"
         
-        let newTime = UserSettings.convertInterval(interval: settings.startDayInterval ?? 21599)
+        let newTime = dateService.intervalToDateStr(interval: settings.startDayInterval ?? 21599)
         currentPeriod.text = "\(newTime)"
         
         tableView.reloadData()

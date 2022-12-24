@@ -33,72 +33,63 @@ struct UserSettings: Codable, Equatable {
 
 
 
-// MARK: Converting and Calculating date
+// MARK: Calculating date
 
 extension UserSettings {
     
-    static let dateFormatter = DateFormatter()
+    static let dateService = DateFormatter()
     
-    func period(for date: Date, interval: TimeInterval=21599) -> (from: Date, to: Date) {
-        
-        let calendar = Calendar.current
-        let start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: date)!
-        var startOfThePeriod = Date(timeInterval: interval, since: start)
-        if startOfThePeriod > date {
-            startOfThePeriod.addTimeInterval(-24 * 60 * 60)
-        }
-        let endOfThePeriod = Date(timeInterval: 24 * 60 * 60, since: startOfThePeriod)
-        
-        return (startOfThePeriod, endOfThePeriod)
-    }
-    
-    
-    static func calculateStartDayInterval(setDate date: Date) -> Double {
-        var newDate = date
-        let calendar = Calendar.current
-        if date > Date() {
-            newDate = date.addingTimeInterval(-24 * 60 * 60)
-        }
-        let start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: newDate)!
-        let timeInterval = newDate.timeIntervalSince(start)
-        
-        return timeInterval
-    }
+//    func period(for date: Date, interval: TimeInterval=21599) -> (from: Date, to: Date) {
+//        
+//        let calendar = Calendar.current
+//        let start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: date)!
+//        var startOfThePeriod = Date(timeInterval: interval, since: start)
+//        if startOfThePeriod > date {
+//            startOfThePeriod.addTimeInterval(-24 * 60 * 60)
+//        }
+//        let endOfThePeriod = Date(timeInterval: 24 * 60 * 60, since: startOfThePeriod)
+//        
+//        return (startOfThePeriod, endOfThePeriod)
+//    }
     
     
-    static func convertInterval(interval: TimeInterval, date: Date = Date()) -> String {
-        
-        let calendar = Calendar.current
-        var start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: date)!
-        start.addTimeInterval(interval)
-        if start > date {
-            start = start.addingTimeInterval(-24 * 60 * 60)
-        }
-        let result = convertDateToString(start)
-        
-        return result
-    }
+//    func calculateStartDayInterval(setDate date: Date) -> Double {
+//        var newDate = date
+//        let calendar = Calendar.current
+//        if date > Date() {
+//            newDate = date.addingTimeInterval(-24 * 60 * 60)
+//        }
+//        let start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: newDate)!
+//        let timeInterval = newDate.timeIntervalSince(start)
+//        
+//        return timeInterval
+//    }
     
     
-    static func convertDateToString(_ date: Date) -> String {
-        dateFormatter.dateFormat = "HH:mm"
-        let convertedDate = dateFormatter.string(from: date)
-        
-        return convertedDate
-    }
-    
-    static func convertStringToDate(_ string: String) -> Date {
-        guard let date = dateFormatter.date(from: string) else { return Date() }
-        
-        return date
-    }
-    
-    static func convertDateToStringForSection(_ date: Date) -> String {
-        dateFormatter.dateFormat = "EEEE, MMMM d"
-        let convertedDate = dateFormatter.string(from: date)
-        
-        return convertedDate
-    }
+//    static func intervalToDate(interval: TimeInterval, date: Date = Date()) -> Date {
+//        
+//        let calendar = Calendar.current
+//        var start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: date)!
+//        start.addTimeInterval(interval)
+//        if start > date {
+//            start = start.addingTimeInterval(-24 * 60 * 60)
+//        }
+//        let result = start
+//        
+//        return result
+//    }
     
     
+//    static func convertDateToString(_ date: Date) -> String {
+//        dateFormatter.dateFormat = "HH:mm"
+//        let convertedDate = dateFormatter.string(from: date)
+//        
+//        return convertedDate
+//    }
+    
+//    static func convertStringToDate(_ string: String) -> Date {
+//        guard let date = dateFormatter.date(from: string) else { return Date() }
+//
+//        return date
+//    }
 }

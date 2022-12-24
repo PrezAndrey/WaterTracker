@@ -11,14 +11,13 @@ class StatsViewController: UIViewController {
     
     private var waterModel = WaterModel()
     private var waterStore = WaterStore()
+    private let dateService = DateService()
     private var newAmount = 0
     private var staticRecords = [WaterRecord]()
     private let dateFormatter = DateFormatter()
     private var dateDictionary = [String: Int]()
     
-    
     @IBOutlet weak var tableView: UITableView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +25,9 @@ class StatsViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         reloadRecords()
     }
-    
     
     private func reloadRecords() {
         staticRecords = waterStore.getRecords()
@@ -38,9 +35,7 @@ class StatsViewController: UIViewController {
         tableView.reloadData()
     }
     
-    
     // MARK: Prepare for Segue
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openCustomVolumeSegue" {
             if let customAmountVC = segue.destination as? CustomAmountVC {
@@ -60,13 +55,13 @@ class StatsViewController: UIViewController {
         var dateDict = [String: Int]()
         
         for record in data {
-            var stringDate = convertDateToStringForSection(record.date)
+            var stringDate = dateService.convertDateToStringForSection(record.date)
             dateArray.append(stringDate)
         }
         print("Array of dates: \(dateArray)")
         
         for date in dateArray {
-            var isInDict = dateDict.keys.contains{ $0 == date}
+            var isInDict = dateDict.keys.contains{ $0 == date }
             if isInDict {
                 dateDict[date]! += 1
             } else {
@@ -76,22 +71,18 @@ class StatsViewController: UIViewController {
         return dateDict
     }
     
-    private func convertDateToStringForSection(_ date: Date) -> String {
-        dateFormatter.dateFormat = "EEEE, d MMMM"
-        let convertedDate = dateFormatter.string(from: date)
-        
-        return convertedDate
-    }
-    
+//    private func convertDateToStringForSection(_ date: Date) -> String {
+//        dateFormatter.dateFormat = "EEEE, d MMMM"
+//        let convertedDate = dateFormatter.string(from: date)
+//        
+//        return convertedDate
+//    }
 }
 
 
-
 // MARK: TableView Delegate
-
 extension StatsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         self.performSegue(withIdentifier: "openCustomVolumeSegue", sender: self)
     }
     
@@ -101,11 +92,8 @@ extension StatsViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
         if editingStyle == .delete {
-            
             let recordToDelete = staticRecords.remove(at: indexPath.row)
-            
             waterModel.deleteRecord(record: recordToDelete)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
@@ -126,19 +114,18 @@ extension StatsViewController: UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: StatisticTableViewCell.self), for: indexPath) as? StatisticTableViewCell {
             let info = staticRecords[indexPath.row]
             cell.configureWith(record: info)
-            
             return cell
         }
         
         return UITableViewCell()
     }
     
-    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var keyName = [String]()
         for date in dateDictionary.keys {
             keyName.append(date)
         }
+        
         return keyName[section]
     }
 }

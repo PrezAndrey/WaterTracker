@@ -40,7 +40,8 @@ class WaterModel: WaterModelProtocol {
     let calculator = WaterCalculator()
     var userSettings = UserSettings()
     var notifications = Notifications()
-    var dateComponents = DateComponents()
+    let dateService = DateService()
+
 //    var notificationState: NotificationState = .auth
     
     private var requestNumber = 0
@@ -61,7 +62,7 @@ class WaterModel: WaterModelProtocol {
             
             newInterval = interval
         }
-        let date = userSettings.period(for: Date(), interval: newInterval.startDayInterval ?? 21599)
+        let date = dateService.period(for: Date(), interval: newInterval.startDayInterval ?? 21599)
         let fromDate = date.from
         let toDate = date.to
         let currentWaterAmount = calculator.sumOfWater(currentWaterArray, from: fromDate, to: toDate)

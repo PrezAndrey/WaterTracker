@@ -23,6 +23,7 @@
 		5504F21C2807F013001CC40B /* WaterCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5504F21B2807F013001CC40B /* WaterCalculator.swift */; };
 		5504F21E2808196F001CC40B /* CustomAmountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5504F21D2808196F001CC40B /* CustomAmountVC.swift */; };
 		5504F226280838F0001CC40B /* WaterCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5504F225280838F0001CC40B /* WaterCalculatorTests.swift */; };
+		554F8C2B295719340072F3ED /* DateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F8C2A295719340072F3ED /* DateService.swift */; };
 		55678DEF28390B3B00E7B1EC /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55678DEE28390B3B00E7B1EC /* SettingCell.swift */; };
 		559222C42837908D00D16543 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559222C32837908D00D16543 /* SettingsTableViewController.swift */; };
 		55A56C1027DB321400296FD0 /* HealthKitAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A56C0F27DB321400296FD0 /* HealthKitAdapter.swift */; };
@@ -63,6 +64,7 @@
 		5504F21D2808196F001CC40B /* CustomAmountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAmountVC.swift; sourceTree = "<group>"; };
 		5504F223280838F0001CC40B /* WaterCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WaterCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5504F225280838F0001CC40B /* WaterCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterCalculatorTests.swift; sourceTree = "<group>"; };
+		554F8C2A295719340072F3ED /* DateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateService.swift; sourceTree = "<group>"; };
 		55678DEE28390B3B00E7B1EC /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		559222C32837908D00D16543 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = WaterTracker/Controller/SettingsTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		55A56C0F27DB321400296FD0 /* HealthKitAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAdapter.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				55ABD97428861590002C2B67 /* Notifications.swift */,
+				554F8C2A295719340072F3ED /* DateService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				55B97451280D61600069AEA2 /* StatisticTableViewCell.swift in Sources */,
 				55678DEF28390B3B00E7B1EC /* SettingCell.swift in Sources */,
 				5504F21E2808196F001CC40B /* CustomAmountVC.swift in Sources */,
+				554F8C2B295719340072F3ED /* DateService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
