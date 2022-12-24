@@ -23,52 +23,35 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
     
     private var date = DateComponents()
     
-    var askForAtuhorization: Int = 0
     
     
 // MARK: Functions
     
     private func requestNotification() {
-        
-        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
-            
+        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { [self] (granted, error) in
             print("Permission granted: \(granted)")
             print("Error: \(String(describing: error))")
-            
             guard granted else { return }
-            
-            self.getNotificationSettings()
         }
     }
-    
-    
-    private func getNotificationSettings() {
-    
-        notificationCenter.getNotificationSettings { (settings) in
-    
-            print("Notification settings: \(settings))")
-        }
-    }
-    
     
     func checkAuthorization() -> NotificationState {
-        
-        
+        var notificationStatus: NotificationState = .deniedInSettings
         notificationCenter.getNotificationSettings { (settings) in
-            if settings.authorizationStatus == .notDetermined {
+            switch settings.authorizationStatus {
+            case .authorized:
+                notificationStatus = .auth
+            case .denied:
+                notificationStatus = .deniedInApp
+            case .notDetermined:
                 self.requestNotification()
-                self.askForAtuhorization = 0
-            } else if settings.authorizationStatus == .denied {
-                self.askForAtuhorization += 1
+            default:
+                notificationStatus = .deniedInSettings
             }
         }
         
-        if askForAtuhorization >= 20 {
-            print("------------- SHOW ALERT --------------")
-            askForAtuhorization = 0
-            return .deniedInSettings
-        }
-        return .auth
+    
+        return notificationStatus
     }
     
     
@@ -79,7 +62,7 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
         content.title = title
         content.sound = UNNotificationSound.default
         content.badge = 1
-        var identifier = "Planned Notification"
+        var identifier = "Reminder Notification"
         
         let needToDrink = currentAim - Int(waterAmount)
         if needToDrink == 0 {

@@ -81,8 +81,6 @@ extension UserSettings {
     
     
     static func convertDateToString(_ date: Date) -> String {
-        
-        
         dateFormatter.dateFormat = "HH:mm"
         let convertedDate = dateFormatter.string(from: date)
         
@@ -90,11 +88,16 @@ extension UserSettings {
     }
     
     static func convertStringToDate(_ string: String) -> Date {
-        
-        
         guard let date = dateFormatter.date(from: string) else { return Date() }
         
         return date
+    }
+    
+    static func convertDateToStringForSection(_ date: Date) -> String {
+        dateFormatter.dateFormat = "EEEE, MMMM d"
+        let convertedDate = dateFormatter.string(from: date)
+        
+        return convertedDate
     }
     
     

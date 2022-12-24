@@ -129,7 +129,7 @@
 		1B99E538277263EE00291801 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				55BE521D27DE7026006DFFC0 /* Propeerties */,
+				55BE521D27DE7026006DFFC0 /* Properties */,
 				55A56C0F27DB321400296FD0 /* HealthKitAdapter.swift */,
 				1B99E53D277267CB00291801 /* WaterStore.swift */,
 				1B9A5C0127BC3F8F008753D0 /* WaterModel.swift */,
@@ -212,13 +212,13 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		55BE521D27DE7026006DFFC0 /* Propeerties */ = {
+		55BE521D27DE7026006DFFC0 /* Properties */ = {
 			isa = PBXGroup;
 			children = (
 				1BBF3B6C27D922F200D0BC2C /* UserSettings.swift */,
 				1BBF3B6927D921DC00D0BC2C /* WaterRecord.swift */,
 			);
-			path = Propeerties;
+			path = Properties;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

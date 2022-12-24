@@ -13,14 +13,15 @@ class SettingsTableViewController: UITableViewController {
     
     @IBOutlet weak var currentPeriod: UILabel!
     @IBOutlet weak var currentAim: UILabel!
-    @IBOutlet weak var notificationSwitch: UISwitch!
+    
     
     private let notifications = Notifications()
     private let waterModel = WaterModel()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        notificationSwitch.addTarget(self, action: #selector(switchNotification), for: .valueChanged)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,7 +45,7 @@ class SettingsTableViewController: UITableViewController {
             waterModel.saveUserSettings(settings: settings)
         }
         
-        setSwitchStatus(settings.notificationState ?? false)
+        
         
         currentAim.text = "\(settings.dayTarget ?? 0) ml"
         
@@ -59,21 +60,9 @@ class SettingsTableViewController: UITableViewController {
         
         guard var newSettings = waterModel.getUserSettings() else { return }
         
-        if notificationSwitch.isOn == false {
-            notifications.notificationCenter.removeDeliveredNotifications(withIdentifiers: ["Local Notification"])
-        } else {
-            notifications.checkAuthorization()
-        }
         
-        newSettings.notificationState = notificationSwitch.isOn
         waterModel.saveUserSettings(settings: newSettings)
     }
-    
-    
-    func setSwitchStatus(_ status: Bool) {
-        notificationSwitch.isOn = status
-    }
-    
 }
 
 
