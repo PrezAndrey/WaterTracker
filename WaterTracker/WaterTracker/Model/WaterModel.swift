@@ -59,7 +59,6 @@ class WaterModel: WaterModelProtocol {
         var newInterval = userSettings
         
         if let interval = getUserSettings() {
-            
             newInterval = interval
         }
         let date = dateService.period(for: Date(), interval: newInterval.startDayInterval ?? 21599)
@@ -72,7 +71,6 @@ class WaterModel: WaterModelProtocol {
     }
     
     init() {
-        
         healthKitAdapter.authorizeIfNeeded()
     }
     
@@ -80,7 +78,6 @@ class WaterModel: WaterModelProtocol {
     // MARK: Functions
     
     func deleteLast() {
-        
         guard let lastRecord = records.last else { return }
         deleteRecord(record: lastRecord)
     }

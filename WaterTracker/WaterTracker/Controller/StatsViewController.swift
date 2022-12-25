@@ -9,12 +9,13 @@ import UIKit
 
 class StatsViewController: UIViewController {
     
-    private var waterModel = WaterModel()
-    private var waterStore = WaterStore()
+    private let waterModel = WaterModel()
+    private let waterStore = WaterStore()
     private let dateService = DateService()
+    private let dateFormatter = DateFormatter()
+    
     private var newAmount = 0
     private var staticRecords = [WaterRecord]()
-    private let dateFormatter = DateFormatter()
     private var dateDictionary = [String: Int]()
     
     @IBOutlet weak var tableView: UITableView!
@@ -53,30 +54,23 @@ class StatsViewController: UIViewController {
     private func getDictionaryForSections(_ data: [WaterRecord]) -> [String: Int] {
         var dateArray = [String]()
         var dateDict = [String: Int]()
-        
         for record in data {
-            var stringDate = dateService.convertDateToStringForSection(record.date)
+            let stringDate = dateService.convertDateToStringForSection(record.date)
             dateArray.append(stringDate)
         }
         print("Array of dates: \(dateArray)")
         
         for date in dateArray {
-            var isInDict = dateDict.keys.contains{ $0 == date }
+            let isInDict = dateDict.keys.contains{ $0 == date }
             if isInDict {
                 dateDict[date]! += 1
             } else {
                 dateDict.updateValue(1, forKey: date)
             }
         }
+        
         return dateDict
     }
-    
-//    private func convertDateToStringForSection(_ date: Date) -> String {
-//        dateFormatter.dateFormat = "EEEE, d MMMM"
-//        let convertedDate = dateFormatter.string(from: date)
-//        
-//        return convertedDate
-//    }
 }
 
 
@@ -91,7 +85,9 @@ extension StatsViewController: UITableViewDelegate {
         return dateDictionary.count
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let recordToDelete = staticRecords.remove(at: indexPath.row)
             waterModel.deleteRecord(record: recordToDelete)
@@ -103,7 +99,6 @@ extension StatsViewController: UITableViewDelegate {
 
 
 // MARK: TableView DataSource
-
 extension StatsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
