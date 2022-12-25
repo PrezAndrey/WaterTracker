@@ -91,7 +91,7 @@ extension StatsViewController: UITableViewDelegate, UITableViewDataSource {
                    commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let recordToDelete = staticRecords.remove(at: indexPath.row)
+            let recordToDelete = rowsInSections[indexPath.section].remove(at: indexPath.row)
             waterModel.deleteRecord(record: recordToDelete)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
