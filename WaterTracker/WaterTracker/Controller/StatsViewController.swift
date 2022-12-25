@@ -14,18 +14,11 @@ class StatsViewController: UIViewController {
     private let dateService = DateService()
     private let dateFormatter = DateFormatter()
     
-    private var newAmount = 0
     private var staticRecords = [WaterRecord]()
-    private var dateDictionary = [String: Int]()
     private var dateArray = [String]()
+    private var rowsInSections = [[WaterRecord]]()
     
     @IBOutlet weak var tableView: UITableView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         reloadRecords()
@@ -33,7 +26,8 @@ class StatsViewController: UIViewController {
     
     private func reloadRecords() {
         staticRecords = waterStore.getRecords()
-        dateArray = getDictionaryForSections(staticRecords)
+        dateArray = getSectionNamesArray(staticRecords)
+        rowsInSections = getArrayForSections(staticRecords)
         tableView.reloadData()
     }
     
@@ -52,67 +46,39 @@ class StatsViewController: UIViewController {
         }
     }
     
-    private func getDictionaryForSections(_ data: [WaterRecord]) -> [String] {
-//        var dateDict = [Date: Int]()
-        var dateArray = data.map({ $0.date }).sorted()
+    private func getArrayForSections(_ data: [WaterRecord]) -> [[WaterRecord]] {
+        var arrayForSections = [[WaterRecord]]()
+        let sections = getSectionNamesArray(data)
+        for _ in 1...sections.count {
+            arrayForSections.append([WaterRecord]())
+        }
+        for date in data {
+            let stringDate = dateService.convertDateToStringForSection(date.date)
+            for index in sections.indices {
+                if stringDate == sections[index] {
+                    arrayForSections[index].append(date)
+                }
+            }
+        }
+        return arrayForSections
+    }
+    
+    private func getSectionNamesArray(_ data: [WaterRecord]) -> [String] {
+        let dateArray = data.map({ $0.date }).sorted()
         var tempArray = [String]()
         for date in dateArray {
             let dateStr = dateService.convertDateToStringForSection(date)
-            if !tempArray.contains{ $0 == dateStr } {
+            if !tempArray.contains(where: { $0 == dateStr }) {
                 tempArray.append(dateStr)
             }
         }
-        
-        
-//        for date in dateArray {
-//            let stringDate = dateService.convertDateToStringForSection(date)
-//            let isInDict = dateDict.keys.contains{ $0 == date }
-//            if isInDict {
-//                dateDict[date]! += 1
-//            } else {
-//                dateDict.updateValue(1, forKey: date)
-//            }
-//        }
-//        dateArray = dateDict.keys.map({ $0 }).sorted()
-//        print("DateArray is \(dateArray)")
-//        print("DateDict is \(dateDict)")
-//        let resultArray = dateArray.map({ dateService.convertDateToStringForSection($0) })
-//        print(resultArray)
         return tempArray
-        
-        
-        
-//        var dateArray = [Date]()
-//        var dateDict = [String: Int]()
-//
-//        for record in data {
-////            let stringDate = dateService.convertDateToStringForSection(record.date)
-////            dateArray.append(stringDate)
-//            dateArray.append(record.date)
-//        }
-//        dateArray = dateArray.sorted()
-//        print("Array of dates: \(dateArray)")
-//
-//
-//
-//        for date in dateArray {
-//            let date = dateService.convertDateToStringForSection(date)
-//
-//            let isInDict = dateDict.keys.contains{ $0 == date }
-//            if isInDict {
-//                dateDict[date]! += 1
-//            } else {
-//                dateDict.updateValue(1, forKey: date)
-//            }
-//        }
-//
-//        return dateDict
     }
 }
 
 
-// MARK: TableView Delegate
-extension StatsViewController: UITableViewDelegate {
+// MARK: TableView Delegate&DataSource
+extension StatsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "openCustomVolumeSegue", sender: self)
     }
@@ -130,35 +96,21 @@ extension StatsViewController: UITableViewDelegate {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-}
-
-
-
-// MARK: TableView DataSource
-extension StatsViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return staticRecords.count
+        return rowsInSections[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: StatisticTableViewCell.self), for: indexPath) as? StatisticTableViewCell {
-            let info = staticRecords[indexPath.row]
+            let info = rowsInSections[indexPath.section][indexPath.row]
             cell.configureWith(record: info)
             return cell
         }
-        
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        var keyName = [String]()
-//        for date in dateDictionary.keys {
-//            keyName.append(date)
-//        }
-//        print("Number of elements in string \(keyName[2].count)")
-//        return keyName[section]
         return dateArray[section]
     }
 }
-

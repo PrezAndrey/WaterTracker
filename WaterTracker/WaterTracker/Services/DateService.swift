@@ -32,7 +32,6 @@ class DateService {
     }
     
     func period(for date: Date, interval: TimeInterval=21599) -> (from: Date, to: Date) {
-        
         let calendar = Calendar.current
         let start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: date)!
         var startOfThePeriod = Date(timeInterval: interval, since: start)
@@ -57,7 +56,6 @@ class DateService {
     }
     
     func intervalToDateStr(interval: TimeInterval, date: Date = Date()) -> String {
-        
         let calendar = Calendar.current
         var start = calendar.date(bySettingHour: 0, minute: 00, second: 00, of: date)!
         start.addTimeInterval(interval)
