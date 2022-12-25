@@ -57,7 +57,6 @@ class WaterModel: WaterModelProtocol {
         
         let currentWaterArray = records
         var newInterval = userSettings
-        
         if let interval = getUserSettings() {
             newInterval = interval
         }

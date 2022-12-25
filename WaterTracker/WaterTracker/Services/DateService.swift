@@ -9,7 +9,7 @@ import UIKit
 
 class DateService {
     
-    var dateFormatter = DateFormatter()
+    let dateFormatter = DateFormatter()
     
     func convertDateToStringForSection(_ date: Date) -> String {
         dateFormatter.dateFormat = "EEEE, d MMMM"

@@ -17,6 +17,7 @@ class StatsViewController: UIViewController {
     private var newAmount = 0
     private var staticRecords = [WaterRecord]()
     private var dateDictionary = [String: Int]()
+    private var dateArray = [String]()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -32,7 +33,7 @@ class StatsViewController: UIViewController {
     
     private func reloadRecords() {
         staticRecords = waterStore.getRecords()
-        dateDictionary = getDictionaryForSections(staticRecords)
+        dateArray = getDictionaryForSections(staticRecords)
         tableView.reloadData()
     }
     
@@ -51,25 +52,61 @@ class StatsViewController: UIViewController {
         }
     }
     
-    private func getDictionaryForSections(_ data: [WaterRecord]) -> [String: Int] {
-        var dateArray = [String]()
-        var dateDict = [String: Int]()
-        for record in data {
-            let stringDate = dateService.convertDateToStringForSection(record.date)
-            dateArray.append(stringDate)
-        }
-        print("Array of dates: \(dateArray)")
-        
+    private func getDictionaryForSections(_ data: [WaterRecord]) -> [String] {
+//        var dateDict = [Date: Int]()
+        var dateArray = data.map({ $0.date }).sorted()
+        var tempArray = [String]()
         for date in dateArray {
-            let isInDict = dateDict.keys.contains{ $0 == date }
-            if isInDict {
-                dateDict[date]! += 1
-            } else {
-                dateDict.updateValue(1, forKey: date)
+            let dateStr = dateService.convertDateToStringForSection(date)
+            if !tempArray.contains{ $0 == dateStr } {
+                tempArray.append(dateStr)
             }
         }
         
-        return dateDict
+        
+//        for date in dateArray {
+//            let stringDate = dateService.convertDateToStringForSection(date)
+//            let isInDict = dateDict.keys.contains{ $0 == date }
+//            if isInDict {
+//                dateDict[date]! += 1
+//            } else {
+//                dateDict.updateValue(1, forKey: date)
+//            }
+//        }
+//        dateArray = dateDict.keys.map({ $0 }).sorted()
+//        print("DateArray is \(dateArray)")
+//        print("DateDict is \(dateDict)")
+//        let resultArray = dateArray.map({ dateService.convertDateToStringForSection($0) })
+//        print(resultArray)
+        return tempArray
+        
+        
+        
+//        var dateArray = [Date]()
+//        var dateDict = [String: Int]()
+//
+//        for record in data {
+////            let stringDate = dateService.convertDateToStringForSection(record.date)
+////            dateArray.append(stringDate)
+//            dateArray.append(record.date)
+//        }
+//        dateArray = dateArray.sorted()
+//        print("Array of dates: \(dateArray)")
+//
+//
+//
+//        for date in dateArray {
+//            let date = dateService.convertDateToStringForSection(date)
+//
+//            let isInDict = dateDict.keys.contains{ $0 == date }
+//            if isInDict {
+//                dateDict[date]! += 1
+//            } else {
+//                dateDict.updateValue(1, forKey: date)
+//            }
+//        }
+//
+//        return dateDict
     }
 }
 
@@ -81,8 +118,7 @@ extension StatsViewController: UITableViewDelegate {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        
-        return dateDictionary.count
+        return dateArray.count
     }
     
     func tableView(_ tableView: UITableView,
@@ -116,12 +152,13 @@ extension StatsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        var keyName = [String]()
-        for date in dateDictionary.keys {
-            keyName.append(date)
-        }
-        
-        return keyName[section]
+//        var keyName = [String]()
+//        for date in dateDictionary.keys {
+//            keyName.append(date)
+//        }
+//        print("Number of elements in string \(keyName[2].count)")
+//        return keyName[section]
+        return dateArray[section]
     }
 }
 
