@@ -18,7 +18,7 @@ class NotificationViewController: UIViewController {
     }
     
     @IBAction func askForAuthorization(_ sender: Any) {
-//        notifications.
+        notifications.checkAuthorization()
     }
     
 }

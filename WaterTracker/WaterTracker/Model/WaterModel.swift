@@ -166,6 +166,7 @@ extension WaterModel {
             print("settings are nil")
         }
         
+        
         print("Main State: \(mainState)")
         
         if requestNumber >= 25 {

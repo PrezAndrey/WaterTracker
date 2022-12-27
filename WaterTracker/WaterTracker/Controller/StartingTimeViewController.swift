@@ -26,6 +26,7 @@ class StartingTimeViewController: UIViewController {
     @IBAction func didSetTime(_ sender: Any) {
         print(datePicker.date)
         updateInterval(time: datePicker.date)
+        self.dismiss(animated: true)
     }
 }
 
