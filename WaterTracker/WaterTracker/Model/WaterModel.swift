@@ -70,7 +70,7 @@ class WaterModel: WaterModelProtocol {
     }
     
     init() {
-        healthKitAdapter.authorizeIfNeeded()
+        //healthKitAdapter.authorizeIfNeeded()
     }
     
     
@@ -163,9 +163,8 @@ extension WaterModel {
         case false:
             requestNumber += 1
         default:
-            print("setting are nil")
+            print("settings are nil")
         }
-        
         
         print("Main State: \(mainState)")
         

@@ -25,7 +25,6 @@ class ViewController: UIViewController {
         }
     }
     
-    
     // MARK: Outlets
     @IBOutlet weak var waterLable: UILabel! {
 

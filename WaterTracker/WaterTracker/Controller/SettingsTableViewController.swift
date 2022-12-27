@@ -16,9 +16,14 @@ class SettingsTableViewController: UITableViewController {
     private let waterModel = WaterModel()
     private let dateService = DateService()
     
+    @IBOutlet weak var notficationSwitch: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    @IBAction func didUploadDataToHK(_ sender: Any) {
     }
     
     override func viewWillAppear(_ animated: Bool) {

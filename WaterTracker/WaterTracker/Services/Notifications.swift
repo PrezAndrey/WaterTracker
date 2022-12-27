@@ -38,15 +38,17 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
     func checkAuthorization() -> NotificationState {
         var notificationStatus: NotificationState = .deniedInSettings
         notificationCenter.getNotificationSettings { (settings) in
-            switch settings.authorizationStatus {
-            case .authorized:
-                notificationStatus = .auth
-            case .denied:
-                notificationStatus = .deniedInApp
-            case .notDetermined:
-                self.requestNotification()
-            default:
-                notificationStatus = .deniedInSettings
+            DispatchQueue.main.async {
+                switch settings.authorizationStatus {
+                case .authorized:
+                    notificationStatus = .auth
+                case .denied:
+                    notificationStatus = .deniedInApp
+                case .notDetermined:
+                    self.requestNotification()
+                default:
+                    notificationStatus = .deniedInSettings
+                }
             }
         }
         
@@ -73,8 +75,6 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
             content.body = "Осталось совсем чуть чуть! \(needToDrink)мл до цели"
         }
         
-        
-        
         let timeTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: timeTrigger)
         
@@ -96,7 +96,6 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
         
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        
         let identifire = "Local Notification"
         let request = UNNotificationRequest(identifier: identifire, content: content, trigger: trigger)
         
@@ -105,17 +104,13 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
                 print("Error: \(error.localizedDescription)")
             }
         }
-        
-        
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        
         completionHandler([.alert, .sound])
     }
-    
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
@@ -142,6 +137,4 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
         
         completionHandler()
     }
-    
-    
 }

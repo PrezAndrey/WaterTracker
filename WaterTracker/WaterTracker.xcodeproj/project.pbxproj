@@ -26,6 +26,9 @@
 		554F8C2B295719340072F3ED /* DateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F8C2A295719340072F3ED /* DateService.swift */; };
 		55678DEF28390B3B00E7B1EC /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55678DEE28390B3B00E7B1EC /* SettingCell.swift */; };
 		559222C42837908D00D16543 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559222C32837908D00D16543 /* SettingsTableViewController.swift */; };
+		55967777295AED7D00A61C7A /* HKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55967776295AED7D00A61C7A /* HKViewController.swift */; };
+		55967779295AEDBA00A61C7A /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55967778295AEDBA00A61C7A /* NotificationViewController.swift */; };
+		5596777B295AF00300A61C7A /* SetTargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5596777A295AF00300A61C7A /* SetTargetViewController.swift */; };
 		55A56C1027DB321400296FD0 /* HealthKitAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A56C0F27DB321400296FD0 /* HealthKitAdapter.swift */; };
 		55A83628280FFD9A0099D144 /* AutoAimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A83627280FFD9A0099D144 /* AutoAimViewController.swift */; };
 		55A8362A28105F5C0099D144 /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A8362928105F5C0099D144 /* TimeViewController.swift */; };
@@ -67,6 +70,9 @@
 		554F8C2A295719340072F3ED /* DateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateService.swift; sourceTree = "<group>"; };
 		55678DEE28390B3B00E7B1EC /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		559222C32837908D00D16543 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = WaterTracker/Controller/SettingsTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		55967776295AED7D00A61C7A /* HKViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKViewController.swift; sourceTree = "<group>"; };
+		55967778295AEDBA00A61C7A /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		5596777A295AF00300A61C7A /* SetTargetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTargetViewController.swift; sourceTree = "<group>"; };
 		55A56C0F27DB321400296FD0 /* HealthKitAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAdapter.swift; sourceTree = "<group>"; };
 		55A83627280FFD9A0099D144 /* AutoAimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoAimViewController.swift; sourceTree = "<group>"; };
 		55A8362928105F5C0099D144 /* TimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
@@ -132,7 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				55BE521D27DE7026006DFFC0 /* Properties */,
-				55A56C0F27DB321400296FD0 /* HealthKitAdapter.swift */,
 				1B99E53D277267CB00291801 /* WaterStore.swift */,
 				1B9A5C0127BC3F8F008753D0 /* WaterModel.swift */,
 				5504F21B2807F013001CC40B /* WaterCalculator.swift */,
@@ -151,10 +156,10 @@
 		1B99E53A2772641400291801 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				55967775295AEC1200A61C7A /* StartScreens */,
 				559222C32837908D00D16543 /* SettingsTableViewController.swift */,
 				1B99E526277123FE00291801 /* ViewController.swift */,
 				1B99E5482773AFE000291801 /* StatsViewController.swift */,
-				1B99E54C2773B0F400291801 /* GreetingsViewController.swift */,
 				5504F21D2808196F001CC40B /* CustomAmountVC.swift */,
 				55A83627280FFD9A0099D144 /* AutoAimViewController.swift */,
 				55A8362928105F5C0099D144 /* TimeViewController.swift */,
@@ -196,6 +201,17 @@
 			path = WaterCalculatorTests;
 			sourceTree = "<group>";
 		};
+		55967775295AEC1200A61C7A /* StartScreens */ = {
+			isa = PBXGroup;
+			children = (
+				1B99E54C2773B0F400291801 /* GreetingsViewController.swift */,
+				55967776295AED7D00A61C7A /* HKViewController.swift */,
+				55967778295AEDBA00A61C7A /* NotificationViewController.swift */,
+				5596777A295AF00300A61C7A /* SetTargetViewController.swift */,
+			);
+			path = StartScreens;
+			sourceTree = "<group>";
+		};
 		55AA41E5282AE214006F3B21 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +225,7 @@
 		55ABD9732886155D002C2B67 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				55A56C0F27DB321400296FD0 /* HealthKitAdapter.swift */,
 				55ABD97428861590002C2B67 /* Notifications.swift */,
 				554F8C2A295719340072F3ED /* DateService.swift */,
 			);
@@ -346,9 +363,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55967777295AED7D00A61C7A /* HKViewController.swift in Sources */,
 				55AA41BE28297948006F3B21 /* SettingsCollectionViewCell.swift in Sources */,
 				55ABD97528861590002C2B67 /* Notifications.swift in Sources */,
 				1BBF3B6A27D921DC00D0BC2C /* WaterRecord.swift in Sources */,
+				5596777B295AF00300A61C7A /* SetTargetViewController.swift in Sources */,
 				55A83628280FFD9A0099D144 /* AutoAimViewController.swift in Sources */,
 				1B99E527277123FE00291801 /* ViewController.swift in Sources */,
 				1B99E523277123FE00291801 /* AppDelegate.swift in Sources */,
@@ -357,6 +376,7 @@
 				1BBF3B6D27D922F200D0BC2C /* UserSettings.swift in Sources */,
 				1B99E525277123FE00291801 /* SceneDelegate.swift in Sources */,
 				1B99E5492773AFE000291801 /* StatsViewController.swift in Sources */,
+				55967779295AEDBA00A61C7A /* NotificationViewController.swift in Sources */,
 				55A8362A28105F5C0099D144 /* TimeViewController.swift in Sources */,
 				5504F21C2807F013001CC40B /* WaterCalculator.swift in Sources */,
 				55A56C1027DB321400296FD0 /* HealthKitAdapter.swift in Sources */,

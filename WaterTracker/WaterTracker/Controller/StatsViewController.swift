@@ -45,7 +45,11 @@ class StatsViewController: UIViewController {
             }
         }
     }
-    
+}
+
+
+// MARK: Preparing data for tableView
+extension StatsViewController {
     private func getArrayForSections(_ data: [WaterRecord]) -> [[WaterRecord]] {
         var arrayForSections = [[WaterRecord]]()
         let sections = getSectionNamesArray(data)
