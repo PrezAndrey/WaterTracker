@@ -53,7 +53,7 @@ extension StatsViewController {
     private func getArrayForSections(_ data: [WaterRecord]) -> [[WaterRecord]] {
         var arrayForSections = [[WaterRecord]]()
         let sections = getSectionNamesArray(data)
-        for _ in 1...sections.count {
+        for _ in 0..<sections.count {
             arrayForSections.append([WaterRecord]())
         }
         for date in data {

@@ -9,19 +9,39 @@ import UIKit
 
 class SetTargetViewController: UIViewController {
 
+    @IBOutlet weak var dayTargetButton: UIButton!
+    @IBOutlet weak var periodButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        dayTargetButton.titleLabel?.text = "работай, ебаная кнопка"
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("++++++++++++++++++++++++++++++++View is displaying")
+    }
+    
+    func configure(button: UIButton) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            button.setTitle("Complete!", for: .normal)
+            button.layer.backgroundColor = UIColor.systemGreen.cgColor
+        }
+        
+    }
+    
     @IBAction func setDayTarget(_ sender: Any) {
         performSegue(withIdentifier: "setTarget", sender: nil)
+        configure(button: dayTargetButton)
     }
     
     @IBAction func setStartTime(_ sender: Any) {
         performSegue(withIdentifier: "setTime", sender: nil)
-    }
-    @IBAction func getBack(_ sender: Any) {
+        configure(button: periodButton)
         
+        
+    }
+    
+    @IBAction func unwindSegue(_  sender: UIStoryboardSegue) {
+        print("Unwinding ...")
     }
 }
