@@ -9,7 +9,7 @@ import Foundation
 
 struct UserSettings: Codable, Equatable {
 
-    var dayTarget: Int? = 2000
+    var dayTarget: Int? = 2001
     var startDayInterval: TimeInterval? = 21599
     var weight: Int?
     var notificationState: Bool?

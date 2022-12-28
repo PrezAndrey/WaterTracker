@@ -14,9 +14,6 @@ class ViewController: UIViewController {
     
     private var waterModel: WaterModelProtocol = WaterModel()
     
-    
-    
-    
     private var savedTarget: Int?
     
     private var currentWaterAmount: Double = 0 {
@@ -35,10 +32,14 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         configureUI()
+        
     }
     
     
     override func viewDidLoad() {
+        if checkFirstStart() {
+            performSegue(withIdentifier: "greeting", sender: self)
+        }
         waterModel.delegate = self
         self.configureUI()
         
@@ -49,33 +50,27 @@ class ViewController: UIViewController {
     // MARK: Functions
     func configureUI() {
         currentWaterAmount = waterModel.waterAmount
-//        updateWaterAmount()
     }
     
     
     // Add 100 ml button
     @IBAction func didAdd100(_ sender: UIButton) {
-        
         addMl(100.0)
     }
     
     
     // Add 250ml button
     @IBAction func didAdd250(_ sender: UIButton) {
-        
         addMl(250.0)
     }
     
     // Correct button
     @IBAction func didCorrect(_ sender: UIButton) {
-        
         correctAlert()
     }
     
     
     @IBAction func didDelete(_ sender: Any) {
-        
-        
         waterModel.deleteLast()
         configureUI()
     }
@@ -103,8 +98,16 @@ class ViewController: UIViewController {
     
     // Update water amount
     private func updateWaterAmount() {
-        
         waterLable.text = "Сегодня я выпил: \(waterModel.waterAmount) мл"
+    }
+    
+    
+    func checkFirstStart() -> Bool {
+        let userSettings = waterModel.getUserSettings()
+        if userSettings == nil {
+            return true
+        }
+        return false
     }
 }
 

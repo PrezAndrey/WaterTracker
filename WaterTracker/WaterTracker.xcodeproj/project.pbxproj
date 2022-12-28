@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1B99E523277123FE00291801 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99E522277123FE00291801 /* AppDelegate.swift */; };
 		1B99E525277123FE00291801 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99E524277123FE00291801 /* SceneDelegate.swift */; };
-		1B99E527277123FE00291801 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99E526277123FE00291801 /* ViewController.swift */; };
+		1B99E527277123FE00291801 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99E526277123FE00291801 /* MainViewController.swift */; };
 		1B99E52A277123FE00291801 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B99E528277123FE00291801 /* Main.storyboard */; };
 		1B99E52C2771240000291801 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B99E52B2771240000291801 /* Assets.xcassets */; };
 		1B99E52F2771240000291801 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B99E52D2771240000291801 /* LaunchScreen.storyboard */; };
@@ -51,7 +51,7 @@
 		1B99E51F277123FE00291801 /* WaterTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B99E522277123FE00291801 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B99E524277123FE00291801 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1B99E526277123FE00291801 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1B99E526277123FE00291801 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1B99E529277123FE00291801 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1B99E52B2771240000291801 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B99E52E2771240000291801 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 			children = (
 				55967775295AEC1200A61C7A /* StartScreens */,
 				559222C32837908D00D16543 /* SettingsTableViewController.swift */,
-				1B99E526277123FE00291801 /* ViewController.swift */,
+				1B99E526277123FE00291801 /* MainViewController.swift */,
 				1B99E5482773AFE000291801 /* StatsViewController.swift */,
 				5504F21D2808196F001CC40B /* CustomAmountVC.swift */,
 				55A83627280FFD9A0099D144 /* AutoAimViewController.swift */,
@@ -369,7 +369,7 @@
 				1BBF3B6A27D921DC00D0BC2C /* WaterRecord.swift in Sources */,
 				5596777B295AF00300A61C7A /* SetTargetViewController.swift in Sources */,
 				55A83628280FFD9A0099D144 /* AutoAimViewController.swift in Sources */,
-				1B99E527277123FE00291801 /* ViewController.swift in Sources */,
+				1B99E527277123FE00291801 /* MainViewController.swift in Sources */,
 				1B99E523277123FE00291801 /* AppDelegate.swift in Sources */,
 				1B99E54D2773B0F400291801 /* GreetingsViewController.swift in Sources */,
 				1B9A5C0227BC3F8F008753D0 /* WaterModel.swift in Sources */,

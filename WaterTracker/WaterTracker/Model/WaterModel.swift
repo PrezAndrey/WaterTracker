@@ -54,12 +54,13 @@ class WaterModel: WaterModelProtocol {
     }
     
     var waterAmount: Double {
-        
         let currentWaterArray = records
         var newInterval = userSettings
         if let interval = getUserSettings() {
             newInterval = interval
+            
         }
+        print("UserSettings on start: \(newInterval)")
         let date = dateService.period(for: Date(), interval: newInterval.startDayInterval ?? 21599)
         let fromDate = date.from
         let toDate = date.to
@@ -141,6 +142,8 @@ class WaterModel: WaterModelProtocol {
         waterStore.saveSettings(newSettings)
        
     }
+    
+    
 }
 
 

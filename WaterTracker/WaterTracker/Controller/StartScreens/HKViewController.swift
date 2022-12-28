@@ -18,6 +18,8 @@ class HKViewController: UIViewController {
     
     @IBAction func implementHealthKit(_ sender: Any) {
         healthKitService.authorizeIfNeeded()
-        performSegue(withIdentifier: "notifications", sender: self)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.performSegue(withIdentifier: "notifications", sender: self)
+        }
     }
 }

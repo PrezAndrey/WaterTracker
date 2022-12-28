@@ -14,12 +14,8 @@ class SetTargetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dayTargetButton.titleLabel?.text = "работай, ебаная кнопка"
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        print("++++++++++++++++++++++++++++++++View is displaying")
-    }
     
     func configure(button: UIButton) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
@@ -40,7 +36,7 @@ class SetTargetViewController: UIViewController {
         
         
     }
-    
+    // Fix unwind segue. Not working cause of XCODE 14.1 bug
     @IBAction func unwindSegue(_  sender: UIStoryboardSegue) {
         print("Unwinding ...")
     }
