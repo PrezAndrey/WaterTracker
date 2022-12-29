@@ -8,6 +8,8 @@
 import UIKit
 
 class SetTargetViewController: UIViewController {
+    
+    
 
     @IBOutlet weak var dayTargetButton: UIButton!
     @IBOutlet weak var periodButton: UIButton!
@@ -21,8 +23,20 @@ class SetTargetViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             button.setTitle("Complete!", for: .normal)
             button.layer.backgroundColor = UIColor.systemGreen.cgColor
+            self.isCompeted()
+            print("Button text \(button.titleLabel?.text)")
+            print("Button color \(button.backgroundColor?.description)")
         }
-        
+    }
+    
+    func isCompeted() {
+        if dayTargetButton.backgroundColor == periodButton.backgroundColor {
+            navigationController?.popToRootViewController(animated: true)
+        }
+    }
+    
+    @IBAction func skip(_ sender: Any) {
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func setDayTarget(_ sender: Any) {
@@ -33,7 +47,6 @@ class SetTargetViewController: UIViewController {
     @IBAction func setStartTime(_ sender: Any) {
         performSegue(withIdentifier: "setTime", sender: nil)
         configure(button: periodButton)
-        
         
     }
     // Fix unwind segue. Not working cause of XCODE 14.1 bug

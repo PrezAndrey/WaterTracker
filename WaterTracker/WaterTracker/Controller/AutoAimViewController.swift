@@ -80,7 +80,6 @@ private extension AutoAimViewController {
         } else  {
             weightLable.text = "0 кг"
         }
-        
         if let target  = settings.dayTarget {
             aimLable.text = "\(target) мл"
         } else {

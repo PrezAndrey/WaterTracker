@@ -11,7 +11,7 @@ class GreetingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         print("Greetings Navigation Controller: \(self.navigationController)")
     }
     

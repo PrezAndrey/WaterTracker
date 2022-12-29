@@ -24,7 +24,6 @@ class ViewController: UIViewController {
     
     // MARK: Outlets
     @IBOutlet weak var waterLable: UILabel! {
-
         didSet {
             configureUI()
         }
@@ -32,7 +31,6 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         configureUI()
-        
     }
     
     
@@ -66,7 +64,7 @@ class ViewController: UIViewController {
     
     // Correct button
     @IBAction func didCorrect(_ sender: UIButton) {
-        correctAlert()
+        customAmountAlert()
     }
     
     
@@ -81,21 +79,8 @@ class ViewController: UIViewController {
         let notState = waterModel.addWater(number)
         print("Water amount: \(waterModel.waterAmount)")
         
-        switch notState {
-        case .deniedInApp:
-            deniedInAppAlert()
-            print("Denied in appSettings")
-        case .deniedInSettings:
-            deniedInSettingsAlert()
-            print("Denied in settings")
-        case .auth:
-            print("authorized")
-            
-        }
     }
         
-    
-    
     // Update water amount
     private func updateWaterAmount() {
         waterLable.text = "Сегодня я выпил: \(waterModel.waterAmount) мл"
@@ -115,7 +100,6 @@ class ViewController: UIViewController {
 // MARK: WaterModelDelegate
 
 extension ViewController: WaterModelDelegate {
-    
     func waterAmountDidUpdate(_ model: WaterModelProtocol) {
         showAlertIfNeeded(waterModel.waterAmount)
         currentWaterAmount = waterModel.waterAmount
@@ -128,8 +112,8 @@ extension ViewController: WaterModelDelegate {
 extension ViewController {
     
     // Corretion Alert
-    private func correctAlert() {
-        
+    private func customAmountAlert() {
+
         let alertController = UIAlertController(title: "Corrections", message: "You can correct the amount of water", preferredStyle: .alert)
         let action = UIAlertAction(title: "Set", style: .default) { (_) in
             if let waterMl = Double(alertController.textFields?.first?.text ?? "0.0") {
@@ -173,10 +157,9 @@ extension ViewController {
     
     
     // ALERT: Notifications denied in app
-    
     private func deniedInAppAlert() {
-        let title = "Уведомления выключены в настройках приложения"
-        let message = "Если вы хотите получать уведомления, перейдите в настройки приложения"
+        let title = "Custom amount"
+        let message = "Введите количество воды в мл:"
         let alertController = UIAlertController(title: title,
                                                 message: message,
                                                 preferredStyle: .alert)
@@ -185,12 +168,10 @@ extension ViewController {
             self.performSegue(withIdentifier: "showSettings", sender: self)
         }
         let snooze = UIAlertAction(title: "Отложить", style: .cancel)
-        
         alertController.addAction(moveToSettings)
         alertController.addAction(snooze)
         self.present(alertController, animated: true)
     }
-    
     
     // ALERT: Notifications denied in settings
     private func deniedInSettingsAlert() {
@@ -206,17 +187,27 @@ extension ViewController {
         self.present(alertController, animated: true)
     }
     
+    private func showAlert() {
+        let alertController = UIAlertController(title: "Custom amount", message: "Введите количество воды в мл:", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Set", style: .default) { [self] (_) in
+            guard let value = alertController.textFields?.first?.text,
+            let amount = Double(value)
+            else { return }
+            addMl(amount)
+        }
+        
+        alertController.addTextField(configurationHandler: nil)
+        alertController.addAction(action)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     private func checkTheTarget() {
-        
         let curentTarget = waterModel.getUserSettings()
-        
         guard let target = curentTarget?.dayTarget else { return }
-        
         if waterModel.waterAmount >= Double(target) && target != savedTarget {
-            
             showGetTargetAlert()
             self.savedTarget = target
         }
     }
 }
-
