@@ -9,21 +9,18 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
     
+    let healthKit = HealthKitAdapter()
+    
     @IBOutlet weak var currentPeriod: UILabel!
     @IBOutlet weak var currentAim: UILabel!
+    @IBOutlet weak var notficationSwitch: UISwitch!
     
     private let notifications = Notifications()
     private let waterModel = WaterModel()
     private let dateService = DateService()
     
-    @IBOutlet weak var notficationSwitch: UISwitch!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
     @IBAction func didUploadDataToHK(_ sender: Any) {
+        print("Uploading data to HealthKit...")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,7 +46,7 @@ class SettingsTableViewController: UITableViewController {
     }
   
     @objc func switchNotification() {
-        guard var newSettings = waterModel.getUserSettings() else { return }
+        guard let newSettings = waterModel.getUserSettings() else { return }
         waterModel.saveUserSettings(settings: newSettings)
     }
 }

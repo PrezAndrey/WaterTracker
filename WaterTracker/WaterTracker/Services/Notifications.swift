@@ -8,7 +8,6 @@
 import UIKit
 import UserNotifications
 
-
 enum NotificationState {
     case deniedInApp
     case deniedInSettings
@@ -17,15 +16,8 @@ enum NotificationState {
 
 class Notifications: NSObject, UNUserNotificationCenterDelegate {
     
-// MARK: Properties
-    
     let notificationCenter = UNUserNotificationCenter.current()
-    
     private var date = DateComponents()
-    
-    
-    
-// MARK: Functions
     
     private func requestNotification() {
         notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { [self] (granted, error) in
@@ -52,19 +44,16 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
             }
         }
         
-    
         return notificationStatus
     }
     
-    
     func scheduleTimeNotification(title: String, waterAmount: Double, currentAim: Int) {
-        
         let content = UNMutableNotificationContent()
         
         content.title = title
         content.sound = UNNotificationSound.default
         content.badge = 1
-        var identifier = "Reminder Notification"
+        let identifier = "Reminder Notification"
         
         let needToDrink = currentAim - Int(waterAmount)
         if needToDrink == 0 {
@@ -83,17 +72,13 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
         }
     }
     
-    
     func scheduleNotificationTest(notficationType: String, waterAmount: Double) {
-        
         let content = UNMutableNotificationContent()
-        
         
         content.title = notficationType
         content.body = "Water amount \(waterAmount)"
         content.sound = UNNotificationSound.default
         content.badge = 1
-        
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         let identifire = "Local Notification"
@@ -109,7 +94,7 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert, .sound])
+        completionHandler([.banner, .sound])
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,

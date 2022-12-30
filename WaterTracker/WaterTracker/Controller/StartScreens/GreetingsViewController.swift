@@ -12,10 +12,8 @@ class GreetingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
-        print("Greetings Navigation Controller: \(self.navigationController)")
     }
     
-
     @IBAction func didTapToMoveToMain() {
         navigationController?.popViewController(animated: true)
     }

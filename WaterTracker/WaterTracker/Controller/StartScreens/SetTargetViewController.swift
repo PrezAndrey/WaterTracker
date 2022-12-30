@@ -9,8 +9,6 @@ import UIKit
 
 class SetTargetViewController: UIViewController {
     
-    
-
     @IBOutlet weak var dayTargetButton: UIButton!
     @IBOutlet weak var periodButton: UIButton!
     
@@ -19,14 +17,11 @@ class SetTargetViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
     
-    
     func configure(button: UIButton) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             button.setTitle("Complete!", for: .normal)
             button.layer.backgroundColor = UIColor.systemGreen.cgColor
             self.isCompeted()
-            print("Button text \(button.titleLabel?.text)")
-            print("Button color \(button.backgroundColor?.description)")
         }
     }
     
@@ -48,10 +43,5 @@ class SetTargetViewController: UIViewController {
     @IBAction func setStartTime(_ sender: Any) {
         performSegue(withIdentifier: "setTime", sender: nil)
         configure(button: periodButton)
-        
-    }
-    // Fix unwind segue. Not working cause of XCODE 14.1 bug
-    @IBAction func unwindSegue(_  sender: UIStoryboardSegue) {
-        print("Unwinding ...")
     }
 }

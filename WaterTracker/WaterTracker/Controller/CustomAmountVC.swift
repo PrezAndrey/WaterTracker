@@ -8,13 +8,11 @@
 import Foundation
 import UIKit
 
-
-
 class CustomAmountVC: UIViewController {
     
     private var waterStore = WaterStore()
     
-    var completion: ((Double) -> ())?
+    var completion: ((Double) -> Void)?
     
     @IBOutlet weak var textField: UITextField!
     

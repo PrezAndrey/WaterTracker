@@ -8,28 +8,19 @@
 import Foundation
 import HealthKit
 
-
-
 struct HKTypes {
     
     var age: Int
-        
     var biologicalSex: HKBiologicalSex
-    
     var bloodType: HKBloodType
-    
     var bodyMass: String
 }
-
-
 
 class HealthKitAdapter {
     
      enum HealthKitAdapterError: Error {
-         
         case dataIsNotAvailable, deviceNotAvailable
     }
-    
     
     static let store = HKHealthStore()
      
@@ -40,14 +31,11 @@ class HealthKitAdapter {
         HKObjectType.characteristicType(forIdentifier: .bloodType)
      ].compactMap({ $0 })
     
-    
     func getAuthorization(completion: @escaping (Bool, Error?) -> Void) {
-    
         guard HKHealthStore.isHealthDataAvailable() else {
             completion(false, HealthKitAdapterError.deviceNotAvailable)
             return
         }
-
         guard
             let water = HKObjectType.quantityType(forIdentifier: .dietaryWater),
             let dob = HKObjectType.characteristicType(forIdentifier: .dateOfBirth),
@@ -62,13 +50,11 @@ class HealthKitAdapter {
         
         let writing: Set<HKSampleType> = [water, bodyMass, height]
         let reading: Set<HKObjectType> = [water, dob, sex, bloodType, bodyMass, height]
-            
+        
         HKHealthStore().requestAuthorization(toShare: writing, read: reading, completion: completion)
     }
       
-    
     func authorizeIfNeeded() {
-        
         var typesWithoutAuth: [HKObjectType] = []
         for objectType in objectTypes {
             let status = HealthKitAdapter.store.authorizationStatus(for: objectType)
@@ -96,17 +82,15 @@ class HealthKitAdapter {
         }
     }
     
-    
     // ask for permission for every data type that we want to read and ask permissions for writing the samples.
     func getAgeSexAndBloodType() throws -> (HKTypes) {
-        
       let healthKitStore = HKHealthStore()
       do {
         // 1. This method throws an error if these data are not available.
         let birthdayComponents =  try healthKitStore.dateOfBirthComponents()
         let biologicalSex =       try healthKitStore.biologicalSex()
         let bloodType =           try healthKitStore.bloodType()
-        let bodyMass =            try HKQuantityTypeIdentifier.bodyMass.rawValue
+        let bodyMass =            HKQuantityTypeIdentifier.bodyMass.rawValue
           
         // 2. Use Calendar to calculate age.
         let today = Date()
@@ -125,20 +109,18 @@ class HealthKitAdapter {
       }
     }
     
-    
     // writing water to HealthKit
     func writeWater(amount: Double) {
         guard let waterType = HKSampleType.quantityType(forIdentifier: .dietaryWater) else {
                 print("Sample type not available")
                 return
         }
-        
         let waterQuantity = HKQuantity(unit: HKUnit.literUnit(with: .milli), doubleValue: amount)
         let today = Date()
         let waterQuantitySample = HKQuantitySample(type: waterType, quantity: waterQuantity, start: today, end: today)
         
         HKHealthStore().save(waterQuantitySample) { (success, error) in
-            print("HK write finished - success: \(success); error: \(error)")
+            print("HK write finished - success: \(success); error: \(String(describing: error))")
         }
     }
 }
