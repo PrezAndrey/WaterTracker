@@ -14,7 +14,7 @@ class NotificationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        navigationController?.navigationBar.isHidden = true
     }
     
     @IBAction func askForAuthorization(_ sender: Any) {
