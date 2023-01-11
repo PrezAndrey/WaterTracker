@@ -87,7 +87,7 @@ class WaterModel: WaterModelProtocol {
         waterStore.save(record: currentRecords, key: "waterKey")
     }
     
-    func fetchDataFromHealthKit() throws -> HKTypes{
+    func fetchDataFromHealthKit() throws -> HKTypes {
         let hkTypes = try healthKitAdapter.getAgeSexAndBloodType()
         
         return hkTypes

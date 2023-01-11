@@ -18,7 +18,7 @@ class NotificationViewController: UIViewController {
     }
     
     @IBAction func askForAuthorization(_ sender: Any) {
-        let result = notifications.checkAuthorization()
+        _ = notifications.checkAuthorization()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             self.performSegue(withIdentifier: "segueToPeriod", sender: self)
         }
