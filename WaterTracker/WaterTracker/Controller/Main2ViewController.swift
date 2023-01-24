@@ -12,6 +12,9 @@ class Main2ViewController: UIViewController {
     @IBOutlet weak var viewForTabBar: UIView!
     
     @IBOutlet weak var addWaterView: UIView!
+    
+    @IBOutlet weak var waterAmountView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTabBar()
@@ -20,6 +23,7 @@ class Main2ViewController: UIViewController {
     func configureTabBar() {
         viewForTabBar.layer.cornerRadius = viewForTabBar.frame.size.height / 2
         addWaterView.layer.cornerRadius = 30
+        waterAmountView.layer.cornerRadius = 20
         
     }
 
