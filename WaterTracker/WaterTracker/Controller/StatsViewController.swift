@@ -19,9 +19,15 @@ class StatsViewController: UIViewController {
     private var rowsInSections = [[WaterRecord]]()
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tabBarView: UIView!
     
     override func viewWillAppear(_ animated: Bool) {
         reloadRecords()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureTabBar()
     }
     
     private func reloadRecords() {
@@ -29,6 +35,14 @@ class StatsViewController: UIViewController {
         dateArray = getSectionNamesArray(staticRecords)
         rowsInSections = getArrayForSections(staticRecords)
         tableView.reloadData()
+    }
+    
+    func configureTabBar() {
+        tabBarView.layer.cornerRadius = tabBarView.frame.size.height / 2
+        tabBarView.layer.shadowColor = UIColor.black.cgColor
+        tabBarView.layer.shadowOpacity = 0.5
+        tabBarView.layer.shadowOffset = .zero
+        tabBarView.layer.shadowRadius = 10
     }
     
     // MARK: Prepare for Segue
@@ -106,9 +120,10 @@ extension StatsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: StatisticTableViewCell.self), for: indexPath) as? StatisticTableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "stats", for: indexPath) as? StatsTableViewCell {
             let info = rowsInSections[indexPath.section][indexPath.row]
             cell.configureWith(record: info)
+            
             return cell
         }
         return UITableViewCell()
@@ -117,4 +132,6 @@ extension StatsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return dateArray[section]
     }
+    
+  
 }

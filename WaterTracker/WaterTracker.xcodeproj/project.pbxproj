@@ -34,6 +34,8 @@
 		55A8362A28105F5C0099D144 /* StartingTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A8362928105F5C0099D144 /* StartingTimeViewController.swift */; };
 		55AA41BE28297948006F3B21 /* SettingsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AA41BD28297948006F3B21 /* SettingsCollectionViewCell.swift */; };
 		55ABD97528861590002C2B67 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55ABD97428861590002C2B67 /* Notifications.swift */; };
+		55B2B5BB2980E6AE0097E70A /* StatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B2B5BA2980E6AE0097E70A /* StatsTableViewCell.swift */; };
+		55B2B5BD2980E70F0097E70A /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B2B5BC2980E70F0097E70A /* StatisticViewController.swift */; };
 		55B97451280D61600069AEA2 /* StatisticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B97450280D61600069AEA2 /* StatisticTableViewCell.swift */; };
 		55ECA243297A875000BCB64C /* Main2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55ECA242297A875000BCB64C /* Main2ViewController.swift */; };
 /* End PBXBuildFile section */
@@ -79,6 +81,8 @@
 		55A8362928105F5C0099D144 /* StartingTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingTimeViewController.swift; sourceTree = "<group>"; };
 		55AA41BD28297948006F3B21 /* SettingsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCollectionViewCell.swift; sourceTree = "<group>"; };
 		55ABD97428861590002C2B67 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		55B2B5BA2980E6AE0097E70A /* StatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTableViewCell.swift; sourceTree = "<group>"; };
+		55B2B5BC2980E70F0097E70A /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		55B97450280D61600069AEA2 /* StatisticTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTableViewCell.swift; sourceTree = "<group>"; };
 		55ECA242297A875000BCB64C /* Main2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main2ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,6 +170,7 @@
 				55A83627280FFD9A0099D144 /* AutoAimViewController.swift */,
 				55A8362928105F5C0099D144 /* StartingTimeViewController.swift */,
 				55ECA242297A875000BCB64C /* Main2ViewController.swift */,
+				55B2B5BC2980E70F0097E70A /* StatisticViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 			children = (
 				55678DEE28390B3B00E7B1EC /* SettingCell.swift */,
 				55B97450280D61600069AEA2 /* StatisticTableViewCell.swift */,
+				55B2B5BA2980E6AE0097E70A /* StatsTableViewCell.swift */,
 				55AA41BD28297948006F3B21 /* SettingsCollectionViewCell.swift */,
 			);
 			path = Cell;
@@ -367,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55967777295AED7D00A61C7A /* HKViewController.swift in Sources */,
+				55B2B5BB2980E6AE0097E70A /* StatsTableViewCell.swift in Sources */,
 				55AA41BE28297948006F3B21 /* SettingsCollectionViewCell.swift in Sources */,
 				55ABD97528861590002C2B67 /* Notifications.swift in Sources */,
 				1BBF3B6A27D921DC00D0BC2C /* WaterRecord.swift in Sources */,
@@ -386,6 +393,7 @@
 				1B99E53E277267CB00291801 /* WaterStore.swift in Sources */,
 				55ECA243297A875000BCB64C /* Main2ViewController.swift in Sources */,
 				559222C42837908D00D16543 /* SettingsTableViewController.swift in Sources */,
+				55B2B5BD2980E70F0097E70A /* StatisticViewController.swift in Sources */,
 				55B97451280D61600069AEA2 /* StatisticTableViewCell.swift in Sources */,
 				55678DEF28390B3B00E7B1EC /* SettingCell.swift in Sources */,
 				5504F21E2808196F001CC40B /* CustomAmountVC.swift in Sources */,
