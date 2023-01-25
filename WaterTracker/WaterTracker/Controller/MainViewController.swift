@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     
     private var waterModel: WaterModelProtocol = WaterModel()
     
@@ -18,25 +18,29 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var waterAmountView: UIView!
+    @IBOutlet weak var addWaterView: UIView!
+    @IBOutlet weak var tabBarView: UIView!
     @IBOutlet weak var waterLable: UILabel! {
         didSet {
-            configureUI()
+            updateUI()
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        configureUI()
+        updateUI()
     }
     
     override func viewDidLoad() {
+        configureUI()
         if checkFirstStart() {
             performSegue(withIdentifier: "greeting", sender: self)
         }
         waterModel.delegate = self
-        self.configureUI()
+        updateUI()
     }
     
-    func configureUI() {
+    func updateUI() {
         currentWaterAmount = waterModel.waterAmount
     }
     
@@ -54,7 +58,7 @@ class ViewController: UIViewController {
     
     @IBAction func didDelete(_ sender: Any) {
         waterModel.deleteLast()
-        configureUI()
+        updateUI()
     }
     
     private func addMl(_ number: Double) {
@@ -63,7 +67,7 @@ class ViewController: UIViewController {
     }
         
     private func updateWaterAmount() {
-        waterLable.text = "Сегодня я выпил: \(waterModel.waterAmount) мл"
+        waterLable.text = "\(waterModel.waterAmount) мл"
     }
     
     func checkFirstStart() -> Bool {
@@ -77,7 +81,7 @@ class ViewController: UIViewController {
 
 
 // MARK: WaterModelDelegate
-extension ViewController: WaterModelDelegate {
+extension MainViewController: WaterModelDelegate {
     func waterAmountDidUpdate(_ model: WaterModelProtocol) {
         showAlertIfNeeded(waterModel.waterAmount)
         currentWaterAmount = waterModel.waterAmount
@@ -86,7 +90,7 @@ extension ViewController: WaterModelDelegate {
 
 
 // MARK: Alert
-extension ViewController {
+extension MainViewController {
     // Corretion Alert
     private func customAmountAlert() {
         let alertController = UIAlertController(title: "Corrections", message: "You can correct the amount of water", preferredStyle: .alert)
@@ -131,7 +135,6 @@ extension ViewController {
                                                 message: message,
                                                 preferredStyle: .alert)
         let moveToSettings = UIAlertAction(title: "Перейти", style: .default) { (_) in
-            
             self.performSegue(withIdentifier: "showSettings", sender: self)
         }
         let snooze = UIAlertAction(title: "Отложить", style: .cancel)

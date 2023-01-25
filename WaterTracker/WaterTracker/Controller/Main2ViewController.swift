@@ -7,39 +7,35 @@
 
 import UIKit
 
-class Main2ViewController: UIViewController {
-    
-    @IBOutlet weak var viewForTabBar: UIView!
-    
-    @IBOutlet weak var addWaterView: UIView!
-    
-    @IBOutlet weak var waterAmountView: UIView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+
+extension MainViewController {
+    func configureUI() {
         configureTabBar()
+        configureAddWaterView()
+        configureWaterAmountView()
     }
     
     func configureTabBar() {
-        viewForTabBar.layer.cornerRadius = viewForTabBar.frame.size.height / 2
+        tabBarView.layer.cornerRadius = tabBarView.frame.size.height / 2
+        tabBarView.layer.shadowColor = UIColor.black.cgColor
+        tabBarView.layer.shadowOpacity = 0.5
+        tabBarView.layer.shadowOffset = .zero
+        tabBarView.layer.shadowRadius = 10
+    }
+    
+    func configureAddWaterView() {
         addWaterView.layer.cornerRadius = 30
+        addWaterView.layer.shadowColor = UIColor(named: "Cyan")?.cgColor
+        addWaterView.layer.shadowOpacity = 0.5
+        addWaterView.layer.shadowOffset = .zero
+        addWaterView.layer.shadowRadius = 10
+    }
+    
+    func configureWaterAmountView() {
         waterAmountView.layer.cornerRadius = 20
-        
-    }
-
-    
-    @IBAction func addWater100(_ sender: Any) {
-        print("__________ 100 ml of water is added _________")
-    }
-    
-    @IBAction func addWater250(_ sender: Any) {
-        print("__________ 250 ml of water is added _________")
-    }
-    
-    @IBAction func deleteAmount(_ sender: Any) {
-        print("__________ last water amount deleted _________")
-    }
-    @IBAction func addCustomAmount(_ sender: Any) {
-        print("__________ add custom water amount _________")
+        waterAmountView.layer.shadowColor = UIColor(named: "Cyan")?.cgColor
+        waterAmountView.layer.shadowOpacity = 0.5
+        waterAmountView.layer.shadowOffset = .zero
+        waterAmountView.layer.shadowRadius = 10
     }
 }
