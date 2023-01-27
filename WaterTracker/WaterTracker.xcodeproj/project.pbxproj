@@ -26,6 +26,7 @@
 		554F8C2B295719340072F3ED /* DateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F8C2A295719340072F3ED /* DateService.swift */; };
 		55678DEF28390B3B00E7B1EC /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55678DEE28390B3B00E7B1EC /* SettingCell.swift */; };
 		559222C42837908D00D16543 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559222C32837908D00D16543 /* SettingsTableViewController.swift */; };
+		5595091D29847C9B003DFB9F /* ResetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5595091C29847C9B003DFB9F /* ResetCollectionViewCell.swift */; };
 		55967777295AED7D00A61C7A /* HKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55967776295AED7D00A61C7A /* HKViewController.swift */; };
 		55967779295AEDBA00A61C7A /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55967778295AEDBA00A61C7A /* NotificationViewController.swift */; };
 		5596777B295AF00300A61C7A /* SetTargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5596777A295AF00300A61C7A /* SetTargetViewController.swift */; };
@@ -40,6 +41,11 @@
 		55ECA243297A875000BCB64C /* Main2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55ECA242297A875000BCB64C /* Main2ViewController.swift */; };
 		55FA9372298260D300A7AABB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FA9371298260D300A7AABB /* ViewController.swift */; };
 		55FA93742982624500A7AABB /* DayTargetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FA93732982624500A7AABB /* DayTargetTableViewCell.swift */; };
+		55FA93762983D05100A7AABB /* MainSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FA93752983D05100A7AABB /* MainSettingsViewController.swift */; };
+		55FA93792984624200A7AABB /* DayTargetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FA93782984624200A7AABB /* DayTargetCollectionViewCell.swift */; };
+		55FA937B298471F400A7AABB /* PeriodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FA937A298471F400A7AABB /* PeriodCollectionViewCell.swift */; };
+		55FA937D298475CE00A7AABB /* NotificationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FA937C298475CE00A7AABB /* NotificationCollectionViewCell.swift */; };
+		55FA937F298477E100A7AABB /* HealthKitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FA937E298477E100A7AABB /* HealthKitCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +81,7 @@
 		554F8C2A295719340072F3ED /* DateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateService.swift; sourceTree = "<group>"; };
 		55678DEE28390B3B00E7B1EC /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		559222C32837908D00D16543 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = WaterTracker/Controller/SettingsTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		5595091C29847C9B003DFB9F /* ResetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetCollectionViewCell.swift; sourceTree = "<group>"; };
 		55967776295AED7D00A61C7A /* HKViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKViewController.swift; sourceTree = "<group>"; };
 		55967778295AEDBA00A61C7A /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		5596777A295AF00300A61C7A /* SetTargetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTargetViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +96,11 @@
 		55ECA242297A875000BCB64C /* Main2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main2ViewController.swift; sourceTree = "<group>"; };
 		55FA9371298260D300A7AABB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		55FA93732982624500A7AABB /* DayTargetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTargetTableViewCell.swift; sourceTree = "<group>"; };
+		55FA93752983D05100A7AABB /* MainSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsViewController.swift; sourceTree = "<group>"; };
+		55FA93782984624200A7AABB /* DayTargetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTargetCollectionViewCell.swift; sourceTree = "<group>"; };
+		55FA937A298471F400A7AABB /* PeriodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodCollectionViewCell.swift; sourceTree = "<group>"; };
+		55FA937C298475CE00A7AABB /* NotificationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCollectionViewCell.swift; sourceTree = "<group>"; };
+		55FA937E298477E100A7AABB /* HealthKitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +170,7 @@
 		1B99E5392772640300291801 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				55FA93772984621500A7AABB /* CollectionViewCell */,
 				55AA41E5282AE214006F3B21 /* Cell */,
 			);
 			path = View;
@@ -176,6 +189,7 @@
 				55ECA242297A875000BCB64C /* Main2ViewController.swift */,
 				55B2B5BC2980E70F0097E70A /* StatisticViewController.swift */,
 				55FA9371298260D300A7AABB /* ViewController.swift */,
+				55FA93752983D05100A7AABB /* MainSettingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -254,6 +268,18 @@
 				1BBF3B6927D921DC00D0BC2C /* WaterRecord.swift */,
 			);
 			path = Properties;
+			sourceTree = "<group>";
+		};
+		55FA93772984621500A7AABB /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				55FA93782984624200A7AABB /* DayTargetCollectionViewCell.swift */,
+				55FA937A298471F400A7AABB /* PeriodCollectionViewCell.swift */,
+				55FA937C298475CE00A7AABB /* NotificationCollectionViewCell.swift */,
+				55FA937E298477E100A7AABB /* HealthKitCollectionViewCell.swift */,
+				5595091C29847C9B003DFB9F /* ResetCollectionViewCell.swift */,
+			);
+			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -382,14 +408,19 @@
 				55B2B5BB2980E6AE0097E70A /* StatsTableViewCell.swift in Sources */,
 				55AA41BE28297948006F3B21 /* SettingsCollectionViewCell.swift in Sources */,
 				55ABD97528861590002C2B67 /* Notifications.swift in Sources */,
+				55FA937F298477E100A7AABB /* HealthKitCollectionViewCell.swift in Sources */,
 				1BBF3B6A27D921DC00D0BC2C /* WaterRecord.swift in Sources */,
 				5596777B295AF00300A61C7A /* SetTargetViewController.swift in Sources */,
+				55FA937B298471F400A7AABB /* PeriodCollectionViewCell.swift in Sources */,
 				55A83628280FFD9A0099D144 /* AutoAimViewController.swift in Sources */,
+				55FA93762983D05100A7AABB /* MainSettingsViewController.swift in Sources */,
+				55FA93792984624200A7AABB /* DayTargetCollectionViewCell.swift in Sources */,
 				1B99E527277123FE00291801 /* MainViewController.swift in Sources */,
 				1B99E523277123FE00291801 /* AppDelegate.swift in Sources */,
 				1B99E54D2773B0F400291801 /* GreetingsViewController.swift in Sources */,
 				1B9A5C0227BC3F8F008753D0 /* WaterModel.swift in Sources */,
 				1BBF3B6D27D922F200D0BC2C /* UserSettings.swift in Sources */,
+				5595091D29847C9B003DFB9F /* ResetCollectionViewCell.swift in Sources */,
 				1B99E525277123FE00291801 /* SceneDelegate.swift in Sources */,
 				1B99E5492773AFE000291801 /* StatsViewController.swift in Sources */,
 				55967779295AEDBA00A61C7A /* NotificationViewController.swift in Sources */,
@@ -404,6 +435,7 @@
 				55B2B5BD2980E70F0097E70A /* StatisticViewController.swift in Sources */,
 				55B97451280D61600069AEA2 /* StatisticTableViewCell.swift in Sources */,
 				55678DEF28390B3B00E7B1EC /* SettingCell.swift in Sources */,
+				55FA937D298475CE00A7AABB /* NotificationCollectionViewCell.swift in Sources */,
 				5504F21E2808196F001CC40B /* CustomAmountVC.swift in Sources */,
 				554F8C2B295719340072F3ED /* DateService.swift in Sources */,
 			);
