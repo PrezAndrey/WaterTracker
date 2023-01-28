@@ -27,6 +27,7 @@
 		55678DEF28390B3B00E7B1EC /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55678DEE28390B3B00E7B1EC /* SettingCell.swift */; };
 		559222C42837908D00D16543 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559222C32837908D00D16543 /* SettingsTableViewController.swift */; };
 		5595091D29847C9B003DFB9F /* ResetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5595091C29847C9B003DFB9F /* ResetCollectionViewCell.swift */; };
+		5595091F29854E4D003DFB9F /* ExtraSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5595091E29854E4D003DFB9F /* ExtraSettingsViewController.swift */; };
 		55967777295AED7D00A61C7A /* HKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55967776295AED7D00A61C7A /* HKViewController.swift */; };
 		55967779295AEDBA00A61C7A /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55967778295AEDBA00A61C7A /* NotificationViewController.swift */; };
 		5596777B295AF00300A61C7A /* SetTargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5596777A295AF00300A61C7A /* SetTargetViewController.swift */; };
@@ -82,6 +83,7 @@
 		55678DEE28390B3B00E7B1EC /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		559222C32837908D00D16543 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = WaterTracker/Controller/SettingsTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		5595091C29847C9B003DFB9F /* ResetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetCollectionViewCell.swift; sourceTree = "<group>"; };
+		5595091E29854E4D003DFB9F /* ExtraSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraSettingsViewController.swift; sourceTree = "<group>"; };
 		55967776295AED7D00A61C7A /* HKViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKViewController.swift; sourceTree = "<group>"; };
 		55967778295AEDBA00A61C7A /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		5596777A295AF00300A61C7A /* SetTargetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTargetViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				55B2B5BC2980E70F0097E70A /* StatisticViewController.swift */,
 				55FA9371298260D300A7AABB /* ViewController.swift */,
 				55FA93752983D05100A7AABB /* MainSettingsViewController.swift */,
+				5595091E29854E4D003DFB9F /* ExtraSettingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				55ECA243297A875000BCB64C /* Main2ViewController.swift in Sources */,
 				559222C42837908D00D16543 /* SettingsTableViewController.swift in Sources */,
 				55FA9372298260D300A7AABB /* ViewController.swift in Sources */,
+				5595091F29854E4D003DFB9F /* ExtraSettingsViewController.swift in Sources */,
 				55B2B5BD2980E70F0097E70A /* StatisticViewController.swift in Sources */,
 				55B97451280D61600069AEA2 /* StatisticTableViewCell.swift in Sources */,
 				55678DEF28390B3B00E7B1EC /* SettingCell.swift in Sources */,
