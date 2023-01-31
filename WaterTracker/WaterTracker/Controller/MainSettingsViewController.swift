@@ -29,7 +29,6 @@ class MainSettingsViewController: UIViewController {
         tabBarView.layer.shadowOffset = .zero
         tabBarView.layer.shadowRadius = 10
     }
-    
 }
 
 

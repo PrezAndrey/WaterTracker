@@ -39,6 +39,10 @@
 		55B2B5BB2980E6AE0097E70A /* StatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B2B5BA2980E6AE0097E70A /* StatsTableViewCell.swift */; };
 		55B2B5BD2980E70F0097E70A /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B2B5BC2980E70F0097E70A /* StatisticViewController.swift */; };
 		55B97451280D61600069AEA2 /* StatisticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B97450280D61600069AEA2 /* StatisticTableViewCell.swift */; };
+		55E171B92988F36D00FC50C1 /* WeightCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E171B82988F36D00FC50C1 /* WeightCollectionViewCell.swift */; };
+		55E171BB2988F37B00FC50C1 /* TargetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E171BA2988F37B00FC50C1 /* TargetCollectionViewCell.swift */; };
+		55E171BE2989088800FC50C1 /* CustomTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E171BD2989088800FC50C1 /* CustomTabBarVC.swift */; };
+		55E171C029890D4C00FC50C1 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E171BF29890D4C00FC50C1 /* TabBarVC.swift */; };
 		55ECA243297A875000BCB64C /* Main2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55ECA242297A875000BCB64C /* Main2ViewController.swift */; };
 		55FA9372298260D300A7AABB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FA9371298260D300A7AABB /* ViewController.swift */; };
 		55FA93742982624500A7AABB /* DayTargetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FA93732982624500A7AABB /* DayTargetTableViewCell.swift */; };
@@ -95,6 +99,10 @@
 		55B2B5BA2980E6AE0097E70A /* StatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTableViewCell.swift; sourceTree = "<group>"; };
 		55B2B5BC2980E70F0097E70A /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		55B97450280D61600069AEA2 /* StatisticTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTableViewCell.swift; sourceTree = "<group>"; };
+		55E171B82988F36D00FC50C1 /* WeightCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightCollectionViewCell.swift; sourceTree = "<group>"; };
+		55E171BA2988F37B00FC50C1 /* TargetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetCollectionViewCell.swift; sourceTree = "<group>"; };
+		55E171BD2989088800FC50C1 /* CustomTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTabBarVC.swift; path = ../../../../../../CustomTabBarVC.swift; sourceTree = "<group>"; };
+		55E171BF29890D4C00FC50C1 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		55ECA242297A875000BCB64C /* Main2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main2ViewController.swift; sourceTree = "<group>"; };
 		55FA9371298260D300A7AABB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		55FA93732982624500A7AABB /* DayTargetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTargetTableViewCell.swift; sourceTree = "<group>"; };
@@ -172,6 +180,7 @@
 		1B99E5392772640300291801 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				55E171BC2989083F00FC50C1 /* CustomTabBar */,
 				55FA93772984621500A7AABB /* CollectionViewCell */,
 				55AA41E5282AE214006F3B21 /* Cell */,
 			);
@@ -273,6 +282,15 @@
 			path = Properties;
 			sourceTree = "<group>";
 		};
+		55E171BC2989083F00FC50C1 /* CustomTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				55E171BD2989088800FC50C1 /* CustomTabBarVC.swift */,
+				55E171BF29890D4C00FC50C1 /* TabBarVC.swift */,
+			);
+			path = CustomTabBar;
+			sourceTree = "<group>";
+		};
 		55FA93772984621500A7AABB /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +299,8 @@
 				55FA937C298475CE00A7AABB /* NotificationCollectionViewCell.swift */,
 				55FA937E298477E100A7AABB /* HealthKitCollectionViewCell.swift */,
 				5595091C29847C9B003DFB9F /* ResetCollectionViewCell.swift */,
+				55E171B82988F36D00FC50C1 /* WeightCollectionViewCell.swift */,
+				55E171BA2988F37B00FC50C1 /* TargetCollectionViewCell.swift */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -414,6 +434,7 @@
 				55FA937F298477E100A7AABB /* HealthKitCollectionViewCell.swift in Sources */,
 				1BBF3B6A27D921DC00D0BC2C /* WaterRecord.swift in Sources */,
 				5596777B295AF00300A61C7A /* SetTargetViewController.swift in Sources */,
+				55E171BB2988F37B00FC50C1 /* TargetCollectionViewCell.swift in Sources */,
 				55FA937B298471F400A7AABB /* PeriodCollectionViewCell.swift in Sources */,
 				55A83628280FFD9A0099D144 /* AutoAimViewController.swift in Sources */,
 				55FA93762983D05100A7AABB /* MainSettingsViewController.swift in Sources */,
@@ -422,11 +443,13 @@
 				1B99E523277123FE00291801 /* AppDelegate.swift in Sources */,
 				1B99E54D2773B0F400291801 /* GreetingsViewController.swift in Sources */,
 				1B9A5C0227BC3F8F008753D0 /* WaterModel.swift in Sources */,
+				55E171C029890D4C00FC50C1 /* TabBarVC.swift in Sources */,
 				1BBF3B6D27D922F200D0BC2C /* UserSettings.swift in Sources */,
 				5595091D29847C9B003DFB9F /* ResetCollectionViewCell.swift in Sources */,
 				1B99E525277123FE00291801 /* SceneDelegate.swift in Sources */,
 				1B99E5492773AFE000291801 /* StatsViewController.swift in Sources */,
 				55967779295AEDBA00A61C7A /* NotificationViewController.swift in Sources */,
+				55E171B92988F36D00FC50C1 /* WeightCollectionViewCell.swift in Sources */,
 				55FA93742982624500A7AABB /* DayTargetTableViewCell.swift in Sources */,
 				55A8362A28105F5C0099D144 /* StartingTimeViewController.swift in Sources */,
 				5504F21C2807F013001CC40B /* WaterCalculator.swift in Sources */,
@@ -440,6 +463,7 @@
 				55B97451280D61600069AEA2 /* StatisticTableViewCell.swift in Sources */,
 				55678DEF28390B3B00E7B1EC /* SettingCell.swift in Sources */,
 				55FA937D298475CE00A7AABB /* NotificationCollectionViewCell.swift in Sources */,
+				55E171BE2989088800FC50C1 /* CustomTabBarVC.swift in Sources */,
 				5504F21E2808196F001CC40B /* CustomAmountVC.swift in Sources */,
 				554F8C2B295719340072F3ED /* DateService.swift in Sources */,
 			);
