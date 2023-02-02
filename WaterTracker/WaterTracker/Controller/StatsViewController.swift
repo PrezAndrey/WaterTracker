@@ -38,11 +38,6 @@ class StatsViewController: UIViewController {
     }
     
     func configureTabBar() {
-        tabBarView.layer.cornerRadius = tabBarView.frame.size.height / 2
-        tabBarView.layer.shadowColor = UIColor.black.cgColor
-        tabBarView.layer.shadowOpacity = 0.5
-        tabBarView.layer.shadowOffset = .zero
-        tabBarView.layer.shadowRadius = 10
     }
     
     // MARK: Prepare for Segue

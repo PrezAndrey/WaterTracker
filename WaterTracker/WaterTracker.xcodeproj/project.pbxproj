@@ -43,7 +43,6 @@
 		55E171BB2988F37B00FC50C1 /* TargetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E171BA2988F37B00FC50C1 /* TargetCollectionViewCell.swift */; };
 		55E171BE2989088800FC50C1 /* CustomTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E171BD2989088800FC50C1 /* CustomTabBarVC.swift */; };
 		55E171C029890D4C00FC50C1 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E171BF29890D4C00FC50C1 /* TabBarVC.swift */; };
-		55ECA243297A875000BCB64C /* Main2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55ECA242297A875000BCB64C /* Main2ViewController.swift */; };
 		55FA9372298260D300A7AABB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FA9371298260D300A7AABB /* ViewController.swift */; };
 		55FA93742982624500A7AABB /* DayTargetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FA93732982624500A7AABB /* DayTargetTableViewCell.swift */; };
 		55FA93762983D05100A7AABB /* MainSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FA93752983D05100A7AABB /* MainSettingsViewController.swift */; };
@@ -103,7 +102,6 @@
 		55E171BA2988F37B00FC50C1 /* TargetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetCollectionViewCell.swift; sourceTree = "<group>"; };
 		55E171BD2989088800FC50C1 /* CustomTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTabBarVC.swift; path = ../../../../../../CustomTabBarVC.swift; sourceTree = "<group>"; };
 		55E171BF29890D4C00FC50C1 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
-		55ECA242297A875000BCB64C /* Main2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main2ViewController.swift; sourceTree = "<group>"; };
 		55FA9371298260D300A7AABB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		55FA93732982624500A7AABB /* DayTargetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTargetTableViewCell.swift; sourceTree = "<group>"; };
 		55FA93752983D05100A7AABB /* MainSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsViewController.swift; sourceTree = "<group>"; };
@@ -197,7 +195,6 @@
 				5504F21D2808196F001CC40B /* CustomAmountVC.swift */,
 				55A83627280FFD9A0099D144 /* AutoAimViewController.swift */,
 				55A8362928105F5C0099D144 /* StartingTimeViewController.swift */,
-				55ECA242297A875000BCB64C /* Main2ViewController.swift */,
 				55B2B5BC2980E70F0097E70A /* StatisticViewController.swift */,
 				55FA9371298260D300A7AABB /* ViewController.swift */,
 				55FA93752983D05100A7AABB /* MainSettingsViewController.swift */,
@@ -455,7 +452,6 @@
 				5504F21C2807F013001CC40B /* WaterCalculator.swift in Sources */,
 				55A56C1027DB321400296FD0 /* HealthKitAdapter.swift in Sources */,
 				1B99E53E277267CB00291801 /* WaterStore.swift in Sources */,
-				55ECA243297A875000BCB64C /* Main2ViewController.swift in Sources */,
 				559222C42837908D00D16543 /* SettingsTableViewController.swift in Sources */,
 				55FA9372298260D300A7AABB /* ViewController.swift in Sources */,
 				5595091F29854E4D003DFB9F /* ExtraSettingsViewController.swift in Sources */,

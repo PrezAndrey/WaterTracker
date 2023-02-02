@@ -14,7 +14,6 @@ class MainSettingsViewController: UIViewController {
     private let dateService = DateService()
     private let healthKit = HealthKitAdapter()
     
-    @IBOutlet weak var tabBarView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -23,11 +22,6 @@ class MainSettingsViewController: UIViewController {
     }
     
     func configureBar() {
-        tabBarView.layer.cornerRadius = tabBarView.frame.size.height / 2
-        tabBarView.layer.shadowColor = UIColor.black.cgColor
-        tabBarView.layer.shadowOpacity = 0.5
-        tabBarView.layer.shadowOffset = .zero
-        tabBarView.layer.shadowRadius = 10
     }
 }
 

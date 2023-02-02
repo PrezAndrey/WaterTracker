@@ -20,7 +20,6 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var waterAmountView: UIView!
     @IBOutlet weak var addWaterView: UIView!
-    @IBOutlet weak var tabBarView: UIView!
     @IBOutlet weak var waterLable: UILabel! {
         didSet {
             updateUI()
@@ -32,12 +31,13 @@ class MainViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        configureUI()
+        
         if checkFirstStart() {
             performSegue(withIdentifier: "greeting", sender: self)
         }
         waterModel.delegate = self
         updateUI()
+        configureUI()
     }
     
     func updateUI() {
@@ -175,5 +175,10 @@ extension MainViewController {
             showGetTargetAlert()
             self.savedTarget = target
         }
+    }
+    
+    func configureUI() {
+        addWaterView.layer.cornerRadius = 20
+        waterAmountView.layer.cornerRadius = 10
     }
 }
