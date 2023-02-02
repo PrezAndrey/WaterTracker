@@ -15,7 +15,7 @@ class TabBarVC: UITabBar {
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = createPath()
         shapeLayer.strokeColor = UIColor.clear.cgColor
-        shapeLayer.fillColor = UIColor.gray.cgColor
+        shapeLayer.fillColor = UIColor.lightGray.cgColor
         shapeLayer.lineWidth = 1.0
         
         shapeLayer.shadowOffset = CGSize(width: 0, height: 0)
@@ -35,8 +35,8 @@ class TabBarVC: UITabBar {
     override func draw(_ rect: CGRect) {
         print("Draw Works")
         self.addShape()
-        self.unselectedItemTintColor = UIColor.white
-        self.tintColor = UIColor.gray
+        self.unselectedItemTintColor = UIColor.lightGray
+        self.tintColor = UIColor.lightGray
     }
     
     func createPath1() -> CGPath {
@@ -62,16 +62,15 @@ class TabBarVC: UITabBar {
         let path = UIBezierPath( )
         let centerWidth = self.frame.width / 2
         
-        path.move(to: CGPoint (x: 0, y: -20)) //start pos
-        path.addLine(to: CGPoint (x: centerWidth - 50, y: 0)) //left slope
-        path.addQuadCurve(to: CGPoint(x: centerWidth - 30, y: 20), controlPoint: CGPoint (x: centerWidth - 30, y: 5)) //top left curve
-        path.addLine(to: CGPoint(x: centerWidth - 29, y: height - 10)) // left vertical line
-        path.addQuadCurve(to: CGPoint(x: centerWidth, y: height + 10), controlPoint: CGPoint(x: centerWidth - 30, y: height + 10)) //bottom left curve
-        path.addQuadCurve(to: CGPoint(x: centerWidth + 40, y: height - 10), controlPoint: CGPoint(x: centerWidth + 40, y: height + 10)) //bottom right curve
-        path.addLine(to: CGPoint(x: centerWidth + 41, y: 20)) //right vertical line
-        path.addQuadCurve(to: CGPoint(x: centerWidth + 50, y: 0) , controlPoint: CGPoint(x: centerWidth + 41, y: 5)) //top right curve
-        path.addLine(to: CGPoint(x: self.frame.width, y: -20)) //right slope
-        //close the path
+        path.move(to: CGPoint (x: 0, y: -20))
+        path.addLine(to: CGPoint (x: centerWidth - 50, y: 0))
+        path.addQuadCurve(to: CGPoint(x: centerWidth - 30, y: 20), controlPoint: CGPoint (x: centerWidth - 30, y: 5))
+        path.addLine(to: CGPoint(x: centerWidth - 29, y: height - 10))
+        path.addQuadCurve(to: CGPoint(x: centerWidth, y: height + 10), controlPoint: CGPoint(x: centerWidth - 30, y: height + 10))
+        path.addQuadCurve(to: CGPoint(x: centerWidth + 40, y: height - 10), controlPoint: CGPoint(x: centerWidth + 40, y: height + 10))
+        path.addLine(to: CGPoint(x: centerWidth + 41, y: 20))
+        path.addQuadCurve(to: CGPoint(x: centerWidth + 50, y: 0) , controlPoint: CGPoint(x: centerWidth + 41, y: 5))
+        path.addLine(to: CGPoint(x: self.frame.width, y: -20))
         path.addLine(to: CGPoint(x: self.frame.width, y: self.frame .height))
         path.addLine(to: CGPoint(x: 0, y: self.frame.height))
         path.close()
