@@ -11,6 +11,12 @@ class SettingsTableViewController: UITableViewController {
     
     let healthKit = HealthKitAdapter()
     
+    @IBOutlet weak var targetCellView: UIView!
+    @IBOutlet weak var periodCellView: UIView!
+    @IBOutlet weak var notificationCellView: UIView!
+    @IBOutlet weak var resetCellView: UIView!
+    @IBOutlet weak var hkCellView: UIView!
+    
     @IBOutlet weak var currentPeriod: UILabel!
     @IBOutlet weak var currentAim: UILabel!
     @IBOutlet weak var notficationSwitch: UISwitch!
@@ -21,6 +27,11 @@ class SettingsTableViewController: UITableViewController {
     
     @IBAction func didUploadDataToHK(_ sender: Any) {
         print("Uploading data to HealthKit...")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureViewCells()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,7 +53,19 @@ class SettingsTableViewController: UITableViewController {
         currentAim.text = "\(settings.dayTarget ?? 0) ml"
         let newTime = dateService.intervalToDateStr(interval: settings.startDayInterval ?? 21599)
         currentPeriod.text = "\(newTime)"
+        
         tableView.reloadData()
+    }
+    
+    private func configureViewCells() {
+        let viewList = [targetCellView, periodCellView, notificationCellView, resetCellView, hkCellView]
+        
+        for view in viewList {
+            guard let cellView = view else { return }
+            cellView.layer.cornerRadius = 10
+            cellView.layer.borderWidth = 2
+            cellView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1).cgColor
+        }
     }
   
     @objc func switchNotification() {
