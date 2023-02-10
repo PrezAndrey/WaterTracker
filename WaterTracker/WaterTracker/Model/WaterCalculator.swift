@@ -23,9 +23,9 @@ class WaterCalculator {
         return totalWater
     }
     
-    func waterAimGenerator(weight: Int) -> Double {
+    func waterAimGenerator(weight: Int) -> Int {
         let standartAim = weight * 30
         
-        return Double(standartAim)
+        return standartAim
     }
 }

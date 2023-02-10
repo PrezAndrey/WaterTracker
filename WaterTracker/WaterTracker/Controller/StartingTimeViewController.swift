@@ -14,6 +14,8 @@ class StartingTimeViewController: UIViewController {
     private var waterModel = WaterModel()
     private let dateService = DateService()
     
+    var completion: ((String) -> Void)?
+    
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var timeLable: UILabel!
     
@@ -41,6 +43,7 @@ extension StartingTimeViewController {
         waterModel.editSettings(newSettings: settings)
         let newTime = dateService.intervalToDateStr(interval: newInterval)
         currentPeriod = newTime
+        completion?(newTime)
         updateLable()
     }
     

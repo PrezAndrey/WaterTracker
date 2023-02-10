@@ -25,10 +25,6 @@ class SettingsTableViewController: UITableViewController {
     private let waterModel = WaterModel()
     private let dateService = DateService()
     
-    @IBAction func didUploadDataToHK(_ sender: Any) {
-        print("Uploading data to HealthKit...")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewCells()
@@ -37,10 +33,6 @@ class SettingsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureUI()
-    }
-    
-    @IBAction func didResetSettings(_ sender: Any) {
-        resetAlert()
     }
     
     private func configureUI() {
@@ -59,6 +51,7 @@ class SettingsTableViewController: UITableViewController {
     
     private func configureViewCells() {
         let viewList = [targetCellView, periodCellView, notificationCellView, resetCellView, hkCellView]
+        let labelList = [currentAim, currentPeriod]
         
         for view in viewList {
             guard let cellView = view else { return }
@@ -66,16 +59,54 @@ class SettingsTableViewController: UITableViewController {
             cellView.layer.borderWidth = 2
             cellView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1).cgColor
         }
+        
+        for label in labelList {
+            guard let label = label else { return }
+            label.layer.cornerRadius = 5
+            label.layer.borderWidth = 2
+            label.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1).cgColor
+        }
     }
   
     @objc func switchNotification() {
         guard let newSettings = waterModel.getUserSettings() else { return }
         waterModel.saveUserSettings(settings: newSettings)
+        print("Switch is working .....")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == String(describing: StartingTimeViewController.self) {
+            if let timeVC = segue.destination as? StartingTimeViewController {
+                timeVC.completion = {[weak self] newAmount in
+                    guard let self = self else { return }
+                    self.currentPeriod.text = newAmount
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
 }
 
 
 extension SettingsTableViewController {
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch (indexPath.section, indexPath.row) {
+        case (0, 0):
+            performSegue(withIdentifier: String(describing: AutoAimViewController.self), sender: self)
+        case (1, 0):
+            performSegue(withIdentifier: String(describing: StartingTimeViewController.self), sender: self)
+        case (2, 0):
+            switchNotification()
+        case (3, 0):
+            print("Uploading data to HealthKit...")
+        case (4, 0):
+            resetAlert()
+        
+        default:
+            print("MainSettings Cell Error")
+        }
+    }
     
     private func resetAlert() {
         let alertController = UIAlertController(title: "Reset",

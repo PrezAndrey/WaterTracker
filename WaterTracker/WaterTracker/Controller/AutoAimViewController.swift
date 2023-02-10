@@ -16,6 +16,12 @@ class AutoAimViewController: UITableViewController {
     
     var settings = UserSettings(dayTarget: 0, weight: 0)
     
+    @IBOutlet weak var weightCellView: UIView!
+    @IBOutlet weak var targetCellView: UIView!
+    @IBOutlet weak var hkCellView: UIView!
+    @IBOutlet weak var getHKDCellView: UIView!
+    @IBOutlet weak var aimGenerationCellView: UIView!
+    
     @IBOutlet weak var aimLable: UILabel!
     @IBOutlet weak var weightLable: UILabel!
     @IBOutlet weak var dateOfBirthLable: UILabel!
@@ -24,6 +30,7 @@ class AutoAimViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUI()
         updateSettings()
         configureWithSettings()
     }
@@ -32,11 +39,7 @@ class AutoAimViewController: UITableViewController {
         waterModel.editSettings(newSettings: settings)
     }
     
-    @IBAction func didFetchDataFromHK(_ sender: Any) {
-        HKDataFetch()
-    }
-    
-    @IBAction func didGenerateAim(_ sender: Any) {
+    func generateAim() {
         if let currentWeight = settings.weight {
             let newAim = waterCalculator.waterAimGenerator(weight: currentWeight)
             settings.dayTarget = Int(newAim)
@@ -44,8 +47,23 @@ class AutoAimViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        valueSetAlert(indexPath: indexPath)
+    func configureUI() {
+        let viewList = [weightCellView, targetCellView, hkCellView, getHKDCellView, aimGenerationCellView]
+        let labelList = [aimLable, weightLable, dateOfBirthLable, sexLable, bloodTypeLable]
+        
+        for view in viewList {
+            guard let cellView = view else { return }
+            cellView.layer.cornerRadius = 15
+            cellView.layer.borderWidth = 2
+            cellView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1).cgColor
+        }
+        
+        for label in labelList {
+            guard let label = label else { return }
+            label.layer.cornerRadius = 5
+            label.layer.borderWidth = 2
+            label.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1).cgColor
+        }
     }
 }
 
@@ -66,7 +84,7 @@ private extension AutoAimViewController {
             weightLable.text = "0 кг"
         }
         if let target  = settings.dayTarget {
-            aimLable.text = "\(target) мл"
+            aimLable.text = "\(Int(target)) мл"
         } else {
             aimLable.text = "0 мл"
         }
@@ -77,6 +95,21 @@ private extension AutoAimViewController {
 // MARK: Alert functions for Weight, Height and Aim
 extension AutoAimViewController {
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch (indexPath.section, indexPath.row) {
+        case (0, 0), (1, 0):
+            valueSetAlert(indexPath: indexPath)
+        case (2, 0):
+            print("HealthKit values")
+        case (3, 0):
+            generateAim()
+        case (4, 0):
+            HKDataFetch()
+        default:
+            print("Error cell")
+        }
+    }
+    
     private func valueSetAlert(indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
         case (0, 0):
@@ -84,7 +117,7 @@ extension AutoAimViewController {
                 self?.settings.weight = Int(setting)
                 self?.configureWithSettings()
             }
-        case (0, 1):
+        case (1, 0):
             showAlert("Aim") { [weak self] setting in
                 self?.settings.dayTarget = Int(setting)
                 self?.configureWithSettings()
