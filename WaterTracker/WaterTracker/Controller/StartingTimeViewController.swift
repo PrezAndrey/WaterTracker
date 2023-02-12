@@ -18,9 +18,11 @@ class StartingTimeViewController: UIViewController {
     
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var timeLable: UILabel!
+    @IBOutlet weak var setButtonLabel: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUI()
         updateCurrentPeriod()
         updateLable()
     }
@@ -28,7 +30,7 @@ class StartingTimeViewController: UIViewController {
     @IBAction func didSetTime(_ sender: Any) {
         print(datePicker.date)
         updateInterval(time: datePicker.date)
-        self.dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -60,5 +62,19 @@ extension StartingTimeViewController {
         guard let settings = waterModel.getUserSettings() else { return UserSettings() }
         
         return settings
+    }
+}
+
+extension StartingTimeViewController {
+    
+    func configureUI() {
+        timeLable.layer.cornerRadius = 5
+        timeLable.layer.borderWidth = 2
+        timeLable.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1).cgColor
+        
+        setButtonLabel.layer.cornerRadius = 5
+        setButtonLabel.layer.borderWidth = 2
+        setButtonLabel.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1).cgColor
+
     }
 }

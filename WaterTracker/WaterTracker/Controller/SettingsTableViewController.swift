@@ -53,11 +53,13 @@ class SettingsTableViewController: UITableViewController {
         let viewList = [targetCellView, periodCellView, notificationCellView, resetCellView, hkCellView]
         let labelList = [currentAim, currentPeriod]
         
+        
         for view in viewList {
             guard let cellView = view else { return }
             cellView.layer.cornerRadius = 10
             cellView.layer.borderWidth = 2
             cellView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1).cgColor
+            cellView
         }
         
         for label in labelList {
@@ -85,10 +87,6 @@ class SettingsTableViewController: UITableViewController {
             }
         }
     }
-}
-
-
-extension SettingsTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
@@ -102,11 +100,14 @@ extension SettingsTableViewController {
             print("Uploading data to HealthKit...")
         case (4, 0):
             resetAlert()
-        
         default:
             print("MainSettings Cell Error")
         }
     }
+}
+
+
+extension SettingsTableViewController {
     
     private func resetAlert() {
         let alertController = UIAlertController(title: "Reset",
@@ -127,4 +128,3 @@ extension SettingsTableViewController {
         configureUI()
     }
 }
-    
