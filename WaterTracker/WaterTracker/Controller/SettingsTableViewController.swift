@@ -59,7 +59,7 @@ class SettingsTableViewController: UITableViewController {
             cellView.layer.cornerRadius = 10
             cellView.layer.borderWidth = 2
             cellView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1).cgColor
-            cellView
+            
         }
         
         for label in labelList {
