@@ -69,6 +69,20 @@ class SettingsTableViewController: UITableViewController {
             label.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1).cgColor
         }
     }
+    
+//    func shake() {
+//        let shake = CABasicAnimation (keyPath: "position")
+//        shake.duration = 0.1
+//        shake.repeatCount = 2
+//        shake.autoreverses = true
+//        let fromPoint = CGPoint(x:  - 8, y: center.y)
+//        let fromValue = NSValue (cgPoint: fromPoint)
+//        let toPoint = CGPoint (x: center.× + 8, y: center.y)
+//        let toValue = NSValue (cgPoint: toPoint)
+//        shake.fromValue = fromValue
+//        shake.toValue = toValue
+//        layer.add(shake, forkey: "position")
+//    }
   
     @objc func switchNotification() {
         guard let newSettings = waterModel.getUserSettings() else { return }
@@ -87,11 +101,28 @@ class SettingsTableViewController: UITableViewController {
             }
         }
     }
-    
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        switch (indexPath.section, indexPath.row) {
+        case (0, 0):
+            targetCellView.isOpaque = false
+        case (1, 0):
+            print()
+        case (2, 0):
+            print()
+        case (3, 0):
+            print()
+        case (4, 0):
+            print()
+        default:
+            print("MainSettings Cell Error")
+        }
+        return indexPath
+    }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
         case (0, 0):
             performSegue(withIdentifier: String(describing: AutoAimViewController.self), sender: self)
+            //targetCellView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1).cgColor
         case (1, 0):
             performSegue(withIdentifier: String(describing: StartingTimeViewController.self), sender: self)
         case (2, 0):
