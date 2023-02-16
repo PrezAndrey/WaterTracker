@@ -1,28 +1,11 @@
 //
-//  GreetingViewController.swift
+//  LinearGradientView.swift
 //  WaterTracker
 //
-//  Created by Андрей  on 14.02.2023.
+//  Created by Андрей  on 16.02.2023.
 //
 
 import UIKit
-
-class GreetingViewController: UIViewController {
-    
-    override func loadView() {
-        super.loadView()
-        view = LinearGradientView()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-}
 
 class LinearGradientView: UIView {
     
@@ -75,6 +58,8 @@ class LinearGradientView: UIView {
         
         gradientLayer.setColors(newColors, animated: true, withDuration: 15, timingFunctionName: .linear)
     }
+    
+    
 }
 
 extension CAGradientLayer {
@@ -97,3 +82,4 @@ extension CAGradientLayer {
         add(colorAnimation, forKey: "colorChangeAnimation")
     }
 }
+

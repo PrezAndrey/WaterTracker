@@ -122,7 +122,7 @@ class SettingsTableViewController: UITableViewController {
         switch (indexPath.section, indexPath.row) {
         case (0, 0):
             performSegue(withIdentifier: String(describing: AutoAimViewController.self), sender: self)
-            //targetCellView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1).cgColor
+           
         case (1, 0):
             performSegue(withIdentifier: String(describing: StartingTimeViewController.self), sender: self)
         case (2, 0):

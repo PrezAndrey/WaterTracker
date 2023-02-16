@@ -15,7 +15,6 @@
 		1B99E52F2771240000291801 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B99E52D2771240000291801 /* LaunchScreen.storyboard */; };
 		1B99E53E277267CB00291801 /* WaterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99E53D277267CB00291801 /* WaterStore.swift */; };
 		1B99E5492773AFE000291801 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99E5482773AFE000291801 /* StatsViewController.swift */; };
-		1B99E54D2773B0F400291801 /* GreetingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99E54C2773B0F400291801 /* GreetingsViewController.swift */; };
 		1B9A5C0227BC3F8F008753D0 /* WaterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A5C0127BC3F8F008753D0 /* WaterModel.swift */; };
 		1BBF3B6A27D921DC00D0BC2C /* WaterRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBF3B6927D921DC00D0BC2C /* WaterRecord.swift */; };
 		1BBF3B6D27D922F200D0BC2C /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBF3B6C27D922F200D0BC2C /* UserSettings.swift */; };
@@ -39,6 +38,7 @@
 		55B2B5BB2980E6AE0097E70A /* StatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B2B5BA2980E6AE0097E70A /* StatsTableViewCell.swift */; };
 		55B2B5BD2980E70F0097E70A /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B2B5BC2980E70F0097E70A /* StatisticViewController.swift */; };
 		55B97451280D61600069AEA2 /* StatisticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B97450280D61600069AEA2 /* StatisticTableViewCell.swift */; };
+		55E159B3299E395E0056B504 /* LinearGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E159B2299E395E0056B504 /* LinearGradientView.swift */; };
 		55E171B92988F36D00FC50C1 /* WeightCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E171B82988F36D00FC50C1 /* WeightCollectionViewCell.swift */; };
 		55E171BB2988F37B00FC50C1 /* TargetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E171BA2988F37B00FC50C1 /* TargetCollectionViewCell.swift */; };
 		55E171BE2989088800FC50C1 /* CustomTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E171BD2989088800FC50C1 /* CustomTabBarVC.swift */; };
@@ -74,7 +74,6 @@
 		1B99E5302771240000291801 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B99E53D277267CB00291801 /* WaterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterStore.swift; sourceTree = "<group>"; };
 		1B99E5482773AFE000291801 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
-		1B99E54C2773B0F400291801 /* GreetingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsViewController.swift; sourceTree = "<group>"; };
 		1B9A5C0127BC3F8F008753D0 /* WaterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterModel.swift; sourceTree = "<group>"; };
 		1BBF3B6927D921DC00D0BC2C /* WaterRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterRecord.swift; sourceTree = "<group>"; };
 		1BBF3B6C27D922F200D0BC2C /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
@@ -99,6 +98,7 @@
 		55B2B5BA2980E6AE0097E70A /* StatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTableViewCell.swift; sourceTree = "<group>"; };
 		55B2B5BC2980E70F0097E70A /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		55B97450280D61600069AEA2 /* StatisticTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTableViewCell.swift; sourceTree = "<group>"; };
+		55E159B2299E395E0056B504 /* LinearGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearGradientView.swift; sourceTree = "<group>"; };
 		55E171B82988F36D00FC50C1 /* WeightCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightCollectionViewCell.swift; sourceTree = "<group>"; };
 		55E171BA2988F37B00FC50C1 /* TargetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetCollectionViewCell.swift; sourceTree = "<group>"; };
 		55E171BD2989088800FC50C1 /* CustomTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTabBarVC.swift; path = ../../../../../../CustomTabBarVC.swift; sourceTree = "<group>"; };
@@ -180,6 +180,7 @@
 		1B99E5392772640300291801 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				55E159B1299E392A0056B504 /* Gradient */,
 				55E171BC2989083F00FC50C1 /* CustomTabBar */,
 				55FA93772984621500A7AABB /* CollectionViewCell */,
 				55AA41E5282AE214006F3B21 /* Cell */,
@@ -201,7 +202,6 @@
 				55FA9371298260D300A7AABB /* ViewController.swift */,
 				55FA93752983D05100A7AABB /* MainSettingsViewController.swift */,
 				5595091E29854E4D003DFB9F /* ExtraSettingsViewController.swift */,
-				55E171C3299B3EC900FC50C1 /* GreetingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -243,7 +243,7 @@
 		55967775295AEC1200A61C7A /* StartScreens */ = {
 			isa = PBXGroup;
 			children = (
-				1B99E54C2773B0F400291801 /* GreetingsViewController.swift */,
+				55E171C3299B3EC900FC50C1 /* GreetingViewController.swift */,
 				55967776295AED7D00A61C7A /* HKViewController.swift */,
 				55967778295AEDBA00A61C7A /* NotificationViewController.swift */,
 				5596777A295AF00300A61C7A /* SetTargetViewController.swift */,
@@ -280,6 +280,14 @@
 				1BBF3B6927D921DC00D0BC2C /* WaterRecord.swift */,
 			);
 			path = Properties;
+			sourceTree = "<group>";
+		};
+		55E159B1299E392A0056B504 /* Gradient */ = {
+			isa = PBXGroup;
+			children = (
+				55E159B2299E395E0056B504 /* LinearGradientView.swift */,
+			);
+			path = Gradient;
 			sourceTree = "<group>";
 		};
 		55E171BC2989083F00FC50C1 /* CustomTabBar */ = {
@@ -442,7 +450,7 @@
 				55FA93792984624200A7AABB /* DayTargetCollectionViewCell.swift in Sources */,
 				1B99E527277123FE00291801 /* MainViewController.swift in Sources */,
 				1B99E523277123FE00291801 /* AppDelegate.swift in Sources */,
-				1B99E54D2773B0F400291801 /* GreetingsViewController.swift in Sources */,
+				55E159B3299E395E0056B504 /* LinearGradientView.swift in Sources */,
 				1B9A5C0227BC3F8F008753D0 /* WaterModel.swift in Sources */,
 				55E171C029890D4C00FC50C1 /* TabBarVC.swift in Sources */,
 				1BBF3B6D27D922F200D0BC2C /* UserSettings.swift in Sources */,
