@@ -71,30 +71,29 @@ class LinearGradientView: UIView {
             gradientLayer.frame = bounds
         }
         
-        let newColors = [UIColor.purple.cgColor, UIColor.red.cgColor,
-        UIColor.orange.cgColor]
+        let newColors = [UIColor.white.cgColor, UIColor.blue.cgColor]
         
-        gradientLayer
+        gradientLayer.setColors(newColors, animated: true, withDuration: 15, timingFunctionName: .linear)
     }
 }
 
-extension LinearGradientView {
+extension CAGradientLayer {
     
     func setColors(_ newColors: [CGColor], animated: Bool = true, withDuration duration: TimeInterval = 0, timingFunctionName name: CAMediaTimingFunctionName? = nil) {
         
         if !animated {
-            gradientLayer.colors = newColors
+            colors = newColors
             return
         }
         
         let colorAnimation = CABasicAnimation(keyPath: "colors")
-        colorAnimation.fromValue = gradientLayer.colors
+        colorAnimation.fromValue = colors
         colorAnimation.toValue = newColors
         colorAnimation.duration = duration
         colorAnimation.isRemovedOnCompletion = false
         colorAnimation.fillMode = CAMediaTimingFillMode.forwards
         colorAnimation.timingFunction = CAMediaTimingFunction(name: name ?? .linear)
         
-        gradientLayer.add(colorAnimation, forKey: "colorChangeAnimation")
+        add(colorAnimation, forKey: "colorChangeAnimation")
     }
 }
