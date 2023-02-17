@@ -122,7 +122,6 @@ class SettingsTableViewController: UITableViewController {
         switch (indexPath.section, indexPath.row) {
         case (0, 0):
             performSegue(withIdentifier: String(describing: AutoAimViewController.self), sender: self)
-           
         case (1, 0):
             performSegue(withIdentifier: String(describing: StartingTimeViewController.self), sender: self)
         case (2, 0):

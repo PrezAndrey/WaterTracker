@@ -7,20 +7,23 @@
 
 import UIKit
 
-class NotificationViewController: UIViewController {
+class NotificationViewController: GreetingViewController {
     
-    let notifications = Notifications()
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateView()
         navigationController?.navigationBar.isHidden = true
     }
     
-    @IBAction func askForAuthorization(_ sender: Any) {
-        _ = notifications.checkAuthorization()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            self.performSegue(withIdentifier: "segueToPeriod", sender: self)
-        }
+//    @IBAction func askForAuthorization(_ sender: Any) {
+//        _ = notifications.checkAuthorization()
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+//            self.performSegue(withIdentifier: "segueToPeriod", sender: self)
+//        }
+//    }
+    
+    private func updateView() {
+        greetingTextLabel.text = "Notifications won’t let you forget to drink some water and tell you when you get your day target"
+        configButton.setTitle("Notifications", for: .normal)
     }
 }

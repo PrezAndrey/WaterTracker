@@ -9,6 +9,9 @@ import UIKit
 
 class GreetingViewController: UIViewController {
     
+    let healthKitService = HealthKitAdapter()
+    let notifications = Notifications()
+    
     let laterButton = UIButton(type: .roundedRect)
     let configButton = UIButton(type: .roundedRect)
     let greetingTextLabel = UILabel()
@@ -75,10 +78,38 @@ extension GreetingViewController {
     }
     
     @objc func moveToHK() {
-        performSegue(withIdentifier: String(describing: HKViewController.self), sender: self)
+        switch configButton.titleLabel?.text {
+        case "Configure":
+            performSegue(withIdentifier: String(describing: HKViewController.self), sender: self)
+        case "Implement HealthKit":
+            healthKitService.authorizeIfNeeded()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.performSegue(withIdentifier: String(describing: NotificationViewController.self), sender: self)
+            }
+        case "Notifications":
+            _ = notifications.checkAuthorization()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.performSegue(withIdentifier: String(describing: SetTargetViewController.self), sender: self)
+            }
+        default:
+            print("Error...")
+        }
+        
     }
     
     @objc func quit() {
-        navigationController?.popViewController(animated: true)
+        switch configButton.titleLabel?.text {
+        case "Configure":
+            navigationController?.popViewController(animated: true)
+        case "Implement HealthKit":
+            self.performSegue(withIdentifier: String(describing: NotificationViewController.self), sender: self)
+        case "Notifications":
+            _ = notifications.checkAuthorization()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.performSegue(withIdentifier: String(describing: SetTargetViewController.self), sender: self)
+            }
+        default:
+            print("Error...")
+        }
     }
 }
