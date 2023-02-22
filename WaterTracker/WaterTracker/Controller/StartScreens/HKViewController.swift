@@ -13,7 +13,7 @@ class HKViewController: GreetingViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = true
+//        navigationController?.navigationBar.isHidden = true
         updateView()
     }
     

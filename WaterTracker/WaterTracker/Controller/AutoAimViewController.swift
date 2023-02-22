@@ -33,6 +33,7 @@ class AutoAimViewController: UITableViewController {
         configureUI()
         updateSettings()
         configureWithSettings()
+        navigationController?.navigationBar.isHidden = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -19,6 +19,7 @@ class GreetingViewController: UIViewController {
     override func loadView() {
         super.loadView()
         view = LinearGradientView()
+        navigationController?.navigationBar.isHidden = true
     }
     
     override func viewDidLoad() {

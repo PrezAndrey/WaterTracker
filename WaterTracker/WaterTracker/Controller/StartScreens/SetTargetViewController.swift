@@ -17,10 +17,14 @@ class SetTargetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = true
         view = LinearGradientView()
         setButtons()
         setTextLabel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
     }
     
     func configureButton(button: UIButton) {
@@ -79,7 +83,7 @@ class SetTargetViewController: UIViewController {
     }
     
     @objc func didStart() {
-        
+        navigationController?.popToRootViewController(animated: true)
     }
     
     func configure(button: UIButton) {
@@ -92,7 +96,10 @@ class SetTargetViewController: UIViewController {
     
     func isCompeted() {
         if dayTargetButton.backgroundColor == periodButton.backgroundColor {
-            navigationController?.popToRootViewController(animated: true)
+            dayTargetButton.isHidden = true
+            periodButton.isHidden = true
+            startButton.isHidden = false
+            startButton.backgroundColor = .green
         }
     }
 //

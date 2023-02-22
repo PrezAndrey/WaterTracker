@@ -12,7 +12,6 @@ class NotificationViewController: GreetingViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateView()
-        navigationController?.navigationBar.isHidden = true
     }
     
 //    @IBAction func askForAuthorization(_ sender: Any) {
