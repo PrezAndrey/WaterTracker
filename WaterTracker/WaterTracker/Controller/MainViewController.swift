@@ -33,7 +33,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         
         if checkFirstStart() {
-            performSegue(withIdentifier: "greeting", sender: self)
+            //performSegue(withIdentifier: "greeting", sender: self)
         }
         waterModel.delegate = self
         updateUI()

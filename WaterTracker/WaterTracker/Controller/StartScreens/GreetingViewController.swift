@@ -81,7 +81,7 @@ extension GreetingViewController {
         switch configButton.titleLabel?.text {
         case "Configure":
             performSegue(withIdentifier: String(describing: HKViewController.self), sender: self)
-        case "Implement HealthKit":
+        case "HealthKit":
             healthKitService.authorizeIfNeeded()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.performSegue(withIdentifier: String(describing: NotificationViewController.self), sender: self)
@@ -101,7 +101,7 @@ extension GreetingViewController {
         switch configButton.titleLabel?.text {
         case "Configure":
             navigationController?.popViewController(animated: true)
-        case "Implement HealthKit":
+        case "HealthKit":
             self.performSegue(withIdentifier: String(describing: NotificationViewController.self), sender: self)
         case "Notifications":
             _ = notifications.checkAuthorization()

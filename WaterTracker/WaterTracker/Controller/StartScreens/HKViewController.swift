@@ -19,7 +19,7 @@ class HKViewController: GreetingViewController {
     
     private func updateView() {
         greetingTextLabel.text = "All your water records will be syncronized with HelathKit, it will make it esier to handle your statistic"
-        configButton.setTitle("Implement HealthKit", for: .normal)
+        configButton.setTitle("HealthKit", for: .normal)
         laterButton.titleLabel?.text = "Skip"
     }
 }

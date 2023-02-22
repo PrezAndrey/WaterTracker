@@ -69,12 +69,12 @@ class SetTargetViewController: UIViewController {
     }
     
     @objc func didSetTarget() {
-        performSegue(withIdentifier: String(describing: ExtraSettingsViewController.self), sender: nil)
+        performSegue(withIdentifier: String(describing: AutoAimViewController.self), sender: nil)
         configure(button: dayTargetButton)
     }
     
     @objc func didSetPeriod() {
-        performSegue(withIdentifier: String(describing: ExtraSettingsViewController.self), sender: nil)
+        performSegue(withIdentifier: String(describing: StartingTimeViewController.self), sender: nil)
         configure(button: periodButton)
     }
     
