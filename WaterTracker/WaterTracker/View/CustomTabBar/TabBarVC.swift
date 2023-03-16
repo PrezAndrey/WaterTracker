@@ -15,18 +15,17 @@ class TabBarVC: UITabBar {
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = createPath()
         shapeLayer.strokeColor = UIColor.clear.cgColor
-        shapeLayer.fillColor = UIColor.lightGray.cgColor
+        shapeLayer.fillColor = UIColor.universalGray.cgColor
         shapeLayer.lineWidth = 1.0
         
         shapeLayer.shadowOffset = CGSize(width: 0, height: 0)
         shapeLayer.shadowRadius = 10
-        shapeLayer.shadowColor = UIColor.gray.cgColor
+        shapeLayer.shadowColor = UIColor.white.cgColor
         shapeLayer.shadowOpacity = 0.3
         
         if let oldShapeLayer = self.shapeLayer {
             self.layer.replaceSublayer(oldShapeLayer, with: shapeLayer)
-        }
-        else {
+        } else {
             self.layer.insertSublayer(shapeLayer, at: 0)
         }
         self.shapeLayer = shapeLayer
@@ -35,8 +34,8 @@ class TabBarVC: UITabBar {
     override func draw(_ rect: CGRect) {
         print("Draw Works")
         self.addShape()
-        self.unselectedItemTintColor = UIColor.lightGray
-        self.tintColor = UIColor.lightGray
+        self.unselectedItemTintColor = UIColor.white
+        self.tintColor = UIColor.white
     }
     
     func createPath1() -> CGPath {
@@ -62,8 +61,8 @@ class TabBarVC: UITabBar {
         let path = UIBezierPath( )
         let centerWidth = self.frame.width / 2
         
-        path.move(to: CGPoint (x: 0, y: -20))
-        path.addLine(to: CGPoint (x: centerWidth - 50, y: 0))
+        path.move(to: CGPoint(x: 0, y: -20))
+        path.addLine(to: CGPoint(x: centerWidth - 50, y: 0))
         path.addQuadCurve(to: CGPoint(x: centerWidth - 30, y: 20), controlPoint: CGPoint (x: centerWidth - 30, y: 5))
         path.addLine(to: CGPoint(x: centerWidth - 29, y: height - 10))
         path.addQuadCurve(to: CGPoint(x: centerWidth, y: height + 10), controlPoint: CGPoint(x: centerWidth - 30, y: height + 10))

@@ -82,4 +82,3 @@ extension CAGradientLayer {
         add(colorAnimation, forKey: "colorChangeAnimation")
     }
 }
-

@@ -38,6 +38,7 @@
 		55B2B5BB2980E6AE0097E70A /* StatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B2B5BA2980E6AE0097E70A /* StatsTableViewCell.swift */; };
 		55B2B5BD2980E70F0097E70A /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B2B5BC2980E70F0097E70A /* StatisticViewController.swift */; };
 		55B97451280D61600069AEA2 /* StatisticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B97450280D61600069AEA2 /* StatisticTableViewCell.swift */; };
+		55DDB6C729C3208A00D2F7ED /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DDB6C629C3208A00D2F7ED /* UIColorExtension.swift */; };
 		55E159B3299E395E0056B504 /* LinearGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E159B2299E395E0056B504 /* LinearGradientView.swift */; };
 		55E171B92988F36D00FC50C1 /* WeightCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E171B82988F36D00FC50C1 /* WeightCollectionViewCell.swift */; };
 		55E171BB2988F37B00FC50C1 /* TargetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E171BA2988F37B00FC50C1 /* TargetCollectionViewCell.swift */; };
@@ -98,6 +99,7 @@
 		55B2B5BA2980E6AE0097E70A /* StatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTableViewCell.swift; sourceTree = "<group>"; };
 		55B2B5BC2980E70F0097E70A /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		55B97450280D61600069AEA2 /* StatisticTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTableViewCell.swift; sourceTree = "<group>"; };
+		55DDB6C629C3208A00D2F7ED /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		55E159B2299E395E0056B504 /* LinearGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearGradientView.swift; sourceTree = "<group>"; };
 		55E171B82988F36D00FC50C1 /* WeightCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightCollectionViewCell.swift; sourceTree = "<group>"; };
 		55E171BA2988F37B00FC50C1 /* TargetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				1B99E538277263EE00291801 /* Model */,
 				1B99E5392772640300291801 /* View */,
 				1B99E53A2772641400291801 /* Controller */,
+				55DDB6C529C3206700D2F7ED /* Extentions */,
 				1B99E53B2772642300291801 /* Resources */,
 				1B99E53C277264AD00291801 /* Supporting Files */,
 			);
@@ -280,6 +283,14 @@
 				1BBF3B6927D921DC00D0BC2C /* WaterRecord.swift */,
 			);
 			path = Properties;
+			sourceTree = "<group>";
+		};
+		55DDB6C529C3206700D2F7ED /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				55DDB6C629C3208A00D2F7ED /* UIColorExtension.swift */,
+			);
+			path = Extentions;
 			sourceTree = "<group>";
 		};
 		55E159B1299E392A0056B504 /* Gradient */ = {
@@ -462,6 +473,7 @@
 				55FA93742982624500A7AABB /* DayTargetTableViewCell.swift in Sources */,
 				55A8362A28105F5C0099D144 /* StartingTimeViewController.swift in Sources */,
 				5504F21C2807F013001CC40B /* WaterCalculator.swift in Sources */,
+				55DDB6C729C3208A00D2F7ED /* UIColorExtension.swift in Sources */,
 				55A56C1027DB321400296FD0 /* HealthKitAdapter.swift in Sources */,
 				1B99E53E277267CB00291801 /* WaterStore.swift in Sources */,
 				559222C42837908D00D16543 /* SettingsTableViewController.swift in Sources */,

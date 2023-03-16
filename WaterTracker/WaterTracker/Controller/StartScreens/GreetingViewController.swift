@@ -58,7 +58,6 @@ extension GreetingViewController {
     }
     
     func setTextLabel() {
-
         greetingTextLabel.frame = CGRect(x: 40, y: 300, width: 300, height: 200)
         greetingTextLabel.text = "For better experience you need to configure app, implement Notifications and HealthKit"
         greetingTextLabel.numberOfLines = 0

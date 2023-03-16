@@ -30,8 +30,12 @@ class MainViewController: UIViewController {
         updateUI()
     }
     
+//    override func loadView() {
+//        super.loadView()
+//        view = LinearGradientView()
+//    }
+    
     override func viewDidLoad() {
-        
         if checkFirstStart() {
             performSegue(withIdentifier: String(describing: GreetingViewController.self), sender: self)
         }
