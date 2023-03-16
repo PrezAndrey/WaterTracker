@@ -440,13 +440,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="insetGrouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="pv0-aN-3QL">
-                                <rect key="frame" x="0.0" y="47" width="390" height="769"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="insetGrouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="pv0-aN-3QL">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="816"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="separatorColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="sectionIndexColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexTrackingBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="stats" rowHeight="41" translatesAutoresizingMaskIntoConstraints="NO" id="TyU-wo-mCD" customClass="StatsTableViewCell" customModule="WaterTracker" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="stats" rowHeight="41" translatesAutoresizingMaskIntoConstraints="NO" id="TyU-wo-mCD" customClass="StatsTableViewCell" customModule="WaterTracker" customModuleProvider="target">
                                         <rect key="frame" x="20" y="55.333332061767578" width="350" height="41"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TyU-wo-mCD" id="JUg-Lp-b6P">
@@ -479,14 +481,14 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.2470588088" green="0.55686277149999996" blue="0.68235301969999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="backgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="41" id="8pd-fE-umJ"/>
                                                         <constraint firstAttribute="width" constant="360" id="ojt-vM-BWP"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.270588249" green="0.56078433989999998" blue="0.74117654560000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="backgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="uka-7Z-sJU" secondAttribute="trailing" constant="15" id="PmE-Ik-RHo"/>
                                                 <constraint firstAttribute="bottom" secondItem="uka-7Z-sJU" secondAttribute="bottom" id="dhe-cI-Xvc"/>
@@ -494,7 +496,7 @@
                                                 <constraint firstItem="uka-7Z-sJU" firstAttribute="top" secondItem="JUg-Lp-b6P" secondAttribute="top" id="wxn-lg-NyR"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.2470588088" green="0.55686277149999996" blue="0.68235301969999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.094117647058823528" green="0.090196078431372548" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         <connections>
                                             <outlet property="cellView" destination="uka-7Z-sJU" id="Gcw-5h-aQX"/>
@@ -511,7 +513,13 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AAw-JG-bnO"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="pv0-aN-3QL" firstAttribute="leading" secondItem="AAw-JG-bnO" secondAttribute="leading" id="JXX-Wz-3hL"/>
+                            <constraint firstItem="pv0-aN-3QL" firstAttribute="top" secondItem="nnU-nu-Zcp" secondAttribute="top" id="Umw-Me-ycP"/>
+                            <constraint firstItem="pv0-aN-3QL" firstAttribute="trailing" secondItem="AAw-JG-bnO" secondAttribute="trailing" id="WxQ-71-wjN"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="pv0-aN-3QL" secondAttribute="bottom" constant="-55" id="pcU-fk-zDs"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="3gb-g9-CL1"/>
                     <navigationItem key="navigationItem" id="Uz6-TI-C21"/>
@@ -558,7 +566,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HT6-7r-mml" userLabel="AddWaterView">
-                                <rect key="frame" x="35" y="339" width="320" height="395"/>
+                                <rect key="frame" x="35" y="313" width="320" height="395"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8rk-Ha-Wtx" userLabel="Add100mlView">
                                         <rect key="frame" x="43" y="38" width="107" height="128"/>
@@ -794,7 +802,7 @@
                             <constraint firstItem="Zzd-d1-fIg" firstAttribute="leading" secondItem="7aO-vB-pPb" secondAttribute="leading" constant="35" id="KU8-dN-SOY"/>
                             <constraint firstItem="HT6-7r-mml" firstAttribute="centerX" secondItem="7aO-vB-pPb" secondAttribute="centerX" id="MZ0-nc-Alw"/>
                             <constraint firstItem="HT6-7r-mml" firstAttribute="leading" secondItem="7aO-vB-pPb" secondAttribute="leading" constant="35" id="hSd-SM-8Yf"/>
-                            <constraint firstItem="HT6-7r-mml" firstAttribute="top" secondItem="Zzd-d1-fIg" secondAttribute="bottom" constant="91" id="p7H-H1-TaL"/>
+                            <constraint firstItem="HT6-7r-mml" firstAttribute="top" secondItem="Zzd-d1-fIg" secondAttribute="bottom" constant="65" id="p7H-H1-TaL"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="mEu-k0-QRO"/>

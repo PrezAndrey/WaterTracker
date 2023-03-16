@@ -28,6 +28,9 @@ class StatsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTabBar()
+        tableView.backgroundColor = UIColor.universalBlack
+//        tableView.sectionIndexBackgroundColor = UIColor.white
+        
     }
     
     private func reloadRecords() {
@@ -110,6 +113,23 @@ extension StatsViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 20))
+        header.backgroundColor = tableView.backgroundColor
+
+        let sectionLabel = UILabel(frame: CGRect(x: 10, y: 5, width: header.frame.width, height: header.frame.height))
+        sectionLabel.textColor = .white
+        header.addSubview(sectionLabel)
+        sectionLabel.text = dateArray[section].uppercased()
+
+
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 35
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rowsInSections[section].count
     }
@@ -124,9 +144,11 @@ extension StatsViewController: UITableViewDelegate, UITableViewDataSource {
         return UITableViewCell()
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return dateArray[section]
-    }
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//
+//        return dateArray[section]
+//    }
+    
     
   
 }
