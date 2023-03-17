@@ -11,6 +11,7 @@ class SettingsTableViewController: UITableViewController {
     
     let healthKit = HealthKitAdapter()
     
+
     @IBOutlet weak var targetCellView: UIView!
     @IBOutlet weak var periodCellView: UIView!
     @IBOutlet weak var notificationCellView: UIView!
@@ -28,6 +29,7 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewCells()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,6 +48,11 @@ class SettingsTableViewController: UITableViewController {
         let newTime = dateService.intervalToDateStr(interval: settings.startDayInterval ?? 21599)
         currentPeriod.text = "\(newTime)"
         
+        let cells = tableView.visibleCells
+        
+        for cell in cells {
+            cell.contentView.backgroundColor = UIColor.universalBlack
+        }
         tableView.reloadData()
     }
     
@@ -53,9 +60,9 @@ class SettingsTableViewController: UITableViewController {
         let viewList = [targetCellView, periodCellView, notificationCellView, resetCellView, hkCellView]
         let labelList = [currentAim, currentPeriod]
         
-        
         for view in viewList {
             guard let cellView = view else { return }
+            cellView.backgroundColor = UIColor.universalBlack
             cellView.layer.cornerRadius = 10
             cellView.layer.borderWidth = 2
             cellView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1).cgColor
@@ -68,6 +75,8 @@ class SettingsTableViewController: UITableViewController {
             label.layer.borderWidth = 2
             label.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1).cgColor
         }
+        
+        tableView.backgroundColor = UIColor.universalBlack
     }
     
 //    func shake() {
@@ -101,6 +110,7 @@ class SettingsTableViewController: UITableViewController {
             }
         }
     }
+    
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         switch (indexPath.section, indexPath.row) {
         case (0, 0):
@@ -134,6 +144,7 @@ class SettingsTableViewController: UITableViewController {
             print("MainSettings Cell Error")
         }
     }
+    
 }
 
 
