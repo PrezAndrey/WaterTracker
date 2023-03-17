@@ -34,6 +34,7 @@ class SetTargetViewController: UIViewController {
         button.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 25.0)
         button.layer.borderWidth = 2
         button.layer.borderColor = UIColor.white.cgColor
+        
         switch button {
         case dayTargetButton:
             button.addTarget(self, action: #selector(didSetTarget), for: .touchUpInside)

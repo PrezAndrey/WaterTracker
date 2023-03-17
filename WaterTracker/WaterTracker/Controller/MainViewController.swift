@@ -184,5 +184,9 @@ extension MainViewController {
     func configureUI() {
         addWaterView.layer.cornerRadius = 20
         waterAmountView.layer.cornerRadius = 10
+        addWaterView.layer.borderWidth = 2
+        waterAmountView.layer.borderWidth = 2
+        addWaterView.layer.borderColor = UIColor.universalBlue.cgColor
+        waterAmountView.layer.borderColor = UIColor.universalBlue.cgColor
     }
 }

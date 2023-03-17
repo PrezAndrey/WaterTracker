@@ -70,11 +70,11 @@ extension StartingTimeViewController {
     func configureUI() {
         timeLable.layer.cornerRadius = 5
         timeLable.layer.borderWidth = 2
-        timeLable.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1).cgColor
+        timeLable.layer.borderColor = UIColor.universalBlue.cgColor
         
         setButtonLabel.layer.cornerRadius = 5
         setButtonLabel.layer.borderWidth = 2
-        setButtonLabel.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1).cgColor
+        setButtonLabel.layer.borderColor = UIColor.universalBlue.cgColor
 
     }
 }

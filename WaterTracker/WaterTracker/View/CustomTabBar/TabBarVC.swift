@@ -20,7 +20,7 @@ class TabBarVC: UITabBar {
         
         shapeLayer.shadowOffset = CGSize(width: 0, height: 0)
         shapeLayer.shadowRadius = 10
-        shapeLayer.shadowColor = UIColor.white.cgColor
+        shapeLayer.shadowColor = UIColor.universalBlue.cgColor
         shapeLayer.shadowOpacity = 0.3
         
         if let oldShapeLayer = self.shapeLayer {
@@ -34,8 +34,8 @@ class TabBarVC: UITabBar {
     override func draw(_ rect: CGRect) {
         print("Draw Works")
         self.addShape()
-        self.unselectedItemTintColor = UIColor.white
-        self.tintColor = UIColor.white
+        self.unselectedItemTintColor = UIColor.universalGray
+        self.tintColor = UIColor.universalGray
     }
     
     func createPath1() -> CGPath {

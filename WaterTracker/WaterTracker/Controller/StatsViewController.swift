@@ -18,6 +18,7 @@ class StatsViewController: UIViewController {
     private var dateArray = [String]()
     private var rowsInSections = [[WaterRecord]]()
     
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tabBarView: UIView!
     
@@ -28,9 +29,6 @@ class StatsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTabBar()
-        tableView.backgroundColor = UIColor.universalBlack
-//        tableView.sectionIndexBackgroundColor = UIColor.white
-        
     }
     
     private func reloadRecords() {

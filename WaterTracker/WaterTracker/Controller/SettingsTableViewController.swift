@@ -20,7 +20,7 @@ class SettingsTableViewController: UITableViewController {
     
     @IBOutlet weak var currentPeriod: UILabel!
     @IBOutlet weak var currentAim: UILabel!
-    @IBOutlet weak var notficationSwitch: UISwitch!
+    @IBOutlet weak var notificationSwitch: UISwitch!
     
     private let notifications = Notifications()
     private let waterModel = WaterModel()
@@ -47,12 +47,7 @@ class SettingsTableViewController: UITableViewController {
         currentAim.text = "\(settings.dayTarget ?? 0) ml"
         let newTime = dateService.intervalToDateStr(interval: settings.startDayInterval ?? 21599)
         currentPeriod.text = "\(newTime)"
-        
-        let cells = tableView.visibleCells
-        
-        for cell in cells {
-            cell.contentView.backgroundColor = UIColor.universalBlack
-        }
+    
         tableView.reloadData()
     }
     
@@ -62,10 +57,10 @@ class SettingsTableViewController: UITableViewController {
         
         for view in viewList {
             guard let cellView = view else { return }
-            cellView.backgroundColor = UIColor.universalBlack
+            cellView.backgroundColor = UIColor.universalGray
             cellView.layer.cornerRadius = 10
             cellView.layer.borderWidth = 2
-            cellView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1).cgColor
+            cellView.layer.borderColor = UIColor.universalBlue.cgColor
             
         }
         
@@ -73,9 +68,10 @@ class SettingsTableViewController: UITableViewController {
             guard let label = label else { return }
             label.layer.cornerRadius = 5
             label.layer.borderWidth = 2
-            label.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1).cgColor
+            label.layer.borderColor = UIColor.universalBlue.cgColor
         }
-        
+        notificationSwitch.isOn = true
+        notificationSwitch.tintColor = UIColor.universalGray
         tableView.backgroundColor = UIColor.universalBlack
     }
     
