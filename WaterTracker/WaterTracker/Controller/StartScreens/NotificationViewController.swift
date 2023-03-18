@@ -24,5 +24,6 @@ class NotificationViewController: GreetingViewController {
     private func updateView() {
         greetingTextLabel.text = "Notifications won’t let you forget to drink some water and tell you when you get your day target"
         configButton.setTitle("Notifications", for: .normal)
+        greetingImage.image = UIImage(named: "notifications")
     }
 }

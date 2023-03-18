@@ -13,6 +13,7 @@ class SetTargetViewController: UIViewController {
     let periodButton = UIButton()
     let startButton = UIButton()
     let textLabel = UILabel()
+    let greetingImage = UIImageView()
    
     
     override func viewDidLoad() {
@@ -20,6 +21,7 @@ class SetTargetViewController: UIViewController {
         view = LinearGradientView()
         setButtons()
         setTextLabel()
+        setImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,7 +31,7 @@ class SetTargetViewController: UIViewController {
     
     func configureButton(button: UIButton) {
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .blue
+        button.backgroundColor = .universalBlue
         button.layer.cornerRadius = 20
         button.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 25.0)
         button.layer.borderWidth = 2
@@ -56,7 +58,7 @@ class SetTargetViewController: UIViewController {
     }
     
     func setTextLabel() {
-       textLabel.frame = CGRect(x: 40, y: 300, width: 300, height: 200)
+       textLabel.frame = CGRect(x: 40, y: 350, width: 300, height: 200)
        textLabel.text = "For better experience you need to configure app, implement Notifications and HealthKit"
        textLabel.numberOfLines = 0
        textLabel.font = UIFont(name: "Helvetica Neue", size: 25.0)
@@ -71,6 +73,13 @@ class SetTargetViewController: UIViewController {
         for button in buttons {
             configureButton(button: button)
         }
+    }
+    
+    func setImage() {
+        greetingImage.frame = CGRect(x: 100, y: 100, width: 200, height: 200)
+        greetingImage.image = UIImage(named: "data")
+        greetingImage.contentMode = .scaleAspectFit
+        view.addSubview(greetingImage)
     }
     
     @objc func didSetTarget() {

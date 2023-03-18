@@ -9,7 +9,7 @@ import UIKit
 
 class LinearGradientView: UIView {
     
-    let topColor = UIColor.blue
+    let topColor = UIColor.universalBlue
     let bottomColor = UIColor.white
     
     let gradientLayer = CAGradientLayer()
@@ -29,23 +29,23 @@ class LinearGradientView: UIView {
         layer.addSublayer(gradientLayer)
     }
     
-    func setColors(_ newColors: [CGColor], animated: Bool = true, withDuration duration: TimeInterval = 0, timingFunctionName name: CAMediaTimingFunctionName? = nil) {
-        
-        if !animated {
-            gradientLayer.colors = newColors
-            return
-        }
-        
-        let colorAnimation = CABasicAnimation(keyPath: "colors")
-        colorAnimation.fromValue = gradientLayer.colors
-        colorAnimation.toValue = newColors
-        colorAnimation.duration = duration
-        colorAnimation.isRemovedOnCompletion = false
-        colorAnimation.fillMode = CAMediaTimingFillMode.forwards
-        colorAnimation.timingFunction = CAMediaTimingFunction(name: name ?? .linear)
-        
-        gradientLayer.add(colorAnimation, forKey: "colorChangeAnimation")
-    }
+//    func setColors(_ newColors: [CGColor], animated: Bool = true, withDuration duration: TimeInterval = 0, timingFunctionName name: CAMediaTimingFunctionName? = nil) {
+//
+//        if !animated {
+//            gradientLayer.colors = newColors
+//            return
+//        }
+//
+//        let colorAnimation = CABasicAnimation(keyPath: "colors")
+//        colorAnimation.fromValue = gradientLayer.colors
+//        colorAnimation.toValue = newColors
+//        colorAnimation.duration = duration
+//        colorAnimation.isRemovedOnCompletion = false
+//        colorAnimation.fillMode = CAMediaTimingFillMode.forwards
+//        colorAnimation.timingFunction = CAMediaTimingFunction(name: name ?? .linear)
+//
+//        gradientLayer.add(colorAnimation, forKey: "colorChangeAnimation")
+//    }
     
     override open func layoutSubviews() {
         super.layoutSubviews()
@@ -54,9 +54,9 @@ class LinearGradientView: UIView {
             gradientLayer.frame = bounds
         }
         
-        let newColors = [UIColor.white.cgColor, UIColor.blue.cgColor]
+        let newColors = [UIColor.white.cgColor, UIColor.universalBlue.cgColor]
         
-        gradientLayer.setColors(newColors, animated: true, withDuration: 15, timingFunctionName: .linear)
+        gradientLayer.setColors(newColors, animated: true, withDuration: 5, timingFunctionName: .linear)
     }
     
     
