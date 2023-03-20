@@ -59,7 +59,7 @@ class SetTargetViewController: UIViewController {
     
     func setTextLabel() {
        textLabel.frame = CGRect(x: 40, y: 350, width: 300, height: 200)
-       textLabel.text = "For better experience you need to configure app, implement Notifications and HealthKit"
+       textLabel.text = "The final step is to set a time tracking period and daily target, which can be done manually or using the target generator. Additionally, make sure to input your weight"
        textLabel.numberOfLines = 0
        textLabel.font = UIFont(name: "Helvetica Neue", size: 25.0)
        textLabel.textColor = .white

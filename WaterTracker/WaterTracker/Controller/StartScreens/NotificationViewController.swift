@@ -22,7 +22,7 @@ class NotificationViewController: GreetingViewController {
 //    }
     
     private func updateView() {
-        greetingTextLabel.text = "Notifications won’t let you forget to drink some water and tell you when you get your day target"
+        greetingTextLabel.text = "Notifications will remind you to drink water and inform you when you reach your daily target"
         configButton.setTitle("Notifications", for: .normal)
         greetingImage.image = UIImage(named: "notifications")
     }

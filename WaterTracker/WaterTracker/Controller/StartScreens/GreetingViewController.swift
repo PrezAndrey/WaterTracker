@@ -60,7 +60,7 @@ extension GreetingViewController {
     
     func setTextLabel() {
         greetingTextLabel.frame = CGRect(x: 40, y: 350, width: 300, height: 200)
-        greetingTextLabel.text = "For better experience you need to configure app, implement Notifications and HealthKit"
+        greetingTextLabel.text = "For a better experience, you need to configure the app, enable notifications, and integrate HealthKit"
         greetingTextLabel.numberOfLines = 0
         greetingTextLabel.font = UIFont(name: "Helvetica Neue", size: 25.0)
         greetingTextLabel.textColor = .white
@@ -91,7 +91,9 @@ extension GreetingViewController {
         case "Configure":
             performSegue(withIdentifier: String(describing: HKViewController.self), sender: self)
         case "HealthKit":
-            healthKitService.authorizeIfNeeded()
+            DispatchQueue.main.async {
+                self.healthKitService.authorizeIfNeeded()
+            }
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.performSegue(withIdentifier: String(describing: NotificationViewController.self), sender: self)
             }

@@ -18,7 +18,7 @@ class HKViewController: GreetingViewController {
     }
     
     private func updateView() {
-        greetingTextLabel.text = "All your water records will be syncronized with HelathKit, it will make it esier to handle your statistic"
+        greetingTextLabel.text = "All your water records will be synchronized with HealthKit, making it easier to track your statistics"
         configButton.setTitle("HealthKit", for: .normal)
         laterButton.titleLabel?.text = "Skip"
         greetingImage.image = UIImage(named: "healthkit")
