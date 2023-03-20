@@ -16,6 +16,7 @@ class StartingTimeViewController: UIViewController {
     
     var completion: ((String) -> Void)?
     
+    @IBOutlet weak var timeView: UIView!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var timeLable: UILabel!
     @IBOutlet weak var setButtonLabel: UIButton!
@@ -68,13 +69,17 @@ extension StartingTimeViewController {
 extension StartingTimeViewController {
     
     func configureUI() {
-        timeLable.layer.cornerRadius = 5
-        timeLable.layer.borderWidth = 2
-        timeLable.layer.borderColor = UIColor.universalBlue.cgColor
+        timeView.backgroundColor = UIColor.universalGray
+        timeLable.backgroundColor = UIColor.universalGray
+        timeView.layer.cornerRadius = 20
+        timeView.layer.borderWidth = 2
+        timeView.layer.borderColor = UIColor.universalBlue.cgColor
         
-        setButtonLabel.layer.cornerRadius = 5
+        
+        setButtonLabel.layer.cornerRadius = 10
         setButtonLabel.layer.borderWidth = 2
         setButtonLabel.layer.borderColor = UIColor.universalBlue.cgColor
-
+        setButtonLabel.backgroundColor = UIColor.universalGray
+        
     }
 }

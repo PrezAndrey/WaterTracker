@@ -99,7 +99,7 @@ class SetTargetViewController: UIViewController {
     func configure(button: UIButton) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             button.setTitle("Complete!", for: .normal)
-            button.layer.backgroundColor = UIColor.systemGreen.cgColor
+            button.layer.backgroundColor = UIColor.universalYellow.cgColor
             self.isCompeted()
         }
     }

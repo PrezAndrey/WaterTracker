@@ -15,9 +15,12 @@ class MainViewController: UIViewController {
     private var currentWaterAmount: Double = 0 {
         didSet {
             updateWaterAmount()
+            updateWaterStatus()
         }
     }
+    private var dayTarget: Int?
     
+    @IBOutlet weak var waterStatus: UIImageView!
     @IBOutlet weak var waterAmountView: UIView!
     @IBOutlet weak var addWaterView: UIView!
     @IBOutlet weak var waterLable: UILabel! {
@@ -28,6 +31,8 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         updateUI()
+        setTheTarget()
+        updateWaterStatus()
     }
     
 //    override func loadView() {
@@ -42,6 +47,12 @@ class MainViewController: UIViewController {
         waterModel.delegate = self
         updateUI()
         configureUI()
+    }
+    
+    func setTheTarget() {
+        let userSettings = waterModel.getUserSettings()
+        guard let target = userSettings?.dayTarget else { return }
+        dayTarget = target
     }
     
     func updateUI() {
@@ -80,6 +91,26 @@ class MainViewController: UIViewController {
             return true
         }
         return false
+    }
+    
+    func updateWaterStatus() {
+        guard let target = dayTarget, target > 0 else { return }
+        
+        let quarterTarget = target / 4
+        let water = Int(currentWaterAmount)
+        
+        if water < quarterTarget {
+            waterStatus.image = UIImage(named: "waterAmount")
+        } else if water >= quarterTarget && water < quarterTarget * 2 {
+            waterStatus.image = UIImage(named: "waterAmount1")
+        } else if water >= quarterTarget * 2 && water < quarterTarget * 3 {
+            waterStatus.image = UIImage(named: "waterAmount2")
+        } else if water >= quarterTarget * 3 && water < quarterTarget * 4 {
+            waterStatus.image = UIImage(named: "waterAmount3")
+        } else {
+            waterStatus.image = UIImage(named: "waterAmount4")
+        }
+        
     }
 }
 
@@ -124,8 +155,7 @@ extension MainViewController {
     // showGetTargetAlert
     private func showAlertIfNeeded(_ newWaterAmount: Double) {
         guard currentWaterAmount > 0 else { return }
-        let curentTarget = waterModel.getUserSettings()
-        guard let target = curentTarget?.dayTarget else { return }
+        guard let target = dayTarget else { return }
         if newWaterAmount >= Double(target) && currentWaterAmount < Double(target) {
             showGetTargetAlert()
         }
@@ -188,5 +218,6 @@ extension MainViewController {
         waterAmountView.layer.borderWidth = 2
         addWaterView.layer.borderColor = UIColor.universalBlue.cgColor
         waterAmountView.layer.borderColor = UIColor.universalBlue.cgColor
+        
     }
 }

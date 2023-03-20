@@ -543,10 +543,10 @@
                                 <rect key="frame" x="35" y="146" width="320" height="102"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="waterAmount" translatesAutoresizingMaskIntoConstraints="NO" id="YUB-3a-2z3">
-                                        <rect key="frame" x="15" y="0.0" width="78" height="102"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="126" height="102"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="78" id="NKj-Vy-gq7"/>
-                                            <constraint firstAttribute="height" constant="102" id="pJL-Fb-s22"/>
+                                            <constraint firstAttribute="width" constant="126" id="Rdr-8L-sFh"/>
+                                            <constraint firstAttribute="height" constant="102" id="VDf-vG-cWJ"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1050 ml" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qPR-54-4JA">
@@ -559,10 +559,10 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="YUB-3a-2z3" firstAttribute="top" secondItem="Zzd-d1-fIg" secondAttribute="top" id="App-yw-1MW"/>
-                                    <constraint firstItem="YUB-3a-2z3" firstAttribute="leading" secondItem="Zzd-d1-fIg" secondAttribute="leading" constant="15" id="K7E-jc-9aU"/>
+                                    <constraint firstItem="YUB-3a-2z3" firstAttribute="top" secondItem="Zzd-d1-fIg" secondAttribute="top" id="Ge2-3G-cfa"/>
                                     <constraint firstAttribute="width" constant="320" id="LWQ-by-oyE"/>
                                     <constraint firstAttribute="height" constant="102" id="Pc0-Ya-rju"/>
+                                    <constraint firstItem="YUB-3a-2z3" firstAttribute="leading" secondItem="Zzd-d1-fIg" secondAttribute="leading" id="Yx9-ef-51e"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HT6-7r-mml" userLabel="AddWaterView">
@@ -811,6 +811,7 @@
                         <outlet property="addWaterView" destination="HT6-7r-mml" id="Z6B-jb-wxr"/>
                         <outlet property="waterAmountView" destination="Zzd-d1-fIg" id="wsf-PE-h6X"/>
                         <outlet property="waterLable" destination="qPR-54-4JA" id="ZdB-ld-9Sn"/>
+                        <outlet property="waterStatus" destination="YUB-3a-2z3" id="PcJ-Rz-dEp"/>
                         <segue destination="GKz-lH-bhn" kind="show" identifier="GreetingViewController" id="9ci-dx-mL3"/>
                     </connections>
                 </viewController>
@@ -1140,6 +1141,10 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBY-6j-3Km">
                                 <rect key="frame" x="42" y="648.33333333333337" width="307" height="54.666666666666629"/>
                                 <color key="backgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="307" id="OX9-Bh-0gW"/>
+                                    <constraint firstAttribute="height" constant="54.670000000000002" id="uhb-qI-CDv"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Set">
                                     <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle0"/>
@@ -1155,16 +1160,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1IG-C4-yta">
-                                <rect key="frame" x="0.0" y="255" width="390" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="390" id="NiE-lO-sTS"/>
-                                    <constraint firstAttribute="height" constant="100" id="ecK-5t-F1y"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="40"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="NGv-Ky-Qyl">
                                 <rect key="frame" x="0.0" y="441" width="390" height="216"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1174,16 +1169,34 @@
                                 </constraints>
                                 <locale key="locale" localeIdentifier="ru_RU"/>
                             </datePicker>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4tb-CF-Fqt" userLabel="timeView">
+                                <rect key="frame" x="16" y="254" width="358" height="114"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1IG-C4-yta">
+                                        <rect key="frame" x="131" y="33" width="96" height="48"/>
+                                        <color key="backgroundColor" red="0.32549019610000002" green="0.42745098040000001" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="40"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="114" id="Jbf-Tj-eMw"/>
+                                    <constraint firstAttribute="width" constant="358" id="aff-fk-y1M"/>
+                                    <constraint firstItem="1IG-C4-yta" firstAttribute="centerX" secondItem="4tb-CF-Fqt" secondAttribute="centerX" id="gcB-U9-7wu"/>
+                                    <constraint firstItem="1IG-C4-yta" firstAttribute="centerY" secondItem="4tb-CF-Fqt" secondAttribute="centerY" id="miq-7f-mDr"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ehX-aE-up0"/>
                         <color key="backgroundColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="1IG-C4-yta" firstAttribute="leading" secondItem="ehX-aE-up0" secondAttribute="leading" id="19u-0Z-fE6"/>
                             <constraint firstItem="jBY-6j-3Km" firstAttribute="leading" secondItem="ehX-aE-up0" secondAttribute="leading" constant="42" id="1sU-OK-2Bc"/>
                             <constraint firstItem="hak-g3-mG6" firstAttribute="top" secondItem="ehX-aE-up0" secondAttribute="top" constant="37" id="7hI-bB-5jN"/>
-                            <constraint firstItem="ehX-aE-up0" firstAttribute="trailing" secondItem="1IG-C4-yta" secondAttribute="trailing" id="Bi9-o3-peo"/>
                             <constraint firstItem="NGv-Ky-Qyl" firstAttribute="top" secondItem="ehX-aE-up0" secondAttribute="top" constant="350" id="M90-mr-XjD"/>
-                            <constraint firstItem="1IG-C4-yta" firstAttribute="top" secondItem="hak-g3-mG6" secondAttribute="bottom" constant="91" id="X3V-aW-a6v"/>
+                            <constraint firstItem="4tb-CF-Fqt" firstAttribute="top" secondItem="hak-g3-mG6" secondAttribute="bottom" constant="90" id="Qkd-MR-Xpt"/>
+                            <constraint firstItem="4tb-CF-Fqt" firstAttribute="leading" secondItem="ehX-aE-up0" secondAttribute="leading" constant="16" id="hT0-77-YZG"/>
                             <constraint firstItem="ehX-aE-up0" firstAttribute="bottom" secondItem="jBY-6j-3Km" secondAttribute="bottom" constant="58" id="i2o-Bf-lJN"/>
                             <constraint firstItem="NGv-Ky-Qyl" firstAttribute="leading" secondItem="ehX-aE-up0" secondAttribute="leading" id="o75-og-Ahe"/>
                             <constraint firstItem="ehX-aE-up0" firstAttribute="trailing" secondItem="jBY-6j-3Km" secondAttribute="trailing" constant="41" id="pM8-ie-A1p"/>
@@ -1200,11 +1213,12 @@
                         <outlet property="datePicker" destination="NGv-Ky-Qyl" id="xV8-mZ-7bh"/>
                         <outlet property="setButtonLabel" destination="jBY-6j-3Km" id="PLq-lQ-3UJ"/>
                         <outlet property="timeLable" destination="1IG-C4-yta" id="oS4-nw-QOD"/>
+                        <outlet property="timeView" destination="4tb-CF-Fqt" id="RLQ-en-gxe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u5E-BE-O6i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1708" y="717"/>
+            <point key="canvasLocation" x="1707.6923076923076" y="715.87677725118476"/>
         </scene>
         <!--Settings-->
         <scene sceneID="0xB-ne-Gq3">
@@ -1960,7 +1974,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uPs-9T-Oc7" userLabel="ResetCellView">
                                                     <rect key="frame" x="15" y="0.0" width="360" height="90"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rest all" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JC4-hq-oou">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reset " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JC4-hq-oou">
                                                             <rect key="frame" x="0.0" y="0.0" width="360" height="90"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
