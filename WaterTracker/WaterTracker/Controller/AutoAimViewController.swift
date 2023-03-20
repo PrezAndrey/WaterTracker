@@ -44,7 +44,7 @@ class AutoAimViewController: UITableViewController {
         if let currentWeight = settings.weight {
             let newAim = waterCalculator.waterAimGenerator(weight: currentWeight)
             settings.dayTarget = Int(newAim)
-            aimLable.text = "\(newAim) мл"
+            aimLable.text = "\(newAim) ml"
         }
     }
     
@@ -85,9 +85,9 @@ private extension AutoAimViewController {
             weightLable.text = "0 кг"
         }
         if let target  = settings.dayTarget {
-            aimLable.text = "\(Int(target)) мл"
+            aimLable.text = "\(Int(target)) ml"
         } else {
-            aimLable.text = "0 мл"
+            aimLable.text = "0 ml"
         }
     }
 }
@@ -98,14 +98,35 @@ extension AutoAimViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
-        case (0, 0), (1, 0):
+        case (0, 0):
             valueSetAlert(indexPath: indexPath)
+            weightCellView.layer.borderColor = UIColor.universalBlue.cgColor
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.weightCellView.layer.borderColor = UIColor.white.cgColor
+            }
+        case (1, 0):
+            valueSetAlert(indexPath: indexPath)
+            targetCellView.layer.borderColor = UIColor.universalBlue.cgColor
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.targetCellView.layer.borderColor = UIColor.white.cgColor
+            }
         case (2, 0):
-            print("HealthKit values")
+            hkCellView.layer.borderColor = UIColor.universalBlue.cgColor
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.hkCellView.layer.borderColor = UIColor.white.cgColor
+            }
         case (3, 0):
             generateAim()
+            aimGenerationCellView.layer.borderColor = UIColor.universalBlue.cgColor
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.aimGenerationCellView.layer.borderColor = UIColor.white.cgColor
+            }
         case (4, 0):
             HKDataFetch()
+            getHKDCellView.layer.borderColor = UIColor.universalBlue.cgColor
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.getHKDCellView.layer.borderColor = UIColor.white.cgColor
+            }
         default:
             print("Error cell")
         }

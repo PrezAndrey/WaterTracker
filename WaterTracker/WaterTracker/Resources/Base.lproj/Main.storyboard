@@ -323,7 +323,7 @@
                                                     <constraint firstAttribute="width" constant="68" id="nMg-zG-5U0"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jf-6z-8Ac">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jf-6z-8Ac">
                                                 <rect key="frame" x="0.0" y="0.0" width="107" height="128"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="128" id="15U-ny-6D1"/>
@@ -447,6 +447,7 @@
                     <navigationItem key="navigationItem" id="AKA-et-Qz4"/>
                     <connections>
                         <outlet property="addWaterView" destination="HT6-7r-mml" id="Z6B-jb-wxr"/>
+                        <outlet property="deleteButton" destination="9jf-6z-8Ac" id="AAP-pJ-4OL"/>
                         <outlet property="waterAmountView" destination="Zzd-d1-fIg" id="wsf-PE-h6X"/>
                         <outlet property="waterLable" destination="qPR-54-4JA" id="ZdB-ld-9Sn"/>
                         <outlet property="waterStatus" destination="YUB-3a-2z3" id="PcJ-Rz-dEp"/>

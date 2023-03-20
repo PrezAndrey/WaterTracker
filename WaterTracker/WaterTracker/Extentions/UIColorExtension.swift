@@ -13,6 +13,7 @@ extension UIColor {
     static let universalBlack = UIColor().colorFromHex("18171C")
     static let universalGray = UIColor().colorFromHex("2F2F37")
     static let universalYellow = UIColor().colorFromHex("FFC553")
+    static let universalGreen = UIColor().colorFromHex("00e600")
     
     func colorFromHex(_ hex: String) -> UIColor {
         var hexString = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()

@@ -99,7 +99,7 @@ class SetTargetViewController: UIViewController {
     func configure(button: UIButton) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             button.setTitle("Complete!", for: .normal)
-            button.layer.backgroundColor = UIColor.universalYellow.cgColor
+            button.layer.backgroundColor = UIColor.universalGreen.cgColor
             self.isCompeted()
         }
     }
@@ -109,7 +109,7 @@ class SetTargetViewController: UIViewController {
             dayTargetButton.isHidden = true
             periodButton.isHidden = true
             startButton.isHidden = false
-            startButton.backgroundColor = .green
+            startButton.backgroundColor = .universalGreen
         }
     }
 //

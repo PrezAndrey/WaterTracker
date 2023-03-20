@@ -20,6 +20,7 @@ class MainViewController: UIViewController {
     }
     private var dayTarget: Int?
     
+    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var waterStatus: UIImageView!
     @IBOutlet weak var waterAmountView: UIView!
     @IBOutlet weak var addWaterView: UIView!
@@ -82,7 +83,7 @@ class MainViewController: UIViewController {
     }
         
     private func updateWaterAmount() {
-        waterLable.text = "\(waterModel.waterAmount) мл"
+        waterLable.text = "\(waterModel.waterAmount) ml"
     }
     
     func checkFirstStart() -> Bool {
@@ -110,8 +111,10 @@ class MainViewController: UIViewController {
         } else {
             waterStatus.image = UIImage(named: "waterAmount4")
         }
-        
     }
+    
+    
+    
 }
 
 
@@ -218,6 +221,5 @@ extension MainViewController {
         waterAmountView.layer.borderWidth = 2
         addWaterView.layer.borderColor = UIColor.universalBlue.cgColor
         waterAmountView.layer.borderColor = UIColor.universalBlue.cgColor
-        
     }
 }
