@@ -42,18 +42,18 @@ class SetTargetViewController: UIViewController {
             button.addTarget(self, action: #selector(didSetTarget), for: .touchUpInside)
             button.frame = CGRect(x: 40, y: 700, width: 150, height: 80)
             button.setTitle("Set target", for: .normal)
-            button.titleLabel?.font = UIFont(name: "SFProDisplayRegular.otf", size: 20)
+            button.titleLabel?.font = UIFont(name: "SFProDisplayRegular.otf", size: 25)
         case periodButton:
             button.addTarget(self, action: #selector(didSetPeriod), for: .touchUpInside)
             button.frame = CGRect(x: 210, y: 700, width: 150, height: 80)
             button.setTitle("Set period", for: .normal)
-            button.titleLabel?.font = UIFont(name: "SFProDisplayRegular.otf", size: 20)
+            button.titleLabel?.font = UIFont(name: "SFProDisplayRegular.otf", size: 25)
         case startButton:
             button.addTarget(self, action: #selector(didStart), for: .touchUpInside)
             button.frame = CGRect(x: 40, y: 700, width: 300, height: 80)
             button.setTitle("Start", for: .normal)
             button.isHidden = true
-            button.titleLabel?.font = UIFont(name: "SFProDisplayRegular.otf", size: 20)
+            button.titleLabel?.font = UIFont(name: "SFProDisplayRegular.otf", size: 25)
         default:
             print("Error...")
         }
@@ -61,10 +61,10 @@ class SetTargetViewController: UIViewController {
     }
     
     func setTextLabel() {
-       textLabel.frame = CGRect(x: 40, y: 350, width: 300, height: 200)
+       textLabel.frame = CGRect(x: 40, y: 350, width: 300, height: 250)
        textLabel.text = "The final step is to set a time tracking period and daily target, which can be done manually or using the target generator. Additionally, make sure to input your weight"
        textLabel.numberOfLines = 0
-       textLabel.font = UIFont(name: "SFProDisplayRegular.otf", size: 20)
+       textLabel.font = UIFont(name: "SFProDisplayRegular.otf", size: 25)
        textLabel.textColor = .white
        textLabel.textAlignment = .center
        textLabel.font = .boldSystemFont(ofSize: 25)
