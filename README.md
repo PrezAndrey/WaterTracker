@@ -51,6 +51,6 @@ The settings screen allows you to configure the app, set daily goals, choose a s
 
 ## Developers
 
-- [Delevoper Name](GitHub Profile Link)
+- [Andrey Prez](https://github.com/PrezAndrey)
 
 ## License
