@@ -1,6 +1,6 @@
 # WaterTracker
 <p align="center">
-      <img src="Project Logo Url" width="726">
+      <img src="[Project Logo Url](https://disk.yandex.ru/i/IbfRxqubeB-z_g)" width="726">
 </p>
 
 <p align="center">
