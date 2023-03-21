@@ -15,7 +15,7 @@
 
 ## About
 
-About Text Here
+WaterTracker is a simple and easy-to-use iOS application designed to help you track your daily water intake. The app allows you to set a daily water intake goal, and then track your progress throughout the day.
 
 ## Documentation
 
