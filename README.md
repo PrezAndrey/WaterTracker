@@ -19,7 +19,7 @@ WaterTracker is a simple and easy-to-use iOS application designed to help you tr
 
 ## Presentation
 When you launch the app for the first time, you will see a greeting screen with a gradient animation. Here, you can configure the app before usage, implement HealthKit and Notifications, set a daily target, and choose a starting time.
-![Simulator Screen Recording - iPhone 14 Pro - 2023-03-21 at 17 25 43](https://user-images.githubusercontent.com/96233924/226564911-73d6bf86-d425-41fe-9595-2d2aee09a776.gif)
+https://user-images.githubusercontent.com/96233924/226564911-73d6bf86-d425-41fe-9595-2d2aee09a776.gif
 
 
 Documentation Here
