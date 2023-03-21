@@ -26,13 +26,23 @@ When you launch the app for the first time, you will see a greeting screen with 
 
 The application has a TabBarView with three main screens:
 
-# Main screen
+### Main screen
 The main screen displays your current water intake amount and provides buttons to add more water or delete the last record. Additionally, the waterAmount icon functions as a status bar that changes according to your progress towards your goal.
 
 ![Simulator Screen Recording - iPhone 14 Pro - 2023-03-21 at 17 42 14](https://user-images.githubusercontent.com/96233924/226568732-884a1df8-7f1e-4976-ac14-b5fceb786389.gif)
 
 
-Documentation Here
+### Statistic screen
+The statistics screen allows you to review your records and make corrections or deletions as necessary.
+
+![Simulator Screen Recording - iPhone 14 Pro - 2023-03-21 at 17 46 50](https://user-images.githubusercontent.com/96233924/226570023-d5b3cb9d-0061-4d09-9e37-8a4aa5b98b8f.gif)
+
+
+### Settings screen
+The settings screen allows you to configure the app, set daily goals, choose a starting time, and adjust other data, or do the reset. The "Target" cell also guides you to an additional settings screen, where you can set your weight and generate your goal automatically or set it manually.
+
+![Simulator Screen Recording - iPhone 14 Pro - 2023-03-21 at 17 52 04](https://user-images.githubusercontent.com/96233924/226571307-74daaf45-2145-4c04-a166-7646b1e29d7f.gif)
+
 
 ## Distribute
 
