@@ -4,9 +4,13 @@
 </p>
 
 <p align="center">
-   <img src="" alt="Unity Version">
-   <img src="" alt="Game Version">
-   <img src="" alt="License">
+   <img src="" alt="https://img.shields.io/badge/UI-UIKit%2C%20Storyboard%2C%20AutoLayout-red">
+   <img src="" alt="https://img.shields.io/badge/Navigation-Segue-yellow">
+   <img src="" alt="https://img.shields.io/badge/Architecture-MVC-success">
+   <img src="" alt="https://img.shields.io/badge/Data-UserDefaults-informational">
+   <img src="" alt="https://img.shields.io/badge/Tools-Git%2C%20GitHub%2C%20Swift%2C%20Xcode-important">
+   <img src="" alt="https://img.shields.io/badge/-UserNotifications-9cf">
+   <img src="" alt="https://img.shields.io/badge/-HealthKit-blueviolet">
 </p>
 
 ## About
