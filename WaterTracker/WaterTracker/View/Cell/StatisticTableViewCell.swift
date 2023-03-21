@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class StatisticTableViewCell: UITableViewCell {
     
     let dateService = DateService()

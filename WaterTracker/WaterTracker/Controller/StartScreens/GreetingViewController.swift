@@ -62,7 +62,7 @@ extension GreetingViewController {
         greetingTextLabel.frame = CGRect(x: 40, y: 350, width: 300, height: 200)
         greetingTextLabel.text = "For a better experience, you need to configure the app, enable notifications, and integrate HealthKit"
         greetingTextLabel.numberOfLines = 0
-        greetingTextLabel.font = UIFont(name: "Helvetica Neue", size: 25.0)
+        greetingTextLabel.font = UIFont(name: "SFProDisplayRegular.otf", size: 25)
         greetingTextLabel.textColor = .white
         greetingTextLabel.textAlignment = .center
         greetingTextLabel.font = .boldSystemFont(ofSize: 25)

@@ -7,9 +7,11 @@
 
 import UIKit
 
+
 class NotificationCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var cellView: UIView!
+    
     func configureView() {
         cellView.layer.cornerRadius = 10
         cellView.layer.borderWidth = 2

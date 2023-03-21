@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 struct UserSettings: Codable, Equatable {
 
     var dayTarget: Int? = 2001

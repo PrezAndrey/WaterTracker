@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 struct Constants {
     
     static let defaultAmountOfWater: Int = 0
@@ -14,6 +15,7 @@ struct Constants {
     static let waterKey = "waterKey"
     static let userSettingsKey = "userSettingsKey"
 }
+
 
 class WaterStore: Codable {
     

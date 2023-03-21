@@ -8,6 +8,7 @@
 import Foundation
 import HealthKit
 
+
 struct HKTypes {
     
     var age: Int
@@ -15,6 +16,7 @@ struct HKTypes {
     var bloodType: HKBloodType
     var bodyMass: String
 }
+
 
 class HealthKitAdapter {
     

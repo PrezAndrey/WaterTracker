@@ -8,11 +8,13 @@
 import UIKit
 import UserNotifications
 
+
 enum NotificationState {
     case deniedInApp
     case deniedInSettings
     case auth
 }
+
 
 class Notifications: NSObject, UNUserNotificationCenterDelegate {
     
@@ -119,7 +121,6 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
         default:
             print("Unknow action")
         }
-        
         completionHandler()
     }
 }

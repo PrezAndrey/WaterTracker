@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class TargetCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var autoTargetLabel: UILabel!

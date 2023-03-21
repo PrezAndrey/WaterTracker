@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class PeriodCollectionViewCell: UICollectionViewCell {
     
     private let waterModel = WaterModel()

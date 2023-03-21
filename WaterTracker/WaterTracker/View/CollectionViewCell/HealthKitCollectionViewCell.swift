@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class HealthKitCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var cellView: UIView!

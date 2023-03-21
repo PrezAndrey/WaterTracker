@@ -7,8 +7,8 @@
 
 import UIKit
 
+
 class DayTargetCollectionViewCell: UICollectionViewCell {
-    
     
     private let waterModel = WaterModel()
     

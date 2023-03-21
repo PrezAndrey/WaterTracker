@@ -24,6 +24,8 @@
 		5504F226280838F0001CC40B /* WaterCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5504F225280838F0001CC40B /* WaterCalculatorTests.swift */; };
 		554F8C2B295719340072F3ED /* DateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F8C2A295719340072F3ED /* DateService.swift */; };
 		55678DEF28390B3B00E7B1EC /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55678DEE28390B3B00E7B1EC /* SettingCell.swift */; };
+		55808FE329C98CF80004360A /* SFProDisplayRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 55808FE229C98CF80004360A /* SFProDisplayRegular.otf */; };
+		55808FE529C98EA50004360A /* SFProDisplaySemibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 55808FE429C98EA50004360A /* SFProDisplaySemibold.otf */; };
 		559222C42837908D00D16543 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559222C32837908D00D16543 /* SettingsTableViewController.swift */; };
 		5595091D29847C9B003DFB9F /* ResetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5595091C29847C9B003DFB9F /* ResetCollectionViewCell.swift */; };
 		5595091F29854E4D003DFB9F /* ExtraSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5595091E29854E4D003DFB9F /* ExtraSettingsViewController.swift */; };
@@ -85,6 +87,8 @@
 		5504F225280838F0001CC40B /* WaterCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterCalculatorTests.swift; sourceTree = "<group>"; };
 		554F8C2A295719340072F3ED /* DateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateService.swift; sourceTree = "<group>"; };
 		55678DEE28390B3B00E7B1EC /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		55808FE229C98CF80004360A /* SFProDisplayRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SFProDisplayRegular.otf; path = "../../../../../../../Downloads/San Francisco Pro Display/SFProDisplayRegular.otf"; sourceTree = "<group>"; };
+		55808FE429C98EA50004360A /* SFProDisplaySemibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SFProDisplaySemibold.otf; path = "../../../../../../../Downloads/San Francisco Pro Display/SFProDisplaySemibold.otf"; sourceTree = "<group>"; };
 		559222C32837908D00D16543 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = WaterTracker/Controller/SettingsTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		5595091C29847C9B003DFB9F /* ResetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetCollectionViewCell.swift; sourceTree = "<group>"; };
 		5595091E29854E4D003DFB9F /* ExtraSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraSettingsViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 		1B99E53B2772642300291801 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				55808FE129C98C0C0004360A /* Fonts */,
 				1B99E52B2771240000291801 /* Assets.xcassets */,
 				1B99E528277123FE00291801 /* Main.storyboard */,
 				1B99E52D2771240000291801 /* LaunchScreen.storyboard */,
@@ -241,6 +246,15 @@
 				5504F225280838F0001CC40B /* WaterCalculatorTests.swift */,
 			);
 			path = WaterCalculatorTests;
+			sourceTree = "<group>";
+		};
+		55808FE129C98C0C0004360A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				55808FE429C98EA50004360A /* SFProDisplaySemibold.otf */,
+				55808FE229C98CF80004360A /* SFProDisplayRegular.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		55967775295AEC1200A61C7A /* StartScreens */ = {
@@ -407,6 +421,8 @@
 			files = (
 				1B99E52F2771240000291801 /* LaunchScreen.storyboard in Resources */,
 				1B99E52C2771240000291801 /* Assets.xcassets in Resources */,
+				55808FE529C98EA50004360A /* SFProDisplaySemibold.otf in Resources */,
+				55808FE329C98CF80004360A /* SFProDisplayRegular.otf in Resources */,
 				1B99E52A277123FE00291801 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

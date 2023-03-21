@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class SettingCell: UITableViewCell {
 
     @IBOutlet weak var valueLable: UILabel!

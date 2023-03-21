@@ -8,6 +8,7 @@
 import Foundation
 import HealthKit
 
+
 protocol WaterModelDelegate {
     
     func waterAmountDidUpdate(_ model: WaterModelProtocol)

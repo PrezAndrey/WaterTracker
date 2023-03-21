@@ -3,7 +3,16 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<array>
+		<string></string>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SFProDisplayRegular.otf</string>
+		<string>SFProDisplaySemibold.otf</string>
+	</array>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

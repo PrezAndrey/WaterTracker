@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class WeightCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var weightAmountLabel: UILabel!

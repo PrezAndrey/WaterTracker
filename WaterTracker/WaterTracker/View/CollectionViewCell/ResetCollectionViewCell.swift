@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class ResetCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var cellView: UIView!
