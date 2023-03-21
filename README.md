@@ -43,14 +43,7 @@ The settings screen allows you to configure the app, set daily goals, choose a s
 
 ![Simulator Screen Recording - iPhone 14 Pro - 2023-03-21 at 17 52 04](https://user-images.githubusercontent.com/96233924/226571307-74daaf45-2145-4c04-a166-7646b1e29d7f.gif)
 
-
-## Distribute
-
-- [Service Name](Page Link)
-
-
 ## Developers
 
 - [Andrey Prez](https://github.com/PrezAndrey)
 
-## License
